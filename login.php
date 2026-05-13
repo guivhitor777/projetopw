@@ -1,137 +1,262 @@
 <?php
 require_once 'conexao.php';
+
 session_start();
+
+// Se já estiver logado
 if (isset($_SESSION['usuario_id'])) {
     header('Location: /pages/categorias/index.php');
-    exit(); // Sempre use exit() após header('Location: ...')
+    exit();
 }
 
 $erro = '';
 
+// Verifica envio do formulário
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $email = trim($_POST['email'] ?? '');
     $senha = trim($_POST['senha'] ?? '');
 
+    // Validação
     if (empty($email) || empty($senha)) {
+
         $erro = 'Por favor, preencha o e-mail e a senha.';
 
     } else {
-      
-$pdo = getConexao();
 
-          $stmt = $pdo->prepare(
-            "SELECT id, nome, email, senha FROM usuarios WHERE email = :email LIMIT 1"
-        );
+        $pdo = getConexao();
 
-        $stmt->execute([':email' => $email]);
+        $stmt = $pdo->prepare("
+            SELECT id, nome, email, senha
+            FROM usuarios
+            WHERE email = :email
+            LIMIT 1
+        ");
+
+        $stmt->execute([
+            ':email' => $email
+        ]);
 
         $usuario = $stmt->fetch();
 
+        // Verifica senha
         if ($usuario && password_verify($senha, $usuario['senha'])) {
 
             $_SESSION['usuario_id']    = $usuario['id'];
             $_SESSION['usuario_nome']  = $usuario['nome'];
             $_SESSION['usuario_email'] = $usuario['email'];
-         
+
             header('Location: /pages/categorias/index.php');
             exit();
 
         } else {
-            $erro = 'E-mail ou senha inválidos. Tente novamente.';
+
+            $erro = 'E-mail ou senha inválidos.';
+
         }
     }
 }
 ?>
+
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br" class="dark">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login — AulaLogin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Login</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <style>
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bg-pattern {
+            background-color: #0b0e14;
+            background-image:
+                radial-gradient(circle at 2px 2px,
+                rgba(173, 198, 255, 0.05) 1px,
+                transparent 0);
+
+            background-size: 40px 40px;
+        }
+
+        .glow-input:focus {
+            box-shadow: 0 0 15px rgba(173, 198, 255, 0.2);
+            border-color: #adc6ff;
+        }
+
+    </style>
+
 </head>
 
-<body class="bg-gradient-to-br from-slate-800 via-slate-800 to-slate-900 min-h-screen flex items-center justify-center p-4">
+<body class="bg-pattern min-h-screen flex items-center justify-center p-6 overflow-hidden">
 
-    <div class="w-full max-w-md">
+    <!-- Fundo -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
 
-        <!-- Logo e título do sistema -->
-        <div class="text-center mb-8">
-            <span class="text-6xl">🎓</span>
-            <h1 class="text-3xl font-bold text-white mt-4 tracking-tight">AulaLogin</h1>
-            <p class="text-slate-400 text-sm mt-2">Sistema Didático de Autenticação em PHP</p>
+        <div class="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] bg-blue-500/10 blur-[120px] rounded-full"></div>
+
+        <div class="absolute -bottom-[20%] -right-[10%] w-[50%] h-[50%] bg-blue-400/5 blur-[100px] rounded-full"></div>
+
+    </div>
+
+    <!-- Container -->
+    <main class="w-full max-w-md relative z-10">
+
+        <!-- Logo -->
+        <div class="flex flex-col items-center mb-10">
+
+            <div class="w-16 h-16 rounded-xl glass-card flex items-center justify-center mb-4">
+
+                <span class="material-symbols-outlined text-blue-300 text-3xl">
+                    rocket_launch
+                </span>
+
+            </div>
+
+            <h1 class="text-blue-300 tracking-[0.3em] text-sm font-bold">
+                ALUNO MODERN
+            </h1>
+
+            <p class="text-gray-400 text-sm mt-2">
+                Academic Command Interface
+            </p>
+
         </div>
 
-        <!-- Card branco com o formulário de login -->
-        <div class="bg-white rounded-2xl shadow-2xl p-8">
+        <!-- Card -->
+        <div class="glass-card rounded-2xl p-8 shadow-2xl">
 
-            <h2 class="text-gray-800 text-xl font-semibold text-center mb-6">Acesse sua conta</h2>
-            <?php if ($erro): ?>
-                <div class="bg-red-50 border border-red-200 text-red-700 rounded-lg px-4 py-3 mb-5 text-sm flex items-start gap-2">
-                    <span class="mt-0.5">⚠️</span>
-                    
-                    <span><?= htmlspecialchars($erro) ?></span>
+            <div class="mb-8">
+
+                <h2 class="text-3xl font-bold text-white mb-2">
+                    Acesse sua conta
+                </h2>
+
+                <p class="text-gray-400 text-sm">
+                    Insira suas credenciais para acessar o sistema.
+                </p>
+
+            </div>
+
+            <!-- Erro -->
+            <?php if (!empty($erro)): ?>
+
+                <div class="bg-red-500/20 border border-red-500 text-red-300 p-4 rounded-lg mb-6">
+                    <?= htmlspecialchars($erro) ?>
                 </div>
+
             <?php endif; ?>
 
-            
-            <form action="" method="post" class="space-y-5" novalidate>
+            <!-- Formulário -->
+            <form method="POST" class="space-y-6">
 
-                <!-- Campo: E-mail -->
+                <!-- Email -->
                 <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1.5">
+
+                    <label class="block text-sm text-gray-300 mb-2">
                         E-mail
                     </label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        autocomplete="email"
-                        placeholder="admin@exemplo.com"
-                        value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
-                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent transition text-sm"
-                    >
-                    
+
+                    <div class="relative">
+
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                            alternate_email
+                        </span>
+
+                        <input
+                            type="email"
+                            name="email"
+                            required
+                            value="<?= htmlspecialchars($email ?? '') ?>"
+                            placeholder="usuario@email.com"
+                            class="w-full h-14 pl-12 pr-4 rounded-lg bg-black/30 border border-gray-700 text-white glow-input outline-none"
+                        >
+
+                    </div>
+
                 </div>
 
-                
+                <!-- Senha -->
                 <div>
-                    <label for="senha" class="block text-sm font-medium text-gray-700 mb-1.5">
-                        Senha
-                    </label>
-                    <input
-                        type="password"
-                        id="senha"
-                        name="senha"
-                        required
-                        autocomplete="current-password"
-                        placeholder="••••••••"
-                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent transition text-sm"
-                    >
-                    
+
+                    <div class="flex justify-between items-center mb-2">
+
+                        <label class="text-sm text-gray-300">
+                            Senha
+                        </label>
+
+                        <a href="#" class="text-xs text-blue-300 hover:underline">
+                            Esqueci minha senha
+                        </a>
+
+                    </div>
+
+                    <div class="relative">
+
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+                            lock
+                        </span>
+
+                        <input
+                            type="password"
+                            name="senha"
+                            required
+                            placeholder="••••••••"
+                            class="w-full h-14 pl-12 pr-4 rounded-lg bg-black/30 border border-gray-700 text-white glow-input outline-none"
+                        >
+
+                    </div>
+
                 </div>
 
-                
+                <!-- Botão -->
                 <button
                     type="submit"
-                    class="w-full bg-slate-800 hover:bg-slate-700 active:bg-slate-900 text-white font-semibold py-3 rounded-lg transition duration-150 mt-2 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 text-sm"
+                    class="w-full h-14 bg-blue-400 text-black font-bold rounded-lg hover:brightness-110 transition-all"
                 >
-                    Entrar no Sistema
+                    ENTRAR
                 </button>
 
             </form>
+
+            <!-- Footer -->
+            <div class="mt-8 pt-6 border-t border-white/10 text-center">
+
+                <p class="text-gray-400 text-sm mb-4">
+                    Não possui acesso?
+                </p>
+
+                <button class="w-full border border-blue-300/30 bg-blue-300/10 text-blue-300 py-3 rounded-full hover:bg-blue-300/20 transition">
+
+                    SOLICITAR CREDENCIAIS
+
+                </button>
+
+            </div>
+
         </div>
 
-        <!-- Dica de primeiro acesso -->
-        <p class="text-center text-slate-500 text-xs mt-6">
-            Primeiro acesso? Execute
-            <a href="/_setup/seed.php" class="text-slate-300 hover:text-white underline transition">_setup/seed.php</a>
-            para criar o usuário administrador.
-        </p>
-
-    </div>
+    </main>
 
 </body>
 </html>
