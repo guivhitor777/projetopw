@@ -3,7 +3,6 @@ require_once 'conexao.php';
 
 session_start();
 
-// Se já estiver logado
 if (isset($_SESSION['usuario_id'])) {
     header('Location: /pages/categorias/index.php');
     exit();

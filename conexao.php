@@ -1,8 +1,7 @@
 <?php
-
 function getConexao() {
     $host = "localhost";
-    $dbname = "mysql";
+    $dbname = "projeto";
     $user = "root";
     $pass = "";
 
