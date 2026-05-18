@@ -245,10 +245,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     Não possui acesso?
                 </p>
 
-                <button class="w-full border border-blue-300/30 bg-blue-300/10 text-blue-300 py-3 rounded-full hover:bg-blue-300/20 transition">
-
-                    SOLICITAR CREDENCIAIS
-
+                <button
+                    onclick="window.location.href='cadastro.php'"
+                    class="w-full border border-blue-300/30 bg-blue-300/10 text-blue-300 py-3 rounded-full hover:bg-blue-300/20 transition"
+                >
+                    CRIAR CONTA
                 </button>
 
             </div>

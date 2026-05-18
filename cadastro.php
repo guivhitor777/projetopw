@@ -5,9 +5,9 @@ $mensagem = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $nome = trim($_POST['nome']);
-    $email = trim($_POST['email']);
-    $senha = trim($_POST['senha']);
+    $nome = trim($_POST['nome']) ;
+    $email = trim($_POST['email']) ?? "";
+    $senha = trim($_POST['senha']) ?? "";
 
     // Criptografar senha
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         "body-lg": ["Inter"],
                         "headline-lg": ["Inter"],
                         "display-lg": ["Inter"],
-                        "label-caps": ["Space Grotesk"],
+                        "label-caps": ["Space Grotesk"]
                         "headline-md": ["Inter"]
                     },
                     "fontSize": {
