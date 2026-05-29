@@ -12,10 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Criptografar senha
     $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-    // SQL
-    $sql = "INSERT INTO usuarios (nome, email, senha)
-            VALUES (:nome, :email, :senha)";
-
     $stmt = $pdo->prepare($sql);
 
     $stmt->bindParam(':nome', $nome);

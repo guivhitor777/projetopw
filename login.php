@@ -203,11 +203,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label class="text-sm text-gray-300">
                             Senha
                         </label>
-
-                        <a href="#" class="text-xs text-blue-300 hover:underline">
-                            Esqueci minha senha
-                        </a>
-
                     </div>
 
                     <div class="relative">

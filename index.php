@@ -148,11 +148,6 @@ $erro = '';
             </a>
             <a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
                 href="#">
-                <span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
-                <span class="font-label-caps text-label-caps">Calendário</span>
-            </a>
-            <a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
-                href="#">
                 <span class="material-symbols-outlined" data-icon="analytics">analytics</span>
                 <span class="font-label-caps text-label-caps">Notas</span>
             </a>
@@ -162,12 +157,6 @@ $erro = '';
                 <span class="font-label-caps text-label-caps">Tarefas</span>
             </a>
         </nav>
-        <div class="mt-auto flex flex-col gap-y-1">
-            <a class="flex items-center gap-3 px-4 py-3 rounded text-primary border-l-2 border-primary bg-primary/5 translate-x-1 duration-300"
-                href="#">
-                <span class="material-symbols-outlined" data-icon="settings">settings</span>
-                <span class="font-label-caps text-label-caps">Configurações</span>
-            </a>
             <a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
                 href="logout.php">
                 <span class="material-symbols-outlined" data-icon="logout">logout</span>
