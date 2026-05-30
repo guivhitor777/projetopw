@@ -164,40 +164,17 @@
                 <span class="material-symbols-outlined">dashboard</span>
                 <span class="font-label-caps text-label-caps">Dashboard</span>
             </a>
-            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors scale-95 active:scale-90 transition-transform"
-                href="#">
-                <span class="material-symbols-outlined">calendar_month</span>
-                <span class="font-label-caps text-label-caps">Calendar</span>
-            </a>
             <a class="relative flex items-center gap-4 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary scale-95 active:scale-90 transition-transform"
                 href="#">
                 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grade</span>
-                <span class="font-label-caps text-label-caps">Grades</span>
+                <span class="font-label-caps text-label-caps">Notas</span>
             </a>
             <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors scale-95 active:scale-90 transition-transform"
                 href="#">
                 <span class="material-symbols-outlined">assignment</span>
-                <span class="font-label-caps text-label-caps">Assignments</span>
+                <span class="font-label-caps text-label-caps">Tarefas</span>
             </a>
-            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors scale-95 active:scale-90 transition-transform"
-                href="#">
-                <span class="material-symbols-outlined">mail</span>
-                <span class="font-label-caps text-label-caps">Messages</span>
-            </a>
-        </nav>
-        <div class="mt-auto pt-6 border-t border-white/5 space-y-2">
-            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
-                href="#">
-                <span class="material-symbols-outlined">settings</span>
-                <span class="font-label-caps text-label-caps">Settings</span>
-            </a>
-            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
-                href="#">
-                <span class="material-symbols-outlined">help</span>
-                <span class="font-label-caps text-label-caps">Support</span>
-            </a>
-        </div>
-    </aside>
+            </aside>
     <!-- TopNavBar -->
     <header
         class="fixed top-0 right-0 w-[calc(100%-var(--sidebar-width))] h-16 bg-surface/30 backdrop-blur-lg border-b border-white/5 flex justify-between items-center px-container-padding-desktop z-40">
