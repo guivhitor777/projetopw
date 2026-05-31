@@ -243,52 +243,6 @@
                     <span>Adicionar Nota</span>
                 </button>
             </div>
-            <!-- Summary Bento Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
-                <div class="glass-card p-6 rounded-2xl md:col-span-1">
-                    <p class="font-label-caps text-label-caps text-on-surface-variant mb-4">MÉDIA GLOBAL (GPA)</p>
-                    <div class="flex items-end gap-3">
-                        <span class="text-5xl font-bold text-primary">3.92</span>
-                        <div class="flex items-center text-primary text-sm mb-1 bg-primary/10 px-2 py-0.5 rounded-full">
-                            <span class="material-symbols-outlined text-sm">trending_up</span>
-                            <span>+0.12</span>
-                        </div>
-                    </div>
-                    <p class="text-xs text-on-surface-variant/60 mt-4 italic">Top 5% da turma</p>
-                </div>
-                <div class="glass-card p-6 rounded-2xl md:col-span-1">
-                    <p class="font-label-caps text-label-caps text-on-surface-variant mb-4">TOTAL DE CRÉDITOS</p>
-                    <div class="flex items-end gap-3">
-                        <span class="text-5xl font-bold text-on-surface">148</span>
-                        <span class="text-on-surface-variant mb-2">/ 180</span>
-                    </div>
-                    <div class="w-full bg-white/5 h-1.5 rounded-full mt-5">
-                        <div class="bg-primary h-full rounded-full w-[82%] shadow-[0_0_8px_rgba(173,198,255,0.5)]">
-                        </div>
-                    </div>
-                </div>
-                <div class="glass-card p-6 rounded-2xl md:col-span-2 relative">
-                    <p class="font-label-caps text-label-caps text-on-surface-variant mb-2">EVOLUÇÃO DE DESEMPENHO</p>
-                    <div class="h-24 w-full flex items-end gap-1.5 mt-4">
-                        <!-- Mini Trend Line Mockup -->
-                        <div class="flex-grow flex items-end justify-between h-full px-2">
-                            <div class="w-2 bg-primary/20 h-[40%] rounded-t-sm"></div>
-                            <div class="w-2 bg-primary/20 h-[55%] rounded-t-sm"></div>
-                            <div class="w-2 bg-primary/20 h-[45%] rounded-t-sm"></div>
-                            <div class="w-2 bg-primary/40 h-[70%] rounded-t-sm"></div>
-                            <div class="w-2 bg-primary/40 h-[60%] rounded-t-sm"></div>
-                            <div class="w-2 bg-primary/60 h-[85%] rounded-t-sm"></div>
-                            <div class="w-2 bg-primary/60 h-[75%] rounded-t-sm"></div>
-                            <div class="w-2 bg-primary h-[95%] rounded-t-sm shadow-[0_0_10px_rgba(173,198,255,0.3)]">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex justify-between mt-2 text-[10px] font-label-caps text-on-surface-variant/40">
-                        <span>SEM 1</span>
-                        <span>SEM 2</span>
-                        <span>SEM 3</span>
-                        <span>ATUAL</span>
-                    </div>
                 </div>
             </div>
             <!-- Filter & Search Section -->
