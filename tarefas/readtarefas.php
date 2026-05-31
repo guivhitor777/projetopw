@@ -249,31 +249,6 @@
                             <span
                                 class="material-symbols-outlined text-on-surface-variant group-hover:text-primary">chevron_right</span>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="space-y-6">
-                <div class="glass-panel rounded-xl p-6 flex flex-col items-center justify-center text-center">
-                    <div class="w-24 h-24 rounded-full border-4 border-primary/20 border-t-primary animate-spin mb-4"
-                        style="animation-duration: 3s;"></div>
-                    <h3 class="font-headline-md text-headline-md mb-2">Sync Progress</h3>
-                    <p class="text-on-surface-variant text-sm">Synchronizing academic records with central command.</p>
-                </div>
-                <div class="glass-panel rounded-xl p-6">
-                    <h3 class="font-headline-md text-headline-md mb-4">Command Center</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="p-4 bg-white/5 rounded-lg text-center">
-                            <span class="block text-2xl font-bold text-primary">82%</span>
-                            <span class="text-[10px] uppercase font-label-caps text-on-surface-variant">G.P.A.</span>
-                        </div>
-                        <div class="p-4 bg-white/5 rounded-lg text-center">
-                            <span class="block text-2xl font-bold text-tertiary">12</span>
-                            <span class="text-[10px] uppercase font-label-caps text-on-surface-variant">Credits</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
     <!-- TASK MODAL (CREATE/EDIT) -->
     <div class="fixed inset-0 z-[100] flex items-center justify-center px-4 overflow-y-auto hidden" id="task-modal">

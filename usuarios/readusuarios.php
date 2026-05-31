@@ -157,12 +157,12 @@ $erro = '';
                 <span class="font-label-caps text-label-caps">Tarefas</span>
             </a>
         </nav>
-            <a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
-                href="logout.php">
-                <span class="material-symbols-outlined" data-icon="logout">logout</span>
-                <span class="font-label-caps text-label-caps">Sair</span>
-            </a>
-            <div class="mt-6 px-4">
+        <a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
+            href="logout.php">
+            <span class="material-symbols-outlined" data-icon="logout">logout</span>
+            <span class="font-label-caps text-label-caps">Sair</span>
+        </a>
+        <div class="mt-6 px-4">
         </div>
     </aside>
     <!-- TopNavBar -->
@@ -218,210 +218,34 @@ $erro = '';
                             class="flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-primary font-label-caps text-label-caps"><span
                                 class="material-symbols-outlined text-[16px]" data-icon="school">school</span> Classe de
                             2026</span>
-                </div>
-                <div class="flex gap-3">
-                    <button
-                        class="px-6 py-2.5 rounded-lg border border-white/10 text-on-surface font-label-caps text-label-caps hover:bg-white/5 transition-all">Editar
-                        Perfil</button>
-                </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <button
+                            class="px-6 py-2.5 rounded-lg border border-white/10 text-on-surface font-label-caps text-label-caps hover:bg-white/5 transition-all">Editar
+                            Perfil</button>
+                    </div>
             </section>
-            <!-- Grid Layout for Details & Settings -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <!-- Left Column: Details -->
-                <div class="lg:col-span-4 space-y-8">
-                    <section class="glass-card rounded-xl p-6">
-                        <div class="flex items-center justify-between mb-6">
-                            <h3 class="font-headline-md text-headline-md text-on-surface">Matriz de Identidade</h3>
-                            <span class="material-symbols-outlined text-primary"
-                                data-icon="fingerprint">fingerprint</span>
-                        </div>
-                        <div class="space-y-6">
-                            <div>
-                                <p class="font-label-caps text-label-caps text-outline uppercase mb-1">Email do Estudante
-                                </p>
-                                <p class="font-body-lg text-body-lg text-on-surface">a.thorne@aether.edu</p>
-                            </div>
-                            <div>
-                                <p class="font-label-caps text-label-caps text-outline uppercase mb-1">Nasc do Estudante
-                                </p>
-                                <p class="font-body-lg text-body-lg text-on-surface">14/10/2009</p>
-                            </div>
-                            <div>
-                                <p class="font-label-caps text-label-caps text-outline uppercase mb-1">Matrícula do Estudante
-                                </p>
-                                <div class="flex items-center gap-2 mt-1">
-                                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                                    <p class="font-body-lg text-body-lg text-primary">Inscrição Ativa</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="glass-card rounded-xl p-6 bg-gradient-to-br from-primary/5 to-transparent">
-                        <h3 class="font-label-caps text-label-caps text-outline uppercase mb-4">Velocidade Acadêmica
-                        </h3>
-                        <div class="flex items-end justify-between">
-                            <div>
-                                <p class="text-[48px] font-bold text-on-surface leading-none">3.94</p>
-                                <p class="font-label-caps text-label-caps text-primary mt-1">GPA Acumulado</p>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-headline-md font-bold text-on-surface">92%</p>
-                                <p class="font-label-caps text-label-caps text-outline">Conclusão</p>
-                            </div>
-                        </div>
-                        <div class="w-full bg-white/5 h-1.5 rounded-full mt-4 overflow-hidden">
-                            <div class="bg-primary h-full w-[92%] rounded-full shadow-[0_0_10px_rgba(173,198,255,0.5)]">
-                            </div>
-                        </div>
-                    </section>
+
+            <nav
+                class="fixed bottom-0 left-0 right-0 h-16 bg-surface/80 backdrop-blur-xl border-t border-white/10 md:hidden flex justify-around items-center z-[100] px-4">
+                <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+                    <span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+                    <span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 text-primary" href="#">
+                    <span class="material-symbols-outlined" data-icon="settings" data-weight="fill">settings</span>
+                </a>
+                <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+                    <span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+                </a>
+                <div class="w-8 h-8 rounded-full overflow-hidden border border-white/20">
+                    <img alt="Mobile Profile" class="w-full h-full object-cover"
+                        data-alt="Small thumbnail profile picture of a young male student in a futuristic setting."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuByx29CnpMoH6pZzwiMtq8UBRw9Y-umEMrjr3s3ADilaBh6_ioomXb04IjHZU3O4w84S5hIPjcXq_GLJnyCFTYrG3bePGsDJ3QVGY4GLnSTUtnHivkEtsLinyAs_Eg1CAzYq3HxaycANrGi-Rq06EGZ3S4WhsLu83vFencDWqC3xs0gRA6Rw_jHQj10yvHGjb9gdCfXrGbMa3fM8TG_1xz8ezeaY0eP4Y9YuNOr_QpzqddbTMqO7lL3V9icOIQTv6JkTUXuM3FFquBa" />
                 </div>
-                <!-- Right Column: Settings & Preferences -->
-                <div class="lg:col-span-8 space-y-8">
-                    <section class="glass-card rounded-xl p-8">
-                        <h3 class="font-headline-md text-headline-md text-on-surface mb-8 flex items-center gap-3"><span
-                                class="material-symbols-outlined text-primary"
-                                data-icon="settings_suggest">settings_suggest</span> Configuração do Sistema</h3>
-                        <div class="space-y-10">
-                            <!-- Group 1: Notifications -->
-                            <div>
-                                <h4
-                                    class="font-label-caps text-label-caps text-primary uppercase mb-6 flex items-center gap-2">
-                                    <span class="material-symbols-outlined text-[18px]"
-                                        data-icon="notifications_active">notifications_active</span> Protocolos de
-                                    Notificação</h4>
-                                <div class="space-y-6">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <p class="font-body-lg text-on-surface">Autenticação de Dois Fatores</p>
-                                            <p class="text-outline text-sm">Verificação biométrica ou por token de
-                                                hardware para todas as tarefas administrativas.</p>
-                                        </div>
-                                        <button
-                                            class="w-12 h-6 rounded-full bg-primary relative flex items-center px-1">
-                                            <div
-                                                class="w-4 h-4 bg-on-primary rounded-full translate-x-6 transition-transform">
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <p class="font-body-lg text-on-surface">Autenticação de Dois Fatores</p>
-                                            <p class="text-outline text-sm">Verificação biométrica ou por token de
-                                                hardware para todas as tarefas administrativas.</p>
-                                        </div>
-                                        <button
-                                            class="w-12 h-6 rounded-full bg-white/10 relative flex items-center px-1">
-                                            <div class="w-4 h-4 bg-white/40 rounded-full transition-transform"></div>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Group 2: Security -->
-                            <div>
-                                <h4
-                                    class="font-label-caps text-label-caps text-primary uppercase mb-6 flex items-center gap-2">
-                                    <span class="material-symbols-outlined text-[18px]"
-                                        data-icon="notifications_active">notifications_active</span> Protocolos de
-                                    Notificação</h4>
-                                <div class="space-y-6">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <p class="font-body-lg text-on-surface">Autenticação de Dois Fatores</p>
-                                            <p class="text-outline text-sm">Verificação biométrica ou por token de
-                                                hardware para todas as tarefas administrativas.</p>
-                                        </div>
-                                        <button
-                                            class="w-12 h-6 rounded-full bg-primary relative flex items-center px-1">
-                                            <div
-                                                class="w-4 h-4 bg-on-primary rounded-full translate-x-6 transition-transform">
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <div
-                                        class="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/5">
-                                        <div class="flex items-center gap-4">
-                                            <div
-                                                class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center text-primary border border-primary/20">
-                                                <span class="material-symbols-outlined" data-icon="key">key</span>
-                                            </div>
-                                            <div>
-                                                <p class="font-body-md text-on-surface">Protocolo do Último Acesso</p>
-                                                <p
-                                                    class="text-outline text-xs uppercase font-label-caps tracking-wider">
-                                                    San Francisco, CA • há 12 min</p>
-                                            </div>
-                                        </div>
-                                        <button
-                                            class="text-primary font-label-caps text-label-caps hover:underline">Revogar
-                                            Acesso</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Group 3: Privacy -->
-                            <div>
-                                <h4
-                                    class="font-label-caps text-label-caps text-primary uppercase mb-6 flex items-center gap-2">
-                                    <span class="material-symbols-outlined text-[18px]"
-                                        data-icon="notifications_active">notifications_active</span> Protocolos de
-                                    Notificação</h4>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div class="p-4 rounded-lg bg-surface border border-white/10 flex flex-col gap-2">
-                                        <span class="material-symbols-outlined text-outline"
-                                            data-icon="groups">groups</span>
-                                        <p class="font-body-md text-on-surface">Visibilidade entre Pares</p>
-                                        <p class="text-xs text-outline">Permitir que colegas vejam sua carga horária e
-                                            projetos de pesquisa.</p>
-                                        <button
-                                            class="mt-2 text-primary font-label-caps text-label-caps text-left">Atualmente:
-                                            Restrito</button>
-                                    </div>
-                                    <div class="p-4 rounded-lg bg-surface border border-white/10 flex flex-col gap-2">
-                                        <span class="material-symbols-outlined text-outline"
-                                            data-icon="analytics">analytics</span>
-                                        <p class="font-body-md text-on-surface">Transmissão de Dados</p>
-                                        <p class="text-xs text-outline">Compartilhamento de análises anonimizadas para
-                                            melhoria da plataforma institucional.</p>
-                                        <button
-                                            class="mt-2 text-primary font-label-caps text-label-caps text-left">Atualmente:
-                                            Ativado</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-12 pt-8 border-t border-white/10 flex justify-end gap-4">
-                            <button
-                                class="px-8 py-3 rounded text-on-surface-variant font-label-caps text-label-caps hover:text-on-surface">Descartar
-                                Alterações</button>
-                            <button
-                                class="px-8 py-3 rounded bg-primary text-on-primary font-label-caps text-label-caps font-bold">Sincronizar
-                                Perfil</button>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </div>
-    </main>
-    <!-- Bottom Navigation (Mobile Only) -->
-    <nav
-        class="fixed bottom-0 left-0 right-0 h-16 bg-surface/80 backdrop-blur-xl border-t border-white/10 md:hidden flex justify-around items-center z-[100] px-4">
-        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
-            <span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
-        </a>
-        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
-            <span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
-        </a>
-        <a class="flex flex-col items-center gap-1 text-primary" href="#">
-            <span class="material-symbols-outlined" data-icon="settings" data-weight="fill">settings</span>
-        </a>
-        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
-            <span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
-        </a>
-        <div class="w-8 h-8 rounded-full overflow-hidden border border-white/20">
-            <img alt="Mobile Profile" class="w-full h-full object-cover"
-                data-alt="Small thumbnail profile picture of a young male student in a futuristic setting."
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuByx29CnpMoH6pZzwiMtq8UBRw9Y-umEMrjr3s3ADilaBh6_ioomXb04IjHZU3O4w84S5hIPjcXq_GLJnyCFTYrG3bePGsDJ3QVGY4GLnSTUtnHivkEtsLinyAs_Eg1CAzYq3HxaycANrGi-Rq06EGZ3S4WhsLu83vFencDWqC3xs0gRA6Rw_jHQj10yvHGjb9gdCfXrGbMa3fM8TG_1xz8ezeaY0eP4Y9YuNOr_QpzqddbTMqO7lL3V9icOIQTv6JkTUXuM3FFquBa" />
-        </div>
-    </nav>
+            </nav>
 </body>
 
 </html>
