@@ -1,5 +1,28 @@
-<!DOCTYPE html>
+<?php
+require_once 'conexao.php';
 
+$id = $_GET['id'] ?? 0;
+
+if ($id > 0) {
+
+    $sql = "DELETE FROM alunos WHERE id = :id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+    if ($stmt->execute()) {
+        header("Location: listar.php?msg=excluido");
+        exit;
+    } else {
+        echo "Erro ao excluir aluno.";
+    }
+
+} else {
+    echo "ID inválido.";
+}
+?>
+
+<!DOCTYPE html>
 <html class="dark" lang="pt-BR">
 
 <head>

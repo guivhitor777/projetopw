@@ -1,5 +1,21 @@
-<!DOCTYPE html>
+<?php
 
+require_once 'conexao.php';
+
+$id = $_GET['id'] ?? 0;
+
+$sql = "DELETE FROM tarefas WHERE id = :id";
+
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':id', $id);
+
+if ($stmt->execute()) {
+    header("Location: listar_tarefas.php");
+    exit;
+}
+?>
+
+<!DOCTYPE html>
 <html class="dark" lang="pt-br">
 
 <head>

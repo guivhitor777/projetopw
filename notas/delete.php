@@ -1,3 +1,20 @@
+<?php
+
+require_once 'conexao.php';
+
+$id = $_GET['id'] ?? 0;
+
+$sql = "DELETE FROM notas WHERE id = :id";
+
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':id', $id);
+
+if ($stmt->execute()) {
+    header("Location: listar_notas.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 
 <html class="dark" lang="pt-br">

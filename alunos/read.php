@@ -1,16 +1,30 @@
 <?php
 require_once 'conexao.php';
 
-session_start();
+$sql = "SELECT * FROM alunos";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
 
-if (isset($_SESSION['usuario_id'])) {
-    header('Location: /pages/categorias/index.php');
-    exit();
-}
+$alunos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$erro = '';
 ?>
 
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+    </tr>
+
+    <?php foreach ($alunos as $aluno): ?>
+        <tr>
+            <td><?= $aluno['id'] ?></td>
+            <td><?= htmlspecialchars($aluno['nome']) ?></td>
+            <td><?= htmlspecialchars($aluno['email']) ?></td>
+        </tr>
+    <?php endforeach; ?>
+
+</table>
 <!DOCTYPE html>
 
 <html class="dark" lang="pt-BR">
@@ -144,17 +158,22 @@ $erro = '';
             <a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
                 href="#">
                 <span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
-                <span class="font-label-caps text-label-caps">Painel</span>
+                <span class="font-body-md text-body-md">Painel</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="school">school</span>
+                <span class="font-body-md text-body-md">Alunos</span>
             </a>
             <a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
                 href="#">
                 <span class="material-symbols-outlined" data-icon="analytics">analytics</span>
-                <span class="font-label-caps text-label-caps">Notas</span>
+                <span class="font-body-md text-body-md">Notas</span>
             </a>
             <a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
                 href="#">
                 <span class="material-symbols-outlined" data-icon="assignment">assignment</span>
-                <span class="font-label-caps text-label-caps">Tarefas</span>
+                <span class="font-body-md text-body-md">Tarefas</span>
             </a>
         </nav>
         <a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
@@ -170,21 +189,8 @@ $erro = '';
         class="fixed top-0 right-0 left-0 md:left-sidebar-width h-16 bg-surface/60 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-gutter z-50">
         <div class="flex items-center gap-8">
             <span class="font-label-caps text-label-caps tracking-widest text-primary">ALUNO MODERN</span>
-            <div
-                class="hidden lg:flex items-center bg-surface-container-lowest border border-white/5 rounded-full px-4 py-1.5 gap-2">
-                <span class="material-symbols-outlined text-outline text-[20px]" data-icon="search">search</span>
-                <input
-                    class="bg-transparent border-none focus:ring-0 text-body-md font-body-md text-on-surface w-64 placeholder:text-outline/50"
-                    placeholder="Busca de Comandos..." type="text" />
-            </div>
         </div>
         <div class="flex items-center gap-4">
-            <button class="text-on-surface-variant hover:text-primary transition-colors duration-200">
-                <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-            </button>
-            <button class="text-on-surface-variant hover:text-primary transition-colors duration-200">
-                <span class="material-symbols-outlined" data-icon="help">help</span>
-            </button>
             <div class="h-8 w-8 rounded-full overflow-hidden border border-primary/30">
                 <img alt="User profile" class="w-full h-full object-cover"
                     data-alt="A professional close-up portrait of a young male student with a focused and intelligent expression. He is set against a dark, tech-inspired background with subtle blue lens flares and digital geometric overlays. The lighting is dramatic and cool-toned, emphasizing sharp features and a modern, high-end educational aesthetic. The overall mood is serious and futuristic."
@@ -201,15 +207,6 @@ $erro = '';
                 <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] rounded-full -mr-20 -mt-20">
                 </div>
                 <div class="relative">
-                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-primary p-1">
-                        <img alt="Student Large" class="w-full h-full object-cover rounded-full"
-                            data-alt="A detailed, high-resolution portrait of a male student in a modern educational setting. The lighting is cinematic, utilizing deep shadows and vibrant cyan highlights to create a sense of technological depth. He has a determined look, representing the next generation of academic leaders. The background is a blurred, high-tech interface with glowing data points and translucent layers."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9aHWK2DT20VaZoe6tiW7Ks7WTjmcI8Ushb_AKO_-jH3elTsZUTLbWkPe224y8ifnkB8fcmnlJAJY_46VIyW9c7TcPIrBqc3JvHWCPup_ob97N7TSWGV0TggzqDkS1m5MHULcOlQQhigOhA3ULUGFx7U35NSg6q1_gO2IEFrr6e1DveIhcnNczo3EclfZze71MLv1GuusYIHTCV8EXqJ6Um-wmTZO5oYFD8AAUSIWgWd6W-flvmecKheBSc-gjhfZa8MoA4pl7JDbK" />
-                    </div>
-                    <div
-                        class="absolute bottom-2 right-2 bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center border-2 border-background">
-                        <span class="material-symbols-outlined text-[18px]" data-icon="verified">verified</span>
-                    </div>
                 </div>
                 <div class="text-center md:text-left flex-1">
                     <h2 class="font-display-lg text-display-lg text-on-surface tracking-tighter">Alexander Thorne</h2>

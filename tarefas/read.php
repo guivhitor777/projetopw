@@ -1,5 +1,15 @@
-<!DOCTYPE html>
+<?php
 
+require_once 'conexao.php';
+
+$sql = "SELECT * FROM tarefas";
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+
+$tarefas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+<!DOCTYPE html>
 <html class="dark" lang="en">
 
 <head>

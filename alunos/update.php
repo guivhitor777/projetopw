@@ -1,3 +1,42 @@
+<?php
+require_once 'conexao.php';
+
+$id = $_GET['id'] ?? 0;
+
+$sql = "SELECT * FROM alunos WHERE id = :id";
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':id', $id);
+$stmt->execute();
+
+$aluno = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$aluno) {
+    die("Aluno não encontrado.");
+}
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $nome = trim($_POST['nome'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+
+    $sql = "UPDATE alunos
+            SET nome = :nome,
+                email = :email
+            WHERE id = :id";
+
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':id', $id);
+
+    if ($stmt->execute()) {
+        echo "Aluno atualizado com sucesso!";
+    } else {
+        echo "Erro ao atualizar.";
+    }
+} 
+?>
+
 <!DOCTYPE html>
 <html class="dark" lang="pt-BR">
 

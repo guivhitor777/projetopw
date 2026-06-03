@@ -1,5 +1,23 @@
-<!DOCTYPE html>
+<?php
 
+require_once 'conexao.php';
+
+$sql = "SELECT
+            notas.id,
+            alunos.nome,
+            notas.disciplina,
+            notas.nota
+        FROM notas
+        INNER JOIN alunos
+        ON notas.aluno_id = alunos.id";
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+
+$notas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+<!DOCTYPE html>
 <html class="dark" lang="pt-BR">
 
 <head>

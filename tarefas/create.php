@@ -1,5 +1,34 @@
-<!DOCTYPE html>
+<?php
+require_once 'conexao.php';
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $titulo = trim($_POST['titulo']);
+    $descricao = trim($_POST['descricao']);
+    $data_entrega = $_POST['data_entrega'];
+    $status = $_POST['status'];
+
+    $sql = "INSERT INTO tarefas
+            (titulo, descricao, data_entrega, status)
+            VALUES
+            (:titulo, :descricao, :data_entrega, :status)";
+
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->bindParam(':titulo', $titulo);
+    $stmt->bindParam(':descricao', $descricao);
+    $stmt->bindParam(':data_entrega', $data_entrega);
+    $stmt->bindParam(':status', $status);
+
+    if ($stmt->execute()) {
+        echo "Tarefa cadastrada com sucesso!";
+    } else {
+        echo "Erro ao cadastrar tarefa.";
+    }
+}
+?>
+
+<!DOCTYPE html>
 <html class="dark" lang="pt-br">
 
 <head>

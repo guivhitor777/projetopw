@@ -1,27 +1,35 @@
 <?php
 require_once 'conexao.php';
-
 $mensagem = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $nome = trim($_POST['nome']) ;
-    $email = trim($_POST['email']) ?? "";
-    $senha = trim($_POST['senha']) ?? "";
+    $nome = trim($_POST['nome'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $senha = trim($_POST['senha'] ?? '');
 
-    // Criptografar senha
-    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+    if (empty($nome) || empty($email) || empty($senha)) {
 
-    $stmt = $pdo->prepare($sql);
+        $mensagem = "Preencha todos os campos.";
 
-    $stmt->bindParam(':nome', $nome);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':senha', $senhaHash);
-
-    if ($stmt->execute()) {
-        $mensagem = "Cadastro realizado com sucesso!";
     } else {
-        $mensagem = "Erro ao cadastrar.";
+
+        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+        $sql = "INSERT INTO alunos (nome, email, senha)
+                VALUES (:nome, :email, :senha)";
+
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':senha', $senhaHash);
+
+        if ($stmt->execute()) {
+            $mensagem = "Cadastro realizado com sucesso!";
+        } else {
+            $mensagem = "Erro ao cadastrar.";
+        }
     }
 }
 ?>

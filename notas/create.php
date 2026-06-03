@@ -1,3 +1,30 @@
+<?php
+
+require_once 'conexao.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $aluno_id = $_POST['aluno_id'] ?? '';
+    $disciplina = trim($_POST['disciplina'] ?? '');
+    $nota = $_POST['nota'] ?? '';
+
+    $sql = "INSERT INTO notas (aluno_id, disciplina, nota)
+            VALUES (:aluno_id, :disciplina, :nota)";
+
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->bindParam(':aluno_id', $aluno_id);
+    $stmt->bindParam(':disciplina', $disciplina);
+    $stmt->bindParam(':nota', $nota);
+
+    if ($stmt->execute()) {
+        echo "Nota cadastrada com sucesso!";
+    } else {
+        echo "Erro ao cadastrar nota.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 
 <html class="dark" lang="pt-br">
