@@ -1,4 +1,5 @@
 <?php
+
 require_once 'conexao.php';
 
 $id = $_GET['id'] ?? 0;
@@ -34,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo "Erro ao atualizar.";
     }
-} 
+}
 ?>
 
 <!DOCTYPE html>
@@ -215,26 +216,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         <div class="space-y-1">
             <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all Active: translate-x-1 duration-300"
-                href="#">
+                href="painel.php">
                 <span class="material-symbols-outlined">grid_view</span>
-                <span class="font-label-caps text-label-caps">Dashboard</span>
+                <span class="font-label-caps text-label-caps">Painel</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
+             <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
                 href="#">
-                <span class="material-symbols-outlined" data-icon="assignment">assignment</span>
-                <span class="font-label-caps text-label-caps">Tarefas</span>
+                <span class="material-symbols-outlined" data-icon="school">school</span>
+                <span class="font-body-md text-body-md">Alunos</span>
             </a>
             <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all Active: translate-x-1 duration-300"
                 href="#">
                 <span class="material-symbols-outlined">analytics</span>
-                <span class="font-label-caps text-label-caps">Grades</span>
+                <span class="font-body-md text-body-md">Notas</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+                <span class="font-body-md text-body-md">Tarefas</span>
             </a>
         </div>
         <div class="mt-auto space-y-1">
             <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
                 href="#">
                 <span class="material-symbols-outlined">logout</span>
-                <span class="font-label-caps text-label-caps">Sair</span>
+                <span class="font-body-md text-body-md">Sair</span>
             </a>    
         </div>
     </aside>
@@ -252,13 +258,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="glass-card p-8 rounded-2xl flex flex-col items-center text-center">
                         <div class="relative group cursor-pointer">
                             <div
-                                class="w-32 h-32 rounded-full overflow-hidden border-2 border-primary/30 p-1 group-hover:border-primary transition-all duration-500">
-                                <img alt="Profile Avatar" class="w-full h-full object-cover rounded-full"
-                                    data-alt="Close-up portrait of a student in a high-tech environment with soft cyan and electric blue light leaks. The person has a neutral, confident expression. The style is ultra-modern, cinematic, and emphasizes crystalline clarity and professional aesthetics."
-                                    id="profile-preview"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_tXiR11mNK0BlHOLO-PZSHJyWqVrol-t7hxXICtGkWdKsu4SKg_FuqGvwG3I_X_v18o5u5N-fdVaAtKFdsBnHoyoCTKCsRUpnthaqnO6tMVTgTMxmXBhS-oFO3GFT2x6qZaJTI1a-MOqTM7RkMjN_QamNzTv25Y37TMt3x85RnGZ0IO2f_7cqy1X2XMb3uR5_zOvinVPqEWNBdS9wIImPdGy53tHpSK2a3J5RzOgaBPlPcpIaNS6Q_nFcdNEZPPhbe5_Z0qYDgQ54">
-                            </div>
-                            <div
                                 class="absolute inset-0 flex items-center justify-center bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
                                 <span class="material-symbols-outlined text-white">photo_camera</span>
                             </div>
@@ -266,9 +265,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                         <h3 class="mt-6 font-headline-md text-headline-md text-on-surface">Alex Rivera</h3>
                         <p class="font-label-caps text-label-caps text-primary mt-1">Senior Researcher</p>
-                        <p class="font-body-md text-sm text-on-surface-variant mt-4 leading-relaxed">
-                            Upload a high-resolution image for institutional records. Max 5MB.
-                        </p>
                         <button
                             class="mt-6 w-full py-2 border border-white/10 rounded-xl font-label-caps text-label-caps hover:bg-white/5 transition-all"
                             onclick="document.getElementById('avatar-input').click()">Alterar Avatar</button>

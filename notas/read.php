@@ -1,6 +1,6 @@
 <?php
 
-require_once 'conexao.php';
+ //require_once 'conexao.php';
 
 $sql = "SELECT
             notas.id,
@@ -11,10 +11,10 @@ $sql = "SELECT
         INNER JOIN alunos
         ON notas.aluno_id = alunos.id";
 
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
+ //$stmt = $pdo->prepare($sql);
+//$stmt->execute();
 
-$notas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//$notas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -151,14 +151,6 @@ $notas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         class="bg-surface/60 backdrop-blur-xl text-primary font-body-md text-body-md docked full-width top-0 sticky z-50 border-b border-white/10 flex justify-between items-center w-full px-gutter h-16">
         <div class="flex items-center gap-6">
             <span class="font-label-caps text-label-caps tracking-widest text-primary uppercase">AETHER EDU</span>
-            <div
-                class="hidden md:flex items-center bg-surface-container-highest/30 px-4 py-2 rounded-full border border-white/5">
-                <span class="material-symbols-outlined text-[20px] mr-2">search</span>
-                <input
-                    class="bg-transparent border-none focus:ring-0 text-body-md p-0 w-64 placeholder:text-on-surface-variant/50"
-                    placeholder="Search records..." type="text" />
-            </div>
-        </div>
         <div class="flex items-center gap-4">
             <button
                 class="material-symbols-outlined hover:text-primary transition-colors duration-200">notifications</button>
@@ -183,7 +175,12 @@ $notas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all group"
                     href="#">
                     <span class="material-symbols-outlined">grid_view</span>
-                    <span class="font-label-caps text-label-caps">Dashboard</span>
+                    <span class="font-label-caps text-label-caps">Painel</span>
+                </a>
+                 <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="school">school</span>
+                <span class="font-body-md text-body-md">Alunos</span>
                 </a>
                 <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary border-l-2 border-primary bg-primary/5 transition-all group"
                     href="#">
@@ -200,7 +197,7 @@ $notas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-error/80 hover:bg-error/5 transition-all group"
                     href="#">
                     <span class="material-symbols-outlined">logout</span>
-                    <span class="font-label-caps text-label-caps">Logout</span>
+                    <span class="font-label-caps text-label-caps">Sair</span>
                 </a>
             </div>
         </aside>
@@ -219,16 +216,6 @@ $notas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </button>
                         <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Detalhes da
                             Avaliação</h1>
-                    </div>
-                    <div class="flex gap-3">
-                        <button
-                            class="glass-card px-4 py-2 rounded-lg text-on-surface hover:bg-white/10 transition-all flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[20px]">print</span>
-                        </button>
-                        <button
-                            class="glass-card px-4 py-2 rounded-lg text-on-surface hover:bg-white/10 transition-all flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[20px]">share</span>
-                        </button>
                     </div>
                 </div>
                 <!-- Grade Detail Card -->
@@ -286,35 +273,14 @@ $notas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         class="bg-surface-container-high/20 border-t border-white/5 p-8 flex flex-col md:flex-row items-center justify-between gap-6">
                         <div class="flex items-center gap-2 text-on-surface-variant">
                             <span class="material-symbols-outlined text-[18px]">verified_user</span>
-                            <span class="font-label-caps text-label-caps uppercase tracking-tight">Hash de Verificação:
-                                AETH-8821-X9K-LMS</span>
                         </div>
                         <button
                             class="bg-primary text-on-primary-fixed px-8 py-3 rounded-lg font-label-caps text-label-caps font-bold hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/20">
-                            SOLICITAR REVISÃO DE NOTA
+                            Editar
                         </button>
                     </div>
                 </div>
                 <!-- Related Content -->
-                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="glass-card p-6 rounded-xl group cursor-pointer hover:bg-white/5 transition-colors">
-                        <span class="material-symbols-outlined text-primary mb-3">description</span>
-                        <h4 class="font-label-caps text-label-caps text-on-surface mb-1">PROJETO COMPLETO</h4>
-                        <p class="text-[12px] text-on-surface-variant">Visualizar arquivo PDF enviado para avaliação.
-                        </p>
-                    </div>
-                    <div class="glass-card p-6 rounded-xl group cursor-pointer hover:bg-white/5 transition-colors">
-                        <span class="material-symbols-outlined text-primary mb-3">history_edu</span>
-                        <h4 class="font-label-caps text-label-caps text-on-surface mb-1">HISTÓRICO DA MATÉRIA</h4>
-                        <p class="text-[12px] text-on-surface-variant">Ver outras notas e frequências desta disciplina.
-                        </p>
-                    </div>
-                    <div class="glass-card p-6 rounded-xl group cursor-pointer hover:bg-white/5 transition-colors">
-                        <span class="material-symbols-outlined text-primary mb-3">trending_up</span>
-                        <h4 class="font-label-caps text-label-caps text-on-surface mb-1">MÉDIA DA TURMA</h4>
-                        <p class="text-[12px] text-on-surface-variant">Comparar seu desempenho com a média geral (8.2).
-                        </p>
-                    </div>
                 </div>
             </div>
         </main>

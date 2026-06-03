@@ -2,10 +2,10 @@
 require_once 'conexao.php';
 
 $sql = "SELECT * FROM alunos";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
+ //$stmt = $pdo->prepare($sql);
+ //$stmt->execute();
 
-$alunos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// $alunos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
