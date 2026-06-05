@@ -1,37 +1,37 @@
 <?php
-require_once 'conexao.php';
+//require_once 'conexao.php';
 $mensagem = "";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $nome = trim($_POST['nome'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $senha = trim($_POST['senha'] ?? '');
+//    $nome = trim($_POST['nome'] ?? '');
+//    $email = trim($_POST['email'] ?? '');
+  //  $senha = trim($_POST['senha'] ?? '');
 
-    if (empty($nome) || empty($email) || empty($senha)) {
+  //  if (empty($nome) || empty($email) || empty($senha)) {
 
-        $mensagem = "Preencha todos os campos.";
+   //     $mensagem = "Preencha todos os campos.";
 
-    } else {
+ //   } else {
 
-        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+  //      $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO alunos (nome, email, senha)
-                VALUES (:nome, :email, :senha)";
+//        $sql = "INSERT INTO alunos (nome, email, senha)
+ //               VALUES (:nome, :email, :senha)";
 
-        $stmt = $pdo->prepare($sql);
+ //       $stmt = $pdo->prepare($sql);
 
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':senha', $senhaHash);
+   //     $stmt->bindParam(':nome', $nome);
+  //      $stmt->bindParam(':email', $email);
+  //      $stmt->bindParam(':senha', $senhaHash);
 
-        if ($stmt->execute()) {
-            $mensagem = "Cadastro realizado com sucesso!";
-        } else {
-            $mensagem = "Erro ao cadastrar.";
-        }
-    }
-}
+   //     if ($stmt->execute()) {
+    //        $mensagem = "Cadastro realizado com sucesso!";
+   //     } else {
+  //          $mensagem = "Erro ao cadastrar.";
+ //       }
+ //   }
+//}
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 extend: {
                     "colors": {
                         "inverse-surface": "#e0e2ed",
-                        "surface-container-lowest": "#0b0e16",
                         "on-primary-container": "#00285c",
                         "error": "#ffb4ab",
                         "background": "#10131b",
@@ -67,7 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         "tertiary-fixed": "#ffdbcc",
                         "on-error-container": "#ffdad6",
                         "surface-container-highest": "#31353d",
-                        "error-container": "#93000a",
                         "surface": "#10131b",
                         "secondary": "#c4c6cf",
                         "on-secondary-fixed-variant": "#44474e",
@@ -94,17 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         "on-surface-variant": "#c1c6d7",
                         "surface-dim": "#10131b",
                         "inverse-primary": "#005bc1",
-                        "tertiary-fixed-dim": "#ffb595",
-                        "primary-fixed": "#d8e2ff",
-                        "surface-container": "#1c2028",
-                        "on-tertiary-fixed-variant": "#7c2e00",
                         "on-surface": "#e0e2ed",
                         "surface-container-high": "#272a32",
-                        "secondary-fixed": "#e1e2eb",
-                        "on-primary-fixed-variant": "#004493",
-                        "outline": "#8b90a0",
-                        "surface-variant": "#31353d",
-                        "surface-bright": "#363942"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.25rem",
@@ -125,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         "body-lg": ["Inter"],
                         "headline-lg": ["Inter"],
                         "display-lg": ["Inter"],
-                        "label-caps": ["Space Grotesk"]
+                        "label-caps": ["Space Grotesk"],
                         "headline-md": ["Inter"]
                     },
                     "fontSize": {
@@ -263,7 +252,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <!-- Login Link -->
                 <div class="text-center pt-2">
                     <p class="font-label-caps text-label-caps text-on-surface-variant tracking-widest">
-                        Já possui acesso? <a class="text-primary hover:underline ml-2" href="login.php">FAZER LOGIN</a>
+                        Já possui acesso? <a class="text-primary hover:underline ml-2" href="#">FAZER LOGIN</a>
                     </p>
                 </div>
             </form>

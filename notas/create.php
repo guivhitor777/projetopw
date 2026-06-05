@@ -1,41 +1,40 @@
 <?php
 
-require_once 'conexao.php';
+//require_once 'conexao.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $aluno_id = $_POST['aluno_id'] ?? '';
-    $disciplina = trim($_POST['disciplina'] ?? '');
-    $nota = $_POST['nota'] ?? '';
+$aluno_id = $_POST['aluno_id'] ?? '';
+$disciplina = trim($_POST['disciplina'] ?? '');
+$nota = $_POST['nota'] ?? '';
 
-    $sql = "INSERT INTO notas (aluno_id, disciplina, nota)
+$sql = "INSERT INTO notas (aluno_id, disciplina, nota)
             VALUES (:aluno_id, :disciplina, :nota)";
 
-    $stmt = $pdo->prepare($sql);
+// $stmt = $pdo->prepare($sql);
 
-    $stmt->bindParam(':aluno_id', $aluno_id);
-    $stmt->bindParam(':disciplina', $disciplina);
-    $stmt->bindParam(':nota', $nota);
+//  $stmt->bindParam(':aluno_id', $aluno_id);
+//   $stmt->bindParam(':disciplina', $disciplina);
+//    $stmt->bindParam(':nota', $nota);
 
-    if ($stmt->execute()) {
-        echo "Nota cadastrada com sucesso!";
-    } else {
-        echo "Erro ao cadastrar nota.";
-    }
-}
+//  if ($stmt->execute()) {
+//    echo "Nota cadastrada com sucesso!";
+//  } else {
+//  echo "Erro ao cadastrar nota.";
+// }
+
 ?>
 
 <!DOCTYPE html>
 
-<html class="dark" lang="pt-br">
+<html class="dark" lang="pt-BR">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Registro de Notas - AETHER EDU</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
         rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -43,59 +42,81 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+        }
+
+        .glow-blue {
+            box-shadow: 0 0 20px rgba(173, 198, 255, 0.3);
+        }
+
+        body {
+            background-color: #0b0e16;
+            color: #e0e2ed;
+            overflow-x: hidden;
+        }
+    </style>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     "colors": {
-                        "on-secondary": "#2e3037",
-                        "on-secondary-container": "#b6b8c1",
-                        "on-tertiary-fixed": "#351000",
-                        "on-tertiary-container": "#4c1a00",
-                        "surface": "#10131b",
-                        "surface-bright": "#363942",
-                        "tertiary": "#ffb595",
-                        "error-container": "#93000a",
-                        "surface-dim": "#10131b",
-                        "surface-container-highest": "#31353d",
-                        "on-surface-variant": "#c1c6d7",
-                        "surface-container-high": "#272a32",
-                        "secondary-fixed": "#e1e2eb",
-                        "secondary": "#c4c6cf",
-                        "primary": "#adc6ff",
-                        "primary-fixed-dim": "#adc6ff",
-                        "on-error-container": "#ffdad6",
-                        "tertiary-container": "#ef6719",
-                        "primary-fixed": "#d8e2ff",
-                        "primary-container": "#4b8eff",
-                        "on-secondary-fixed": "#191c22",
-                        "error": "#ffb4ab",
-                        "inverse-on-surface": "#2d3039",
-                        "surface-container-lowest": "#0b0e16",
-                        "on-primary-fixed": "#001a41",
-                        "tertiary-fixed": "#ffdbcc",
-                        "tertiary-fixed-dim": "#ffb595",
                         "surface-variant": "#31353d",
-                        "on-secondary-fixed-variant": "#44474e",
-                        "secondary-fixed-dim": "#c4c6cf",
-                        "inverse-primary": "#005bc1",
-                        "on-primary-container": "#00285c",
-                        "on-primary": "#002e69",
-                        "outline-variant": "#414755",
-                        "outline": "#8b90a0",
-                        "on-surface": "#e0e2ed",
-                        "surface-container": "#1c2028",
-                        "background": "#10131b",
-                        "inverse-surface": "#e0e2ed",
-                        "surface-container-low": "#181c23",
-                        "on-tertiary": "#571e00",
-                        "on-tertiary-fixed-variant": "#7c2e00",
-                        "on-error": "#690005",
-                        "secondary-container": "#464950",
+                        "primary": "#adc6ff",
+                        "on-tertiary-container": "#4c1a00",
+                        "on-primary-fixed": "#001a41",
                         "on-background": "#e0e2ed",
+                        "tertiary-fixed-dim": "#ffb595",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container-lowest": "#0b0e16",
+                        "inverse-primary": "#005bc1",
+                        "surface-container-highest": "#31353d",
+                        "inverse-on-surface": "#2d3039",
+                        "on-surface-variant": "#c1c6d7",
+                        "on-tertiary": "#571e00",
+                        "on-primary-fixed-variant": "#004493",
+                        "on-secondary-fixed": "#191c22",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-secondary-fixed-variant": "#44474e",
+                        "background": "#10131b",
+                        "secondary-fixed-dim": "#c4c6cf",
+                        "primary-container": "#4b8eff",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#b6b8c1",
+                        "surface-container": "#1c2028",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#351000",
+                        "surface-dim": "#10131b",
+                        "tertiary": "#ffb595",
+                        "surface": "#10131b",
+                        "outline-variant": "#414755",
+                        "on-primary": "#002e69",
+                        "secondary-fixed": "#e1e2eb",
+                        "secondary-container": "#464950",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-container": "#00285c",
+                        "outline": "#8b90a0",
+                        "on-secondary": "#2e3037",
+                        "secondary": "#c4c6cf",
                         "surface-tint": "#adc6ff",
-                        "on-primary-fixed-variant": "#004493"
+                        "surface-container-low": "#181c23",
+                        "on-error": "#690005",
+                        "inverse-surface": "#e0e2ed",
+                        "on-tertiary-fixed-variant": "#7c2e00",
+                        "surface-container-high": "#272a32",
+                        "tertiary-container": "#ef6719",
+                        "surface-bright": "#363942",
+                        "on-surface": "#e0e2ed"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.25rem",
@@ -104,383 +125,243 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         "full": "9999px"
                     },
                     "spacing": {
-                        "gutter": "24px",
-                        "unit": "4px",
-                        "container-padding-mobile": "20px",
                         "sidebar-width": "280px",
-                        "container-padding-desktop": "40px"
+                        "container-padding-mobile": "20px",
+                        "container-padding-desktop": "40px",
+                        "unit": "4px",
+                        "gutter": "24px"
                     },
                     "fontFamily": {
-                        "headline-lg": ["Inter"],
-                        "label-caps": ["Space Grotesk"],
                         "body-lg": ["Inter"],
                         "headline-md": ["Inter"],
                         "display-lg": ["Inter"],
                         "body-md": ["Inter"],
+                        "label-caps": ["Space Grotesk"],
+                        "headline-lg": ["Inter"],
                         "headline-lg-mobile": ["Inter"]
                     },
                     "fontSize": {
-                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
-                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
                         "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
                         "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
                         "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
                         "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
                         "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }]
                     }
-                },
-            },
+                }
+            }
         }
     </script>
-    <style>
-        .glass-card {
-            background: rgba(255, 255, 255, 0.07);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        }
-
-        .neon-glow {
-            box-shadow: 0 0 15px rgba(173, 198, 255, 0.4);
-        }
-
-        body {
-            background-color: #0b0e14;
-            color: #e0e2ed;
-        }
-
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            vertical-align: middle;
-        }
-    </style>
 </head>
 
-<body class="font-body-md text-body-md overflow-x-hidden">
+<body class="bg-surface-container-lowest font-body-md text-on-surface selection:bg-primary/30 selection:text-primary">
     <!-- SideNavBar -->
     <aside
-        class="fixed left-0 top-0 h-full w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
-        <div class="mb-10 px-2 flex items-center gap-3">
-            <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center border border-primary/30">
+        class="fixed left-0 top-0 h-full w-sidebar-width bg-surface-container dark:bg-surface-container-lowest/80 backdrop-blur-xl border-r border-outline-variant/10 flex flex-col h-screen p-gutter z-50 transition-all duration-300 ease-in-out">
+        <div class="mb-10 flex items-center gap-4">
+            <div class="w-10 h-10 bg-primary/20 flex items-center justify-center border border-primary/30">
                 <span class="material-symbols-outlined text-primary"
-                    style="font-variation-settings: 'FILL' 1;">deployed_code</span>
+                    style="font-variation-settings: 'FILL' 1;">terminal</span>
             </div>
-            <div>
-                <h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter leading-none">AETHER EDU</h1>
-                <p class="font-label-caps text-[10px] text-on-surface-variant tracking-[0.2em] mt-1">COMMAND CENTER</p>
+            <div class="flex flex-col">
+                <span class="font-label-caps text-label-caps tracking-widest text-primary uppercase">AETHER EDU</span>
+                <span class="text-[10px] text-on-surface-variant font-bold tracking-[0.2em]">ACADEMIC OS</span>
             </div>
         </div>
-        <nav class="flex-grow flex flex-col gap-1">
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors transition-transform scale-95 active:scale-90"
+        <nav class="flex flex-col gap-2 flex-grow">
+            <a class="flex items-center gap-4 px-4 py-3 transition-colors duration-300 hover:bg-surface-variant/20 hover:text-primary text-on-surface-variant font-medium"
                 href="#">
-                <span class="material-symbols-outlined">dashboard</span>
-                <span class="font-label-caps text-label-caps">Dashboard</span>
+                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                <span>Dashboard</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors transition-transform scale-95 active:scale-90"
+            <a class="flex items-center gap-4 px-4 py-3 transition-colors duration-300 hover:bg-surface-variant/20 hover:text-primary text-on-surface-variant font-medium"
                 href="#">
-                <span class="material-symbols-outlined">calendar_month</span>
-                <span class="font-label-caps text-label-caps">Calendar</span>
+                <span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+                <span>Calendar</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary transition-colors transition-transform scale-95 active:scale-90"
+            <!-- Grades is active -->
+            <a class="flex items-center gap-4 px-4 py-3 transition-colors duration-300 text-primary font-bold border-l-2 border-primary bg-primary/5"
                 href="#">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grade</span>
-                <span class="font-label-caps text-label-caps">Grades</span>
+                <span class="material-symbols-outlined" data-icon="grade"
+                    style="font-variation-settings: 'FILL' 1;">grade</span>
+                <span>Grades</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors transition-transform scale-95 active:scale-90"
+            <a class="flex items-center gap-4 px-4 py-3 transition-colors duration-300 hover:bg-surface-variant/20 hover:text-primary text-on-surface-variant font-medium"
                 href="#">
-                <span class="material-symbols-outlined">assignment</span>
-                <span class="font-label-caps text-label-caps">Assignments</span>
+                <span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+                <span>Assignments</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors transition-transform scale-95 active:scale-90"
+            <a class="flex items-center gap-4 px-4 py-3 transition-colors duration-300 hover:bg-surface-variant/20 hover:text-primary text-on-surface-variant font-medium"
                 href="#">
-                <span class="material-symbols-outlined">mail</span>
-                <span class="font-label-caps text-label-caps">Messages</span>
+                <span class="material-symbols-outlined" data-icon="mail">mail</span>
+                <span>Messages</span>
             </a>
         </nav>
-        <div class="mt-auto flex flex-col gap-1 border-t border-white/5 pt-6">
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors transition-transform scale-95 active:scale-90"
-                href="#">
-                <span class="material-symbols-outlined">settings</span>
-                <span class="font-label-caps text-label-caps">Settings</span>
-            </a>
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors transition-transform scale-95 active:scale-90"
-                href="#">
-                <span class="material-symbols-outlined">help</span>
-                <span class="font-label-caps text-label-caps">Support</span>
-            </a>
+        <div class="mt-auto pt-6 border-t border-outline-variant/10">
+            <div class="flex items-center gap-3 p-2">
+                <img alt="User Profile" class="w-10 h-10 object-cover border border-outline-variant"
+                    data-alt="Close-up portrait of a professional academic administrator in a high-tech university office setting. The lighting is cool and sophisticated with blue and cyan accents from background screens. The man has a serious, focused expression, reflecting a high-end command center aesthetic with cinematic depth of field."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbjH7Vyym9_tUcgDpS1r4NQ58hb0ZI_asfp3cbfSu0faxmXiHDuvr9m5Zj_weCRzsB6y0WWHGSOCyJLgxKDJAT_mUubim9Q6D4JobtkW-AGUxR-5X3ARkbR2pDMydQmXi_fLRirMyfUVGzUUkXTMssKC9VBbTuGRSnnNl-WmQ7M9IcZBsQjcvK8s85JgchJs0U0T-maQOT6xh5MewkedR19Ef6Vs1y2ovAALrB9C62T4RYnvLldPzUBPA68Hp0erqa5Ne6n0gqwwiH" />
+                <div class="flex flex-col">
+                    <span class="text-sm font-bold">Dr. Aris Thorne</span>
+                    <span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Registrar General</span>
+                </div>
+            </div>
         </div>
     </aside>
     <!-- TopNavBar -->
     <header
-        class="fixed top-0 right-0 w-[calc(100%-var(--sidebar-width))] h-16 bg-surface/30 backdrop-blur-lg border-b border-white/5 flex justify-between items-center px-container-padding-desktop z-40 transition-all duration-300">
-        <div class="flex items-center gap-4 w-1/3">
-            <div class="relative w-full max-w-sm">
-                <span
-                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
-                <input
-                    class="w-full bg-surface-container-lowest/50 border border-white/10 rounded-full py-1.5 pl-10 pr-4 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all"
-                    placeholder="Search parameters..." type="text" />
-            </div>
+        class="fixed top-0 right-0 h-16 ml-sidebar-width w-[calc(100%-280px)] bg-surface/40 dark:bg-surface-dim/40 backdrop-blur-2xl border-b border-outline-variant/10 flex justify-between items-center px-container-padding-desktop z-40">
+        <div class="flex items-center gap-4">
+            <span class="font-headline-md text-headline-md text-primary font-bold">Grades Module</span>
+            <div class="h-4 w-[1px] bg-outline-variant mx-2"></div>
+            <span class="text-on-surface-variant text-sm font-medium">Create New Entry</span>
         </div>
         <div class="flex items-center gap-6">
-            <button class="relative text-on-surface-variant hover:text-primary transition-colors">
-                <span class="material-symbols-outlined">notifications</span>
-                <span class="absolute top-0 right-0 w-2 h-2 bg-primary rounded-full border border-surface"></span>
-            </button>
-            <button class="text-on-surface-variant hover:text-primary transition-colors">
-                <span class="material-symbols-outlined">settings</span>
-            </button>
-            <div class="h-8 w-[1px] bg-white/10 mx-2"></div>
-            <div class="flex items-center gap-3">
-                <div class="text-right hidden sm:block">
-                    <p class="text-[12px] font-bold text-on-surface leading-tight">Alex Vance</p>
-                    <p class="text-[10px] text-on-surface-variant leading-tight">M.S. Cybernetics</p>
-                </div>
-                <img alt="Student Profile"
-                    class="w-9 h-9 rounded-full border border-primary/40 bg-surface-container-high"
-                    data-alt="A high-quality 3D rendered avatar profile picture of a young male student wearing professional glasses and a tech-focused sweater. The aesthetic is clean and modern with soft, cinematic studio lighting against a dark blue gradient background that matches the education platform's interface."
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdtYR5nI21sE5egHocR-CekQwSrhF1Y38Ny07IzHypLn1TGrf9SPq-WGYJXZylKRn07Kj2ICWJnT5WktpYqQ3mhEr5pRCA1cWnuVkUHq5OWmSAmgw5VNWeIga9lgTzfrObOAHNHT0eG5t0h4qSJyMpf7ZSlM5v771CPPO9XRS0x9D7eibelKmrxZG0U_Aj_4mSGvyHQtcitey1m2rbBCIFggwq6WfBSkS8AuMI96kHvyY-v8ZqLC8jI7_jGFZYOHvzXTtQpRcA6bPV" />
+            <div class="relative group">
+                <span
+                    class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-all active:opacity-80"
+                    data-icon="notifications">notifications</span>
+                <span class="absolute top-0 right-0 w-2 h-2 bg-primary animate-pulse"></span>
             </div>
+            <span
+                class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-all active:opacity-80"
+                data-icon="settings">settings</span>
         </div>
     </header>
     <!-- Main Content -->
-    <main class="ml-[var(--sidebar-width)] pt-16 min-h-screen">
-        <div class="max-w-[1440px] mx-auto p-container-padding-desktop">
-            <!-- Page Header -->
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
-                <div>
-                    <h2 class="font-headline-lg text-headline-lg text-on-surface">Registro de Notas</h2>
-                    <p class="text-on-surface-variant mt-2 font-body-md max-w-xl">Gerenciamento centralizado de
-                        desempenho acadêmico e histórico de créditos para o semestre vigente.</p>
-                </div>
-                <button
-                    class="bg-primary text-on-primary-container px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:scale-105 active:scale-95 transition-all neon-glow">
-                    <span class="material-symbols-outlined">add</span>
-                    <span>Adicionar Nota</span>
-                </button>
-            </div>
-                </div>
-            </div>
-            <!-- Filter & Search Section -->
-            <div class="flex flex-col md:flex-row gap-4 mb-6">
-                <div class="relative flex-grow">
-                    <span
-                        class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-                    <input
-                        class="w-full bg-surface-container/60 border border-white/5 rounded-xl py-3 pl-12 pr-4 focus:ring-1 focus:ring-primary/40 focus:border-primary/40 transition-all outline-none"
-                        placeholder="Filtrar por disciplina ou código..." type="text" />
-                </div>
-                <div class="flex gap-2">
-                    <select
-                        class="bg-surface-container/60 border border-white/5 rounded-xl px-4 py-3 text-on-surface-variant focus:ring-1 focus:ring-primary/40 outline-none appearance-none pr-10 relative">
-                        <option>Todos os Semestres</option>
-                        <option>2023 - 2º Semestre</option>
-                        <option>2023 - 1º Semestre</option>
-                    </select>
-                    <button
-                        class="bg-surface-container/60 border border-white/5 rounded-xl px-4 py-3 text-on-surface-variant hover:bg-white/5 transition-colors">
-                        <span class="material-symbols-outlined">filter_list</span>
-                    </button>
-                </div>
-            </div>
-            <!-- Grades Table -->
-            <div class="glass-card rounded-2xl overflow-hidden">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="border-b border-white/5 bg-white/5">
-                            <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">DISCIPLINA
-                            </th>
-                            <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">NOTA</th>
-                            <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">SEMESTRE</th>
-                            <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">STATUS</th>
-                            <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant text-right">
-                                AÇÕES</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-white/5">
-                        <tr class="hover:bg-white/5 transition-colors group">
-                            <td class="px-6 py-5">
-                                <div class="flex items-center gap-3">
-                                    <div
-                                        class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
-                                        <span class="material-symbols-outlined">code</span>
-                                    </div>
-                                    <div>
-                                        <p class="font-bold text-on-surface">Algoritmos e Estruturas de Dados II</p>
-                                        <p class="text-xs text-on-surface-variant">COMP-402 • 4 Créditos</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-5">
-                                <span class="text-xl font-bold text-primary tracking-widest">A</span>
-                            </td>
-                            <td class="px-6 py-5 text-on-surface-variant">2º Semestre</td>
-                            <td class="px-6 py-5">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Aprovado</span>
-                            </td>
-                            <td class="px-6 py-5 text-right">
-                                <div
-                                    class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <button
-                                        class="p-2 hover:bg-white/10 rounded-lg text-on-surface-variant hover:text-primary transition-colors">
-                                        <span class="material-symbols-outlined text-sm">edit</span>
-                                    </button>
-                                    <button
-                                        class="p-2 hover:bg-white/10 rounded-lg text-on-surface-variant hover:text-error transition-colors">
-                                        <span class="material-symbols-outlined text-sm">delete</span>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors group">
-                            <td class="px-6 py-5">
-                                <div class="flex items-center gap-3">
-                                    <div
-                                        class="w-10 h-10 rounded-lg bg-on-surface-variant/10 flex items-center justify-center text-on-surface-variant border border-white/5">
-                                        <span class="material-symbols-outlined">calculate</span>
-                                    </div>
-                                    <div>
-                                        <p class="font-bold text-on-surface">Cálculo Diferencial e Integral III</p>
-                                        <p class="text-xs text-on-surface-variant">MATH-201 • 6 Créditos</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-5">
-                                <span class="text-xl font-bold text-on-surface tracking-widest">B+</span>
-                            </td>
-                            <td class="px-6 py-5 text-on-surface-variant">2º Semestre</td>
-                            <td class="px-6 py-5">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Aprovado</span>
-                            </td>
-                            <td class="px-6 py-5 text-right">
-                                <div
-                                    class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <button
-                                        class="p-2 hover:bg-white/10 rounded-lg text-on-surface-variant hover:text-primary transition-colors">
-                                        <span class="material-symbols-outlined text-sm">edit</span>
-                                    </button>
-                                    <button
-                                        class="p-2 hover:bg-white/10 rounded-lg text-on-surface-variant hover:text-error transition-colors">
-                                        <span class="material-symbols-outlined text-sm">delete</span>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors group">
-                            <td class="px-6 py-5">
-                                <div class="flex items-center gap-3">
-                                    <div
-                                        class="w-10 h-10 rounded-lg bg-on-surface-variant/10 flex items-center justify-center text-on-surface-variant border border-white/5">
-                                        <span class="material-symbols-outlined">psychology</span>
-                                    </div>
-                                    <div>
-                                        <p class="font-bold text-on-surface">Sistemas Inteligentes</p>
-                                        <p class="text-xs text-on-surface-variant">AI-301 • 4 Créditos</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-5">
-                                <span class="text-xl font-bold text-primary tracking-widest">A-</span>
-                            </td>
-                            <td class="px-6 py-5 text-on-surface-variant">1º Semestre</td>
-                            <td class="px-6 py-5">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Aprovado</span>
-                            </td>
-                            <td class="px-6 py-5 text-right">
-                                <div
-                                    class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <button
-                                        class="p-2 hover:bg-white/10 rounded-lg text-on-surface-variant hover:text-primary transition-colors">
-                                        <span class="material-symbols-outlined text-sm">edit</span>
-                                    </button>
-                                    <button
-                                        class="p-2 hover:bg-white/10 rounded-lg text-on-surface-variant hover:text-error transition-colors">
-                                        <span class="material-symbols-outlined text-sm">delete</span>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-white/5 transition-colors group">
-                            <td class="px-6 py-5">
-                                <div class="flex items-center gap-3">
-                                    <div
-                                        class="w-10 h-10 rounded-lg bg-on-surface-variant/10 flex items-center justify-center text-on-surface-variant border border-white/5">
-                                        <span class="material-symbols-outlined">hub</span>
-                                    </div>
-                                    <div>
-                                        <p class="font-bold text-on-surface">Redes de Computadores</p>
-                                        <p class="text-xs text-on-surface-variant">NET-105 • 4 Créditos</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-5">
-                                <span class="text-xl font-bold text-on-surface-variant/50 tracking-widest">--</span>
-                            </td>
-                            <td class="px-6 py-5 text-on-surface-variant">2º Semestre</td>
-                            <td class="px-6 py-5">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">Em
-                                    Curso</span>
-                            </td>
-                            <td class="px-6 py-5 text-right">
-                                <div
-                                    class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <button
-                                        class="p-2 hover:bg-white/10 rounded-lg text-on-surface-variant hover:text-primary transition-colors">
-                                        <span class="material-symbols-outlined text-sm">edit</span>
-                                    </button>
-                                    <button
-                                        class="p-2 hover:bg-white/10 rounded-lg text-on-surface-variant hover:text-error transition-colors">
-                                        <span class="material-symbols-outlined text-sm">delete</span>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- Footer Meta -->
+    <main class="ml-sidebar-width pt-16 min-h-screen flex flex-col">
+        <div class="flex-grow p-container-padding-desktop flex flex-col items-center justify-center">
+            <!-- Atmospheric Background Decor -->
+            <div class="fixed top-1/4 right-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10"></div>
             <div
-                class="mt-8 flex justify-between items-center text-on-surface-variant text-[11px] font-label-caps tracking-widest opacity-40">
-                <p>© 2024 AETHER EDU ECOSYSTEM • SECURE NODE GR-82</p>
-                <div class="flex gap-4">
-                    <span>UPTIME: 99.98%</span>
-                    <span>LATENCY: 12ms</span>
+                class="fixed bottom-1/4 left-1/3 w-[300px] h-[300px] bg-tertiary-container/5 rounded-full blur-[100px] -z-10">
+            </div>
+            <!-- Centralized Form Container -->
+            <div class="w-full max-w-2xl glass-panel p-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                <div class="mb-8 border-l-4 border-primary pl-6">
+                    <h1 class="font-headline-lg text-headline-lg text-on-surface uppercase tracking-tight">Registrar
+                        Nova Avaliação</h1>
+                    <p class="text-on-surface-variant font-body-md mt-2">Input academic credentials and performance
+                        metrics into the encrypted ledger.</p>
+                </div>
+                <form action="create.php" class="space-y-8" method="POST">
+                    <!-- Form Fields -->
+                    <div class="space-y-6">
+                        <!-- Student ID -->
+                        <div class="flex flex-col gap-2">
+                            <label class="font-label-caps text-label-caps text-primary tracking-widest uppercase"
+                                for="student_id">ID do Aluno</label>
+                            <div class="relative">
+                                <span
+                                    class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant text-lg"
+                                    data-icon="fingerprint">fingerprint</span>
+                                <input
+                                    class="w-full bg-surface-container-lowest/50 border border-outline-variant/30 py-4 pl-12 pr-4 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all text-on-surface placeholder:text-on-surface-variant/40"
+                                    id="student_id" name="student_id" placeholder="Enter numerical identifier..."
+                                    required="" type="number" />
+                            </div>
+                        </div>
+                        <!-- Subject -->
+                        <div class="flex flex-col gap-2">
+                            <label class="font-label-caps text-label-caps text-primary tracking-widest uppercase"
+                                for="subject">Disciplina</label>
+                            <div class="relative">
+                                <span
+                                    class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant text-lg"
+                                    data-icon="science">science</span>
+                                <input
+                                    class="w-full bg-surface-container-lowest/50 border border-outline-variant/30 py-4 pl-12 pr-4 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all text-on-surface placeholder:text-on-surface-variant/40"
+                                    id="subject" name="subject" placeholder="Advanced Quantum Mechanics..." required=""
+                                    type="text" />
+                            </div>
+                        </div>
+                        <!-- Grade -->
+                        <div class="flex flex-col gap-2">
+                            <label class="font-label-caps text-label-caps text-primary tracking-widest uppercase"
+                                for="grade">Nota</label>
+                            <div class="relative">
+                                <span
+                                    class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant text-lg"
+                                    data-icon="analytics">analytics</span>
+                                <input
+                                    class="w-full bg-surface-container-lowest/50 border border-outline-variant/30 py-4 pl-12 pr-4 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all text-on-surface placeholder:text-on-surface-variant/40"
+                                    id="grade" max="10" min="0" name="grade" placeholder="00.00" required="" step="0.01"
+                                    type="number" />
+                                <div
+                                    class="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] text-on-surface-variant font-bold tracking-tighter">
+                                    MAX: 10.00</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <button
+                            class="flex-1 bg-primary text-on-primary-fixed font-bold py-4 uppercase tracking-widest transition-all hover:brightness-110 active:scale-[0.98] glow-blue flex items-center justify-center gap-2"
+                            type="submit">
+                            <span class="material-symbols-outlined" data-icon="save"
+                                style="font-variation-settings: 'FILL' 1;">save</span>
+                            Salvar Nota
+                        </button>
+                        <button
+                            class="flex-1 bg-transparent border border-outline-variant text-on-surface-variant font-bold py-4 uppercase tracking-widest transition-all hover:bg-surface-variant/20 active:scale-[0.98] flex items-center justify-center gap-2"
+                            type="button">
+                            <span class="material-symbols-outlined" data-icon="close">close</span>
+                            Cancelar
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!-- Bento-style Metadata Display -->
+            <div class="w-full max-w-2xl mt-8 grid grid-cols-3 gap-4 h-24">
+                <div class="glass-panel p-4 flex flex-col justify-between overflow-hidden relative">
+                    <span class="text-[10px] text-primary uppercase font-bold tracking-widest">Network</span>
+                    <span class="text-sm font-medium">UPLINK ACTIVE</span>
+                    <div class="absolute -right-4 -bottom-4 w-12 h-12 border-2 border-primary/20 rotate-45"></div>
+                </div>
+                <div class="glass-panel p-4 flex flex-col justify-between border-primary/30">
+                    <span class="text-[10px] text-primary uppercase font-bold tracking-widest">Latency</span>
+                    <span class="text-sm font-medium">0.02ms</span>
+                </div>
+                <div class="glass-panel p-4 flex flex-col justify-between">
+                    <span class="text-[10px] text-primary uppercase font-bold tracking-widest">Location</span>
+                    <span class="text-sm font-medium">NODE-04-BRA</span>
                 </div>
             </div>
         </div>
+        <!-- Footer -->
+        <footer
+            class="mt-auto border-t border-outline-variant/10 px-container-padding-desktop py-6 flex justify-between items-center text-on-surface-variant bg-surface-container-lowest">
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 px-3 py-1 bg-surface-variant/30 border border-outline-variant/20">
+                    <span class="material-symbols-outlined text-[14px]" data-icon="lock"
+                        style="font-variation-settings: 'FILL' 1;">lock</span>
+                    <span class="text-[10px] font-bold tracking-[0.2em]">ENCRYPTION: AES-256</span>
+                </div>
+                <span class="text-[10px] uppercase tracking-widest opacity-40">Session ID: 882-AXP-9921</span>
+            </div>
+            <div class="text-[10px] font-bold tracking-[0.2em] opacity-60">
+                SYSTEM VER: 4.2.0-ALPHA
+            </div>
+        </footer>
     </main>
     <script>
-        // Simple micro-interaction for rows
-        document.querySelectorAll('tr').forEach(row => {
-            row.addEventListener('mouseenter', () => {
-                row.style.backdropFilter = 'brightness(1.2) blur(20px)';
+        // Micro-interaction for form inputs
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.parentElement.classList.add('scale-[1.01]');
             });
-            row.addEventListener('mouseleave', () => {
-                row.style.backdropFilter = 'blur(20px)';
+            input.addEventListener('blur', () => {
+                input.parentElement.parentElement.classList.remove('scale-[1.01]');
             });
         });
 
-        // Atmospheric mouse glow effect (lightweight)
-        const main = document.querySelector('main');
-        main.addEventListener('mousemove', (e) => {
-            const x = e.clientX;
-            const y = e.clientY;
-            // Logic for a subtle radial glow could be added here via CSS variables
+        // Form submission animation mock
+        document.querySelector('form').addEventListener('submit', (e) => {
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span> PROCESSING...';
+            btn.classList.add('opacity-80', 'pointer-events-none');
         });
     </script>
 </body>

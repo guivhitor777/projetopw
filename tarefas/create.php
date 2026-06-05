@@ -1,43 +1,44 @@
 <?php
-require_once 'conexao.php';
+//require_once 'conexao.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $titulo = trim($_POST['titulo']);
-    $descricao = trim($_POST['descricao']);
-    $data_entrega = $_POST['data_entrega'];
-    $status = $_POST['status'];
+//    $titulo = trim($_POST['titulo']);
+//    $descricao = trim($_POST['descricao']);
+//    $data_entrega = $_POST['data_entrega'];
+//    $status = $_POST['status'];
 
-    $sql = "INSERT INTO tarefas
+$sql = "INSERT INTO tarefas
             (titulo, descricao, data_entrega, status)
             VALUES
             (:titulo, :descricao, :data_entrega, :status)";
 
-    $stmt = $pdo->prepare($sql);
+//   $stmt = $pdo->prepare($sql);
 
-    $stmt->bindParam(':titulo', $titulo);
-    $stmt->bindParam(':descricao', $descricao);
-    $stmt->bindParam(':data_entrega', $data_entrega);
-    $stmt->bindParam(':status', $status);
+//   $stmt->bindParam(':titulo', $titulo);
+// $stmt->bindParam(':descricao', $descricao);
+// $stmt->bindParam(':data_entrega', $data_entrega);
+// $stmt->bindParam(':status', $status);
 
-    if ($stmt->execute()) {
-        echo "Tarefa cadastrada com sucesso!";
-    } else {
-        echo "Erro ao cadastrar tarefa.";
-    }
-}
+// if ($stmt->execute()) {
+//     echo "Tarefa cadastrada com sucesso!";
+// } else {
+//     echo "Erro ao cadastrar tarefa.";
+// }
+//}
 ?>
 
 <!DOCTYPE html>
+
 <html class="dark" lang="pt-br">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>AETHER EDU | Task Command</title>
+    <title>AETHER EDU | Nova Missão Acadêmica</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500&amp;display=swap"
         rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -51,53 +52,53 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             theme: {
                 extend: {
                     "colors": {
-                        "on-tertiary": "#571e00",
-                        "background": "#10131b",
-                        "tertiary": "#ffb595",
+                        "on-primary": "#002e69",
+                        "on-tertiary-container": "#4c1a00",
+                        "secondary": "#c4c6cf",
                         "inverse-surface": "#e0e2ed",
-                        "error": "#ffb4ab",
-                        "on-error": "#690005",
-                        "secondary-fixed": "#e1e2eb",
-                        "primary-fixed-dim": "#adc6ff",
-                        "surface-container": "#1c2028",
-                        "outline": "#8b90a0",
-                        "surface-container-lowest": "#0b0e16",
+                        "background": "#10131b",
+                        "outline-variant": "#414755",
+                        "inverse-on-surface": "#2d3039",
+                        "tertiary": "#ffb595",
                         "tertiary-fixed-dim": "#ffb595",
-                        "surface-bright": "#363942",
+                        "on-primary-fixed-variant": "#004493",
+                        "surface-variant": "#31353d",
+                        "on-secondary-fixed-variant": "#44474e",
+                        "on-primary-fixed": "#001a41",
+                        "surface-container": "#1c2028",
+                        "on-surface-variant": "#c1c6d7",
+                        "on-tertiary": "#571e00",
+                        "surface-container-low": "#181c23",
+                        "tertiary-fixed": "#ffdbcc",
+                        "error-container": "#93000a",
+                        "on-primary-container": "#00285c",
+                        "inverse-primary": "#005bc1",
                         "surface-dim": "#10131b",
                         "on-tertiary-fixed-variant": "#7c2e00",
-                        "on-error-container": "#ffdad6",
-                        "surface-variant": "#31353d",
-                        "surface-container-low": "#181c23",
-                        "secondary-fixed-dim": "#c4c6cf",
-                        "primary-container": "#4b8eff",
-                        "on-secondary-container": "#b6b8c1",
-                        "on-secondary-fixed-variant": "#44474e",
-                        "on-primary-fixed-variant": "#004493",
-                        "inverse-primary": "#005bc1",
-                        "outline-variant": "#414755",
-                        "on-tertiary-container": "#4c1a00",
-                        "on-secondary-fixed": "#191c22",
-                        "tertiary-container": "#ef6719",
-                        "surface-container-highest": "#31353d",
-                        "tertiary-fixed": "#ffdbcc",
-                        "secondary": "#c4c6cf",
-                        "on-primary-fixed": "#001a41",
-                        "on-primary-container": "#00285c",
-                        "error-container": "#93000a",
-                        "on-background": "#e0e2ed",
-                        "surface-tint": "#adc6ff",
-                        "on-tertiary-fixed": "#351000",
-                        "on-primary": "#002e69",
-                        "surface-container-high": "#272a32",
-                        "inverse-on-surface": "#2d3039",
-                        "secondary-container": "#464950",
                         "on-surface": "#e0e2ed",
-                        "surface": "#10131b",
-                        "primary": "#adc6ff",
-                        "on-secondary": "#2e3037",
+                        "outline": "#8b90a0",
+                        "on-secondary-fixed": "#191c22",
+                        "on-error-container": "#ffdad6",
+                        "secondary-container": "#464950",
+                        "error": "#ffb4ab",
                         "primary-fixed": "#d8e2ff",
-                        "on-surface-variant": "#c1c6d7"
+                        "secondary-fixed-dim": "#c4c6cf",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-container-highest": "#31353d",
+                        "surface-bright": "#363942",
+                        "secondary-fixed": "#e1e2eb",
+                        "on-error": "#690005",
+                        "surface-container-high": "#272a32",
+                        "on-tertiary-fixed": "#351000",
+                        "primary-container": "#4b8eff",
+                        "surface": "#10131b",
+                        "on-background": "#e0e2ed",
+                        "on-secondary": "#2e3037",
+                        "primary": "#adc6ff",
+                        "on-secondary-container": "#b6b8c1",
+                        "surface-tint": "#adc6ff",
+                        "surface-container-lowest": "#0b0e16",
+                        "tertiary-container": "#ef6719"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.25rem",
@@ -106,362 +107,637 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         "full": "9999px"
                     },
                     "spacing": {
-                        "sidebar-width": "280px",
-                        "container-padding-mobile": "20px",
-                        "unit": "4px",
+                        "gutter": "24px",
                         "container-padding-desktop": "40px",
-                        "gutter": "24px"
+                        "unit": "4px",
+                        "sidebar-width": "280px",
+                        "container-padding-mobile": "20px"
                     },
                     "fontFamily": {
-                        "body-lg": ["Inter"],
                         "label-caps": ["Space Grotesk"],
-                        "headline-md": ["Inter"],
-                        "display-lg": ["Inter"],
-                        "body-md": ["Inter"],
                         "headline-lg-mobile": ["Inter"],
-                        "headline-lg": ["Inter"]
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"]
                     },
                     "fontSize": {
-                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
                         "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
-                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
-                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
                         "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
-                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
                     }
                 },
             },
         }
     </script>
     <style>
-        body {
-            background-color: #0b0e16;
-            color: #e0e2ed;
-        }
-
         .glass-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.07);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .glass-card:hover {
-            border-color: rgba(173, 198, 255, 0.4);
-            background: rgba(255, 255, 255, 0.08);
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
         }
 
-        .neon-accent {
-            box-shadow: 0 0 15px rgba(173, 198, 255, 0.3);
+        input,
+        textarea {
+            background-color: rgba(0, 0, 0, 0.2) !important;
+            transition: all 0.2s ease;
         }
 
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 4px;
+        input:focus,
+        textarea:focus {
+            border-color: #4b8eff !important;
+            box-shadow: 0 0 0 1px #4b8eff !important;
         }
 
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #4b8eff;
-            border-radius: 10px;
+        ::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
         }
     </style>
 </head>
 
-<body class="flex min-h-screen overflow-hidden">
-    <!-- SideNavBar -->
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+    <!-- SideNavBar (Authority: JSON & Strategy) -->
     <aside
-        class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-low/40 backdrop-blur-2xl border-r border-white/10 hidden md:flex flex-col py-8 px-4 gap-y-2 z-50">
-        <div class="mb-10 px-4">
+        class="hidden md:flex flex-col py-8 px-4 gap-y-2 fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-low/40 backdrop-blur-2xl border-r border-white/10 z-[60]">
+        <div class="mb-10 px-2">
             <h1 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tighter">AETHER OS</h1>
-            <p class="font-label-caps text-label-caps text-on-surface-variant/60">Academic Command</p>
+            <p class="font-label-caps text-label-caps text-on-surface-variant opacity-60">Academic Command</p>
         </div>
         <nav class="flex-1 space-y-1">
-            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all group"
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
                 href="#">
-                <span class="material-symbols-outlined group-hover:text-primary" data-icon="grid_view">grid_view</span>
+                <span class="material-symbols-outlined">grid_view</span>
                 <span class="font-label-caps text-label-caps">Dashboard</span>
             </a>
-            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-primary border-l-2 border-primary bg-primary/5 transition-all group translate-x-1"
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
                 href="#">
-                <span class="material-symbols-outlined" data-icon="assignment">assignment</span>
-                <span class="font-label-caps text-label-caps">Assignments</span>
-            </a>
-            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all group"
-                href="#">
-                <span class="material-symbols-outlined group-hover:text-primary"
-                    data-icon="calendar_month">calendar_month</span>
+                <span class="material-symbols-outlined">calendar_month</span>
                 <span class="font-label-caps text-label-caps">Calendar</span>
             </a>
-            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all group"
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
                 href="#">
-                <span class="material-symbols-outlined group-hover:text-primary" data-icon="analytics">analytics</span>
+                <span class="material-symbols-outlined">analytics</span>
                 <span class="font-label-caps text-label-caps">Grades</span>
             </a>
-            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all group"
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary border-l-2 border-primary bg-primary/5 transition-all translate-x-1 duration-300"
                 href="#">
-                <span class="material-symbols-outlined group-hover:text-primary"
-                    data-icon="chat_bubble">chat_bubble</span>
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment</span>
+                <span class="font-label-caps text-label-caps">Assignments</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
+                href="#">
+                <span class="material-symbols-outlined">chat_bubble</span>
                 <span class="font-label-caps text-label-caps">Messages</span>
             </a>
         </nav>
-        <div class="pt-6 border-t border-white/5 space-y-1">
-            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-all group"
+        <div class="mt-auto space-y-1 pt-4 border-t border-white/5">
+            <button
+                class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-primary/80 hover:bg-primary/10 transition-all font-label-caps text-label-caps mb-4">
+                <span class="material-symbols-outlined">support_agent</span>
+                <span>System Support</span>
+            </button>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
                 href="#">
-                <span class="material-symbols-outlined" data-icon="settings">settings</span>
+                <span class="material-symbols-outlined">settings</span>
                 <span class="font-label-caps text-label-caps">Settings</span>
             </a>
-            <button
-                class="w-full flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-error/10 hover:text-error transition-all group">
-                <span class="material-symbols-outlined" data-icon="logout">logout</span>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-error/80 hover:bg-error/10 transition-all"
+                href="#">
+                <span class="material-symbols-outlined">logout</span>
                 <span class="font-label-caps text-label-caps">Logout</span>
-            </button>
+            </a>
         </div>
     </aside>
-    <!-- Main Content -->
-    <main class="flex-1 md:ml-sidebar-width relative h-screen flex flex-col">
-        <!-- TopNavBar -->
-        <header
-            class="bg-surface/60 backdrop-blur-xl border-b border-white/10 sticky top-0 z-40 flex justify-between items-center w-full px-gutter h-16">
-            <div class="flex items-center gap-6">
-                <span class="md:hidden material-symbols-outlined text-primary cursor-pointer"
-                    data-icon="menu">menu</span>
-                <div class="font-label-caps text-label-caps tracking-widest text-primary font-bold">AETHER EDU</div>
+    <!-- TopNavBar (Authority: JSON) -->
+    <header
+        class="flex justify-between items-center w-full px-gutter h-16 bg-surface/60 backdrop-blur-xl border-b border-white/10 docked full-width top-0 sticky z-50 md:pl-[304px]">
+        <div class="flex items-center gap-4">
+            <div class="md:hidden">
+                <span class="material-symbols-outlined text-primary">menu</span>
             </div>
-            <div class="flex items-center gap-4">
-                <div
-                    class="hidden md:flex items-center gap-2 px-3 py-1 bg-surface-container-high rounded-full border border-white/5">
-                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                    <span class="font-label-caps text-[10px] text-on-surface-variant">SYSTEM STATUS: OPTIMAL</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span
-                        class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors"
-                        data-icon="notifications">notifications</span>
-                    <span
-                        class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors"
-                        data-icon="settings">settings</span>
-                    <div class="h-8 w-8 rounded-full border border-primary/20 p-0.5 ml-2">
-                        <img alt="User profile" class="h-full w-full rounded-full object-cover"
-                            data-alt="A high-contrast, professional portrait of a tech-savvy student with a serious and focused expression. The subject is backlit by cool neon blue lights, emphasizing clean lines and a futuristic aesthetic. The background is a dark, sleek laboratory setting with soft bokeh effects of data monitors. The overall color palette is dominated by deep grays, blacks, and vibrant electric blue accents."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeUqq-3_0LAJuEeCtSTB8pwY3Bkj1QVSWap4fgnCf-sGKVd7n6SneR5oMi8wUjAR6RX-01ZckQSO5RfAFotsJd0uXPWIWaV7w1n377t_HiPQvdEOqoFyioysnwcTVDizJLwSNhCon271iDqD6GQuOS1c_SGsvYn6j3m0DYyQX598Y0r7szlpri39HIzc171wj2-eTsTgzj2Bk8q9Fmbc0ab06aFm8fCmvG3DTcnf_KuPEACgJbOSrFxtYXvtalEOYzEiDsJFZ4U6ZP" />
-                    </div>
-                </div>
+            <div class="font-label-caps text-label-caps tracking-widest text-primary uppercase">AETHER EDU</div>
+        </div>
+        <div class="flex-1 max-w-xl mx-8 hidden lg:block">
+            <div class="relative flex items-center">
+                <span
+                    class="material-symbols-outlined absolute left-3 text-on-surface-variant/50 text-body-md">search</span>
+                <input
+                    class="w-full bg-surface-container-highest/30 border border-white/10 rounded-lg py-2 pl-10 pr-4 text-body-md focus:outline-none"
+                    placeholder="Search system protocols..." type="text" />
             </div>
-        </header>
-        <!-- Viewport Scrollable -->
-        <div class="flex-1 overflow-y-auto custom-scrollbar p-gutter">
-            <!-- Hero / Search Section -->
-            <section class="mb-10">
-                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
-                    <div>
-                        <h2 class="font-headline-lg text-headline-lg text-on-surface mb-1">Central de Atribuições</h2>
-                        <p class="font-body-md text-on-surface-variant">Gerencie suas tarefas acadêmicas no comando
-                            central do Aether.</p>
-                    </div>
-                    <button
-                        class="bg-primary hover:bg-primary-container text-on-primary font-label-caps px-6 py-3 rounded-lg flex items-center gap-2 transition-all active:scale-95 neon-accent">
-                        <span class="material-symbols-outlined" data-icon="add">add</span>
-                        Nova Tarefa
-                    </button>
-                </div>
-                <!-- Search & Filters -->
-                <div class="glass-card rounded-xl p-4 flex flex-col lg:flex-row gap-4 items-center">
-                    <div class="relative w-full flex-1">
-                        <span
-                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant"
-                            data-icon="search">search</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden sm:flex items-center gap-3 text-on-surface-variant">
+                <span
+                    class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">notifications</span>
+                <span
+                    class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">settings</span>
+                <span
+                    class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">help</span>
+            </div>
+            <div
+                class="h-8 w-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-primary/20">
+                <img alt="User profile" class="w-full h-full object-cover"
+                    data-alt="A professional headshot of a male professor in his late 40s, looking directly at the camera with a neutral expression. He is wearing a dark, minimalist blazer in a high-tech academic office environment. The lighting is soft and directional, typical of a modern professional interface, emphasizing clarity and sophistication with deep blue undertones to match the UI aesthetic."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbeCc3xzJElWaPqASGttAL-TXB5Ifx9TR87-IBa0AdiDlQLIhimxrHbjjUhgYwdAEID51z1zhuutKeAaFXXKF7bGYd88pi_fzMhExDVUB4bhTfJdW7Ozvvyeds6jK3063O8xCUVvdfa3r_J03iywpcEmcKFbTLSPpk_x1M2vrkbd_61gwDC-ZqCmTrn0RKXUZZA2uuNrDbbiwLs7Zxu9Ec3fj4DfhwJsaH1_JHLLbdigafXGD8ukEV-KALGkou90eq4wedvXtcYfYz" />
+            </div>
+        </div>
+    </header>
+    <!-- Main Content Canvas -->
+    <main class="md:ml-sidebar-width min-h-[calc(100vh-64px)] p-6 md:p-12 flex items-center justify-center relative">
+        <!-- Atmospheric Ambient Light -->
+        <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 blur-[120px] rounded-full pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-1/4 left-1/4 w-64 h-64 bg-tertiary-container/5 blur-[100px] rounded-full pointer-events-none">
+        </div>
+        <div class="w-full max-w-2xl animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <!-- Header Group -->
+            <div class="text-center mb-10">
+                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Nova Missão Acadêmica</h2>
+                <p class="text-on-surface-variant font-body-md opacity-80">Preencha os protocolos para registrar a
+                    tarefa no sistema.</p>
+            </div>
+            <!-- Form Module (Glass Card) -->
+            <div class="glass-card rounded-xl p-8 shadow-2xl">
+                <form action="create.php" class="space-y-8" method="POST">
+                    <!-- Field: Disciplina -->
+                    <div class="space-y-2">
+                        <label class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2"
+                            for="disciplina">
+                            <span class="material-symbols-outlined text-[14px]">school</span>
+                            Disciplina / Módulo
+                        </label>
                         <input
-                            class="w-full bg-surface-container-lowest border-white/10 rounded-lg pl-12 py-3 text-body-md focus:ring-1 focus:ring-primary focus:border-primary transition-all"
-                            placeholder="Pesquisar comandos ou tarefas..." type="text" />
+                            class="w-full rounded-lg border border-white/10 px-4 py-3 text-body-md text-on-surface placeholder:text-on-surface-variant/30 focus:ring-0"
+                            id="disciplina" name="disciplina" placeholder="Ex: Dinâmica Orbital" required=""
+                            type="text" />
                     </div>
-                    <div class="flex flex-wrap items-center gap-3">
-                        <span class="font-label-caps text-label-caps text-on-surface-variant mr-2">Filtrar por
-                            Status:</span>
+                    <!-- Field: Descrição -->
+                    <div class="space-y-2">
+                        <label class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2"
+                            for="descricao">
+                            <span class="material-symbols-outlined text-[14px]">description</span>
+                            Descrição da Tarefa
+                        </label>
+                        <textarea
+                            class="w-full rounded-lg border border-white/10 px-4 py-3 text-body-md text-on-surface placeholder:text-on-surface-variant/30 focus:ring-0 resize-none"
+                            id="descricao" name="descricao" placeholder="Descreva os objetivos e requisitos..."
+                            required="" rows="5"></textarea>
+                    </div>
+                    <!-- Field: Prazo -->
+                    <div class="space-y-2">
+                        <label class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2"
+                            for="prazo">
+                            <span class="material-symbols-outlined text-[14px]">event</span>
+                            Data de Entrega
+                        </label>
+                        <div class="relative">
+                            <input
+                                class="w-full rounded-lg border border-white/10 px-4 py-3 text-body-md text-on-surface focus:ring-0"
+                                id="prazo" name="prazo" required="" type="date" />
+                        </div>
+                    </div>
+                    <!-- Action Set -->
+                    <div class="flex flex-col sm:flex-row items-center gap-4 pt-4">
                         <button
-                            class="px-4 py-1.5 rounded-full border border-primary/40 bg-primary/10 text-primary font-label-caps text-[10px] hover:bg-primary/20 transition-all">TODAS</button>
-                        <button
-                            class="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-on-surface-variant font-label-caps text-[10px] hover:border-error/40 hover:text-error transition-all">PENDENTE</button>
-                        <button
-                            class="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-on-surface-variant font-label-caps text-[10px] hover:border-primary/40 hover:text-primary transition-all">EM
-                            ANDAMENTO</button>
-                        <button
-                            class="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-on-surface-variant font-label-caps text-[10px] hover:border-tertiary/40 hover:text-tertiary transition-all">CONCLUÍDA</button>
+                            class="w-full sm:flex-1 bg-primary text-on-primary font-label-caps text-label-caps py-4 rounded-lg hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-primary/20"
+                            type="submit">
+                            Salvar Tarefa
+                        </button>
+                        <a class="w-full sm:w-auto px-8 py-4 border border-white/10 text-on-surface-variant font-label-caps text-label-caps rounded-lg text-center hover:bg-white/5 transition-colors"
+                            href="read.php">
+                            Cancelar
+                        </a>
                     </div>
+                </form>
+            </div>
+            <!-- Footer Meta -->
+            <div class="mt-8 flex items-center justify-between px-2">
+                <div class="flex items-center gap-2 text-on-surface-variant/40">
+                    <span class="material-symbols-outlined text-[16px]">verified_user</span>
+                    <span class="font-label-caps text-[10px] tracking-widest uppercase">Encryption: AES-256</span>
                 </div>
-            </section>
-            <!-- Tasks Bento Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                <!-- Task Card 1 (Active) -->
-                <div class="glass-card rounded-xl p-6 flex flex-col relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-4">
-                        <div class="flex gap-2">
-                            <button
-                                class="p-2 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-primary hover:bg-primary/10 transition-all">
-                                <span class="material-symbols-outlined text-[18px]" data-icon="terminal">terminal</span>
-                            </button>
-                            <button
-                                class="p-2 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-error hover:bg-error/10 transition-all">
-                                <span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(173,198,255,1)]"></span>
-                        <span class="font-label-caps text-[10px] text-primary tracking-widest uppercase">EM
-                            ANDAMENTO</span>
-                    </div>
-                    <h3
-                        class="font-headline-md text-headline-md text-on-surface mb-2 group-hover:text-primary transition-colors">
-                        Algoritmos Avançados</h3>
-                    <p class="font-body-md text-on-surface-variant mb-6 line-clamp-2">Desenvolver a infraestrutura
-                        lógica para o motor de busca neural usando grafos asssíncronos.</p>
-                    <div class="mt-auto flex items-center justify-between">
-                        <div class="flex items-center gap-2 text-on-surface-variant">
-                            <span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
-                            <span class="font-label-caps text-[11px]">ENTREGA: 12 DEZ</span>
-                        </div>
-                        <div class="flex -space-x-2">
-                            <img alt="Avatar" class="w-6 h-6 rounded-full border border-surface"
-                                data-alt="A close-up artistic portrait of a focused tech professional. The lighting is low and atmospheric, featuring cool blue and cyan tones that emphasize the contours of the face. The style is hyper-modern and minimalist, set against a dark, tech-inspired background with subtle light leaks. The image conveys a mood of high intelligence and technological expertise."
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMDP2u9FUVKpCcCSje2IHTBlJwpm30SEogXvJTIfHJ2LCHAzijKgpopdFD3bAygvfBLGkhyMDJsILhBiL_6g36hCoTJ-Rg6dm7d_Gh24oB_DNk5eB0v9_Uoad38eZuDRurVbCyXBwhpc-6Vfsgo8IxVysFD7pa_Lwgvdb68H2nL88ThXa2i9VhwutbCMkFIS1xyRlMpgeRxvyzgXEPYBsr5vOSxNQAOtr4B5qr3jaf2eeNhS75k_ueDi8iENWOQCSroUOzX09_5RbQ" />
-                            <div
-                                class="w-6 h-6 rounded-full border border-surface bg-primary/20 flex items-center justify-center text-[10px] text-primary font-bold">
-                                +2</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Task Card 2 (Pending) -->
-                <div class="glass-card rounded-xl p-6 flex flex-col relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-4">
-                        <div class="flex gap-2">
-                            <button
-                                class="p-2 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-primary hover:bg-primary/10 transition-all">
-                                <span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
-                            </button>
-                            <button
-                                class="p-2 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-error hover:bg-error/10 transition-all">
-                                <span class="material-symbols-outlined text-[18px]" data-icon="warning">warning</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="w-2 h-2 rounded-full bg-error shadow-[0_0_8px_rgba(255,180,171,1)]"></span>
-                        <span class="font-label-caps text-[10px] text-error tracking-widest uppercase">PENDENTE</span>
-                    </div>
-                    <h3
-                        class="font-headline-md text-headline-md text-on-surface mb-2 group-hover:text-error transition-colors">
-                        Interface Aero-UI</h3>
-                    <p class="font-body-md text-on-surface-variant mb-6 line-clamp-2">Revisar os tokens de design para o
-                        novo módulo de navegação espacial e garantir contraste de leitura.</p>
-                    <div class="mt-auto flex items-center justify-between">
-                        <div class="flex items-center gap-2 text-error">
-                            <span class="material-symbols-outlined text-[18px]"
-                                data-icon="priority_high">priority_high</span>
-                            <span class="font-label-caps text-[11px]">ATRASADO: 2 DIAS</span>
-                        </div>
-                        <div class="flex -space-x-2">
-                            <img alt="Avatar" class="w-6 h-6 rounded-full border border-surface"
-                                data-alt="A highly detailed portrait of a creative professional in a futuristic workspace. The image uses soft, multi-colored neon lighting (pinks and blues) to create a sense of depth and creativity. The style is sharp and modern, with a dark, minimalist background that suggests a high-end design studio. The mood is professional, visionary, and intensely focused on digital innovation."
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCam1snMydhVqHmCjWe3aPSjNN7IMbsQi5QMmIcQYAJIUT4KM3lS1Q04joQywEqF5VbyhztNNKBpJ7qwHk43FjU85Ukhz1gE_FiGzqedLLI5feFXAigf9zlsnQHGKIcAzYV0bGjCtC4X9Z1ICzDruywA_z6VJT4MxWlYAS3jBN9-cVoJygTbUSRvBlK2SN3knAYefV4jY3SOWmjasYVNIgMICXdlILgl5dXcCpr_G0Tp8gX6vXnHDUE16GjEv_8HrtkSHnR-S2f3tJ-" />
-                        </div>
-                    </div>
-                </div>
-                <!-- Task Card 3 (Completed) -->
-                <div
-                    class="glass-card rounded-xl p-6 flex flex-col relative overflow-hidden group opacity-80 hover:opacity-100">
-                    <div class="absolute top-0 right-0 p-4">
-                        <div class="flex gap-2">
-                            <button
-                                class="p-2 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-primary transition-all">
-                                <span class="material-symbols-outlined text-[18px]"
-                                    data-icon="visibility">visibility</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_rgba(255,181,149,1)]"></span>
-                        <span
-                            class="font-label-caps text-[10px] text-tertiary tracking-widest uppercase">CONCLUÍDA</span>
-                    </div>
-                    <h3
-                        class="font-headline-md text-headline-md text-on-surface mb-2 line-through decoration-tertiary/40">
-                        Protocolo de Segurança</h3>
-                    <p class="font-body-md text-on-surface-variant mb-6 line-clamp-2">Implementação do protocolo SHA-256
-                        para o armazenamento de credenciais de veteranos.</p>
-                    <div class="mt-auto flex items-center justify-between">
-                        <div class="flex items-center gap-2 text-tertiary">
-                            <span class="material-symbols-outlined text-[18px]"
-                                data-icon="check_circle">check_circle</span>
-                            <span class="font-label-caps text-[11px]">FINALIZADO EM 08 DEZ</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Task Card 4 -->
-                <div class="glass-card rounded-xl p-6 flex flex-col relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-4">
-                        <div class="flex gap-2">
-                            <button
-                                class="p-2 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-primary transition-all">
-                                <span class="material-symbols-outlined text-[18px]" data-icon="terminal">terminal</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="w-2 h-2 rounded-full bg-primary/40"></span>
-                        <span
-                            class="font-label-caps text-[10px] text-on-surface-variant tracking-widest uppercase">PLANEJADO</span>
-                    </div>
-                    <h3 class="font-headline-md text-headline-md text-on-surface mb-2">Simulação Quântica</h3>
-                    <p class="font-body-md text-on-surface-variant mb-6 line-clamp-2">Configurar o ambiente de simulação
-                        para o laboratório de física nuclear no campus 4.</p>
-                    <div class="mt-auto flex items-center justify-between">
-                        <div class="flex items-center gap-2 text-on-surface-variant">
-                            <span class="material-symbols-outlined text-[18px]"
-                                data-icon="calendar_today">calendar_today</span>
-                            <span class="font-label-caps text-[11px]">INÍCIO: 15 DEZ</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Empty State/Add Task Placeholder -->
-                <div
-                    class="border-2 border-dashed border-white/5 rounded-xl p-6 flex flex-col items-center justify-center text-center group cursor-pointer hover:border-primary/40 transition-all min-h-[220px]">
-                    <div
-                        class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-4 group-hover:bg-primary/10 transition-all">
-                        <span
-                            class="material-symbols-outlined text-on-surface-variant group-hover:text-primary group-hover:scale-125 transition-all"
-                            data-icon="add_task">add_task</span>
-                    </div>
-                    <span class="font-label-caps text-on-surface-variant group-hover:text-primary">Adicionar Novo
-                        Comando</span>
+                <div class="text-on-surface-variant/40 font-label-caps text-[10px] tracking-widest uppercase">
+                    System Ver: 4.2.0-Alpha
                 </div>
             </div>
         </div>
     </main>
-    <!-- FAB for Mobile (Implicit requirement from system logic) -->
-    <button
-        class="md:hidden fixed bottom-8 right-8 w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-2xl z-50 neon-accent active:scale-90 transition-all">
-        <span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
-    </button>
+    <!-- Mobile Bottom Navigation Shell (Filter Logic) -->
+    <nav
+        class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface-container-high/80 backdrop-blur-xl border-t border-white/10 flex items-center justify-around z-50">
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+            <span class="material-symbols-outlined">grid_view</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+            <span class="material-symbols-outlined">calendar_month</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-primary" href="#">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+            <span class="material-symbols-outlined">chat_bubble</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+            <span class="material-symbols-outlined">account_circle</span>
+        </a>
+    </nav>
     <script>
-        // Simple logic for interactive states
-        document.querySelectorAll('.glass-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                // Potential hover effects via JS
+        // Micro-interaction for button hover effects
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.classList.add('scale-95');
+                el.style.opacity = '0.8';
+            });
+            el.addEventListener('mouseup', () => {
+                el.classList.remove('scale-95');
+                el.style.opacity = '1';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.classList.remove('scale-95');
+                el.style.opacity = '1';
             });
         });
 
-        // Search bar focus effect
-        const searchInput = document.querySelector('input[type="text"]');
-        searchInput.addEventListener('focus', () => {
-            searchInput.parentElement.classList.add('neon-accent');
+        // Date input current date setter or logic can be added here if needed
+        // const today = new Date().toISOString().split('T')[0];
+        // document.getElementById('prazo').setAttribute('min', today);
+    </script>
+</body>
+
+</html>
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>AETHER EDU | Nova Missão Acadêmica</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#002e69",
+                        "on-tertiary-container": "#4c1a00",
+                        "secondary": "#c4c6cf",
+                        "inverse-surface": "#e0e2ed",
+                        "background": "#10131b",
+                        "outline-variant": "#414755",
+                        "inverse-on-surface": "#2d3039",
+                        "tertiary": "#ffb595",
+                        "tertiary-fixed-dim": "#ffb595",
+                        "on-primary-fixed-variant": "#004493",
+                        "surface-variant": "#31353d",
+                        "on-secondary-fixed-variant": "#44474e",
+                        "on-primary-fixed": "#001a41",
+                        "surface-container": "#1c2028",
+                        "on-surface-variant": "#c1c6d7",
+                        "on-tertiary": "#571e00",
+                        "surface-container-low": "#181c23",
+                        "tertiary-fixed": "#ffdbcc",
+                        "error-container": "#93000a",
+                        "on-primary-container": "#00285c",
+                        "inverse-primary": "#005bc1",
+                        "surface-dim": "#10131b",
+                        "on-tertiary-fixed-variant": "#7c2e00",
+                        "on-surface": "#e0e2ed",
+                        "outline": "#8b90a0",
+                        "on-secondary-fixed": "#191c22",
+                        "on-error-container": "#ffdad6",
+                        "secondary-container": "#464950",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#d8e2ff",
+                        "secondary-fixed-dim": "#c4c6cf",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-container-highest": "#31353d",
+                        "surface-bright": "#363942",
+                        "secondary-fixed": "#e1e2eb",
+                        "on-error": "#690005",
+                        "surface-container-high": "#272a32",
+                        "on-tertiary-fixed": "#351000",
+                        "primary-container": "#4b8eff",
+                        "surface": "#10131b",
+                        "on-background": "#e0e2ed",
+                        "on-secondary": "#2e3037",
+                        "primary": "#adc6ff",
+                        "on-secondary-container": "#b6b8c1",
+                        "surface-tint": "#adc6ff",
+                        "surface-container-lowest": "#0b0e16",
+                        "tertiary-container": "#ef6719"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-padding-desktop": "40px",
+                        "unit": "4px",
+                        "sidebar-width": "280px",
+                        "container-padding-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Space Grotesk"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+        }
+
+        input,
+        textarea {
+            background-color: rgba(0, 0, 0, 0.2) !important;
+            transition: all 0.2s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #4b8eff !important;
+            box-shadow: 0 0 0 1px #4b8eff !important;
+        }
+
+        ::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+    <!-- SideNavBar (Authority: JSON & Strategy) -->
+    <aside
+        class="hidden md:flex flex-col py-8 px-4 gap-y-2 fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-low/40 backdrop-blur-2xl border-r border-white/10 z-[60]">
+        <div class="mb-10 px-2">
+            <h1 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tighter">AETHER OS</h1>
+            <p class="font-label-caps text-label-caps text-on-surface-variant opacity-60">Academic Command</p>
+        </div>
+        <nav class="flex-1 space-y-1">
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
+                href="#">
+                <span class="material-symbols-outlined">grid_view</span>
+                <span class="font-label-caps text-label-caps">Dashboard</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
+                href="#">
+                <span class="material-symbols-outlined">calendar_month</span>
+                <span class="font-label-caps text-label-caps">Calendar</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
+                href="#">
+                <span class="material-symbols-outlined">analytics</span>
+                <span class="font-label-caps text-label-caps">Grades</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary border-l-2 border-primary bg-primary/5 transition-all translate-x-1 duration-300"
+                href="#">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment</span>
+                <span class="font-label-caps text-label-caps">Assignments</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
+                href="#">
+                <span class="material-symbols-outlined">chat_bubble</span>
+                <span class="font-label-caps text-label-caps">Messages</span>
+            </a>
+        </nav>
+        <div class="mt-auto space-y-1 pt-4 border-t border-white/5">
+            <button
+                class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-primary/80 hover:bg-primary/10 transition-all font-label-caps text-label-caps mb-4">
+                <span class="material-symbols-outlined">support_agent</span>
+                <span>System Support</span>
+            </button>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
+                href="#">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-label-caps text-label-caps">Settings</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-error/80 hover:bg-error/10 transition-all"
+                href="#">
+                <span class="material-symbols-outlined">logout</span>
+                <span class="font-label-caps text-label-caps">Logout</span>
+            </a>
+        </div>
+    </aside>
+    <!-- TopNavBar (Authority: JSON) -->
+    <header
+        class="flex justify-between items-center w-full px-gutter h-16 bg-surface/60 backdrop-blur-xl border-b border-white/10 docked full-width top-0 sticky z-50 md:pl-[304px]">
+        <div class="flex items-center gap-4">
+            <div class="md:hidden">
+                <span class="material-symbols-outlined text-primary">menu</span>
+            </div>
+            <div class="font-label-caps text-label-caps tracking-widest text-primary uppercase">AETHER EDU</div>
+        </div>
+        <div class="flex-1 max-w-xl mx-8 hidden lg:block">
+            <div class="relative flex items-center">
+                <span
+                    class="material-symbols-outlined absolute left-3 text-on-surface-variant/50 text-body-md">search</span>
+                <input
+                    class="w-full bg-surface-container-highest/30 border border-white/10 rounded-lg py-2 pl-10 pr-4 text-body-md focus:outline-none"
+                    placeholder="Search system protocols..." type="text" />
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden sm:flex items-center gap-3 text-on-surface-variant">
+                <span
+                    class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">notifications</span>
+                <span
+                    class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">settings</span>
+                <span
+                    class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">help</span>
+            </div>
+            <div
+                class="h-8 w-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-primary/20">
+                <img alt="User profile" class="w-full h-full object-cover"
+                    data-alt="A professional headshot of a male professor in his late 40s, looking directly at the camera with a neutral expression. He is wearing a dark, minimalist blazer in a high-tech academic office environment. The lighting is soft and directional, typical of a modern professional interface, emphasizing clarity and sophistication with deep blue undertones to match the UI aesthetic."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbeCc3xzJElWaPqASGttAL-TXB5Ifx9TR87-IBa0AdiDlQLIhimxrHbjjUhgYwdAEID51z1zhuutKeAaFXXKF7bGYd88pi_fzMhExDVUB4bhTfJdW7Ozvvyeds6jK3063O8xCUVvdfa3r_J03iywpcEmcKFbTLSPpk_x1M2vrkbd_61gwDC-ZqCmTrn0RKXUZZA2uuNrDbbiwLs7Zxu9Ec3fj4DfhwJsaH1_JHLLbdigafXGD8ukEV-KALGkou90eq4wedvXtcYfYz" />
+            </div>
+        </div>
+    </header>
+    <!-- Main Content Canvas -->
+    <main class="md:ml-sidebar-width min-h-[calc(100vh-64px)] p-6 md:p-12 flex items-center justify-center relative">
+        <!-- Atmospheric Ambient Light -->
+        <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 blur-[120px] rounded-full pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-1/4 left-1/4 w-64 h-64 bg-tertiary-container/5 blur-[100px] rounded-full pointer-events-none">
+        </div>
+        <div class="w-full max-w-2xl animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <!-- Header Group -->
+            <div class="text-center mb-10">
+                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Nova Missão Acadêmica</h2>
+                <p class="text-on-surface-variant font-body-md opacity-80">Preencha os protocolos para registrar a
+                    tarefa no sistema.</p>
+            </div>
+            <!-- Form Module (Glass Card) -->
+            <div class="glass-card rounded-xl p-8 shadow-2xl">
+                <form action="create.php" class="space-y-8" method="POST">
+                    <!-- Field: Disciplina -->
+                    <div class="space-y-2">
+                        <label class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2"
+                            for="disciplina">
+                            <span class="material-symbols-outlined text-[14px]">school</span>
+                            Disciplina / Módulo
+                        </label>
+                        <input
+                            class="w-full rounded-lg border border-white/10 px-4 py-3 text-body-md text-on-surface placeholder:text-on-surface-variant/30 focus:ring-0"
+                            id="disciplina" name="disciplina" placeholder="Ex: Dinâmica Orbital" required=""
+                            type="text" />
+                    </div>
+                    <!-- Field: Descrição -->
+                    <div class="space-y-2">
+                        <label class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2"
+                            for="descricao">
+                            <span class="material-symbols-outlined text-[14px]">description</span>
+                            Descrição da Tarefa
+                        </label>
+                        <textarea
+                            class="w-full rounded-lg border border-white/10 px-4 py-3 text-body-md text-on-surface placeholder:text-on-surface-variant/30 focus:ring-0 resize-none"
+                            id="descricao" name="descricao" placeholder="Descreva os objetivos e requisitos..."
+                            required="" rows="5"></textarea>
+                    </div>
+                    <!-- Field: Prazo -->
+                    <div class="space-y-2">
+                        <label class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2"
+                            for="prazo">
+                            <span class="material-symbols-outlined text-[14px]">event</span>
+                            Data de Entrega
+                        </label>
+                        <div class="relative">
+                            <input
+                                class="w-full rounded-lg border border-white/10 px-4 py-3 text-body-md text-on-surface focus:ring-0"
+                                id="prazo" name="prazo" required="" type="date" />
+                        </div>
+                    </div>
+                    <!-- Action Set -->
+                    <div class="flex flex-col sm:flex-row items-center gap-4 pt-4">
+                        <button
+                            class="w-full sm:flex-1 bg-primary text-on-primary font-label-caps text-label-caps py-4 rounded-lg hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-primary/20"
+                            type="submit">
+                            Salvar Tarefa
+                        </button>
+                        <a class="w-full sm:w-auto px-8 py-4 border border-white/10 text-on-surface-variant font-label-caps text-label-caps rounded-lg text-center hover:bg-white/5 transition-colors"
+                            href="read.php">
+                            Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <!-- Footer Meta -->
+            <div class="mt-8 flex items-center justify-between px-2">
+                <div class="flex items-center gap-2 text-on-surface-variant/40">
+                    <span class="material-symbols-outlined text-[16px]">verified_user</span>
+                    <span class="font-label-caps text-[10px] tracking-widest uppercase">Encryption: AES-256</span>
+                </div>
+                <div class="text-on-surface-variant/40 font-label-caps text-[10px] tracking-widest uppercase">
+                    System Ver: 4.2.0-Alpha
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Mobile Bottom Navigation Shell (Filter Logic) -->
+    <nav
+        class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface-container-high/80 backdrop-blur-xl border-t border-white/10 flex items-center justify-around z-50">
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+            <span class="material-symbols-outlined">grid_view</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+            <span class="material-symbols-outlined">calendar_month</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-primary" href="#">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+            <span class="material-symbols-outlined">chat_bubble</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+            <span class="material-symbols-outlined">account_circle</span>
+        </a>
+    </nav>
+    <script>
+        // Micro-interaction for button hover effects
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.classList.add('scale-95');
+                el.style.opacity = '0.8';
+            });
+            el.addEventListener('mouseup', () => {
+                el.classList.remove('scale-95');
+                el.style.opacity = '1';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.classList.remove('scale-95');
+                el.style.opacity = '1';
+            });
         });
-        searchInput.addEventListener('blur', () => {
-            searchInput.parentElement.classList.remove('neon-accent');
-        });
+
+        // Date input current date setter or logic can be added here if needed
+        // const today = new Date().toISOString().split('T')[0];
+        // document.getElementById('prazo').setAttribute('min', today);
     </script>
 </body>
 

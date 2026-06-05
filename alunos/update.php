@@ -37,330 +37,285 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
-
 <!DOCTYPE html>
+
 <html class="dark" lang="pt-BR">
 
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Editar Aluno - AETHER EDU</title>
+    <!-- Tailwind CSS v3 with Plugins -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet">
-    <script id="tailwind-config">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <script data-purpose="tailwind-config">
         tailwind.config = {
-            darkMode: "class",
+            darkMode: 'class',
             theme: {
                 extend: {
-                    "colors": {
-                        "on-secondary-fixed": "#191c22",
-                        "surface-container-low": "#181c23",
-                        "on-tertiary-fixed-variant": "#7c2e00",
-                        "on-surface": "#e0e2ed",
-                        "on-primary-container": "#00285c",
-                        "primary-container": "#4b8eff",
-                        "surface-container-highest": "#31353d",
-                        "surface": "#10131b",
-                        "secondary-fixed-dim": "#c4c6cf",
-                        "error-container": "#93000a",
-                        "tertiary-container": "#ef6719",
-                        "on-secondary": "#2e3037",
-                        "on-error-container": "#ffdad6",
-                        "on-tertiary": "#571e00",
-                        "on-surface-variant": "#c1c6d7",
-                        "on-secondary-fixed-variant": "#44474e",
-                        "inverse-primary": "#005bc1",
-                        "tertiary": "#ffb595",
-                        "error": "#ffb4ab",
-                        "on-tertiary-fixed": "#351000",
-                        "primary": "#adc6ff",
-                        "on-secondary-container": "#b6b8c1",
-                        "surface-container-lowest": "#0b0e16",
-                        "surface-container-high": "#272a32",
-                        "secondary-container": "#464950",
-                        "surface-container": "#1c2028",
-                        "on-primary-fixed": "#001a41",
-                        "on-primary": "#002e69",
-                        "inverse-on-surface": "#2d3039",
-                        "surface-bright": "#363942",
-                        "on-background": "#e0e2ed",
-                        "tertiary-fixed": "#ffdbcc",
-                        "outline-variant": "#414755",
-                        "on-primary-fixed-variant": "#004493",
-                        "secondary-fixed": "#e1e2eb",
-                        "secondary": "#c4c6cf",
-                        "tertiary-fixed-dim": "#ffb595",
-                        "surface-variant": "#31353d",
-                        "surface-dim": "#10131b",
-                        "primary-fixed-dim": "#adc6ff",
-                        "primary-fixed": "#d8e2ff",
-                        "on-error": "#690005",
-                        "on-tertiary-container": "#4c1a00",
-                        "inverse-surface": "#e0e2ed",
-                        "surface-tint": "#adc6ff",
-                        "background": "#10131b",
-                        "outline": "#8b90a0"
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
                     },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
+                    colors: {
+                        'aether-surface': '#10131b',
+                        'aether-surface-dim': '#0b0e16',
+                        'aether-surface-bright': '#181c23',
+                        'aether-border': '#363942',
+                        'aether-primary': '#a0c4ff', // Light blue from reference
+                        'aether-accent': '#007aff',
                     },
-                    "spacing": {
-                        "container-padding-mobile": "20px",
-                        "gutter": "24px",
-                        "unit": "4px",
-                        "sidebar-width": "280px",
-                        "container-padding-desktop": "40px"
-                    },
-                    "fontFamily": {
-                        "display-lg": ["Inter"],
-                        "headline-md": ["Inter"],
-                        "headline-lg": ["Inter"],
-                        "label-caps": ["Space Grotesk"],
-                        "headline-lg-mobile": ["Inter"],
-                        "body-md": ["Inter"],
-                        "body-lg": ["Inter"]
-                    },
-                    "fontSize": {
-                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
-                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
-                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
-                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
-                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    boxShadow: {
+                        'glow-primary': '0 0 15px rgba(160, 196, 255, 0.4)',
                     }
-                },
-            },
+                }
+            }
         }
     </script>
-    <style>
-        .glass-card {
-            background: rgba(255, 255, 255, 0.07);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        }
-
-        .neon-glow:focus {
-            box-shadow: 0 0 15px rgba(173, 198, 255, 0.3);
-            border-color: #adc6ff;
-        }
-
-        .sidebar-active-line {
-            box-shadow: 2px 0 10px rgba(173, 198, 255, 0.4);
-        }
-
+    <style data-purpose="custom-layout">
         body {
-            background-color: #0b0e14;
-            color: #e0e2ed;
+            background-color: #0b0e16;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(24, 28, 35, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(54, 57, 66, 0.5);
+        }
+
+        .sidebar-active {
+            background: linear-gradient(90deg, rgba(160, 196, 255, 0.1) 0%, rgba(160, 196, 255, 0.02) 100%);
+            border-left: 2px solid #a0c4ff;
         }
     </style>
 </head>
 
-<body class="antialiased selection:bg-primary/30">
-    <!-- TopNavBar -->
-    <nav
-        class="bg-surface/60 backdrop-blur-xl text-primary font-body-md text-body-md docked full-width top-0 sticky z-50 border-b border-white/10 flex justify-between items-center w-full px-gutter h-16">
-        <div class="flex items-center gap-6">
-            <span class="font-label-caps text-label-caps tracking-widest text-primary">AETHER EDU</span>
-            <div
-                class="hidden md:flex items-center bg-surface-container-low px-4 py-1.5 rounded-full border border-white/5">
-                <span class="material-symbols-outlined text-sm mr-2 opacity-50">search</span>
-                <input class="bg-transparent border-none focus:ring-0 text-sm w-64 placeholder:opacity-40"
-                    placeholder="Search system..." type="text">
-            </div>
+<body class="min-h-screen flex">
+    <!-- BEGIN: MainSidebar -->
+    <aside class="w-64 border-r border-aether-border bg-aether-surface flex flex-col shrink-0" data-purpose="sidebar">
+        <div class="p-8">
+            <h1 class="text-xl font-bold tracking-tight">AETHER EDU</h1>
+            <p class="text-[10px] text-gray-500 uppercase tracking-[0.2em] -mt-1">Command Center</p>
         </div>
-        <div class="flex items-center gap-4">
-            <button
-                class="hover:text-primary transition-colors duration-200 Active: opacity-80 scale-95 transition-all">
-                <span class="material-symbols-outlined">notifications</span>
-            </button>
-            <button
-                class="hover:text-primary transition-colors duration-200 Active: opacity-80 scale-95 transition-all">
-                <span class="material-symbols-outlined">settings</span>
-            </button>
-            <div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20">
-                <img alt="User profile" class="w-full h-full object-cover"
-                    data-alt="A professional headshot of a student in a futuristic setting, illuminated by soft blue ambient light from digital screens. The background is a clean, dark minimalist space with subtle glass textures. High-end professional portrait photography with a focus on tech-driven clarity."
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM2zYOei_tfbMkhmbVAN5AlXSnUWlb_jH0m6ARsW42RrzG-ASsNIS2ScSdTONFW1mopsLp6FBdk2K87kb9KIhbpgC00KGtmUh-FBPB6v20l4mLZUKMpnV2KHvNri3lrcsf14ZM7ej5XDd_qdDAnU_x9vPR095vzmJyyoIv54wqfCg0caD27Hi1oC9WP3DEGSubkc6NtQquDKBsOzs1fierpWqAk1xMtz4E1Vk3GBONXF3Uld7mAJXPyM76MyBIuqQtcPXyRtlpgtF0">
-            </div>
-        </div>
-    </nav>
-    <!-- Sidebar (Desktop) -->
-    <aside
-        class="hidden md:flex flex-col py-8 px-4 gap-y-2 bg-surface-container-low/40 backdrop-blur-2xl fixed left-0 top-0 h-screen w-sidebar-width border-r border-white/10 z-40">
-        <div class="mb-10 px-4">
-            <h1 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tighter">AETHER OS</h1>
-            <p class="text-[10px] uppercase tracking-widest text-primary/60 font-medium">Academic Command</p>
-        </div>
-        <div class="space-y-1">
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all Active: translate-x-1 duration-300"
-                href="painel.php">
-                <span class="material-symbols-outlined">grid_view</span>
-                <span class="font-label-caps text-label-caps">Painel</span>
-            </a>
-             <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
+        <nav class="flex-1 px-4 space-y-1">
+            <a class="flex items-center gap-3 px-4 py-3 text-sm text-gray-400 hover:text-white transition-colors"
                 href="#">
-                <span class="material-symbols-outlined" data-icon="school">school</span>
-                <span class="font-body-md text-body-md">Alunos</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path
+                        d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                </svg>
+                Dashboard
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all Active: translate-x-1 duration-300"
+            <a class="flex items-center gap-3 px-4 py-3 text-sm text-gray-400 hover:text-white transition-colors"
                 href="#">
-                <span class="material-symbols-outlined">analytics</span>
-                <span class="font-body-md text-body-md">Notas</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                </svg>
+                Calendar
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
+            <a class="sidebar-active flex items-center gap-3 px-4 py-3 text-sm text-aether-primary transition-colors"
                 href="#">
-                <span class="material-symbols-outlined" data-icon="assignment">assignment</span>
-                <span class="font-body-md text-body-md">Tarefas</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path
+                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                </svg>
+                Alunos
             </a>
-        </div>
-        <div class="mt-auto space-y-1">
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
+            <a class="flex items-center gap-3 px-4 py-3 text-sm text-gray-400 hover:text-white transition-colors"
                 href="#">
-                <span class="material-symbols-outlined">logout</span>
-                <span class="font-body-md text-body-md">Sair</span>
-            </a>    
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                </svg>
+                Assignments
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-sm text-gray-400 hover:text-white transition-colors"
+                href="#">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path
+                        d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                </svg>
+                Messages
+            </a>
+        </nav>
+        <div class="p-4 border-t border-aether-border space-y-1">
+            <a class="flex items-center gap-3 px-4 py-3 text-sm text-gray-400 hover:text-white transition-colors"
+                href="#">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path
+                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2"></path>
+                </svg>
+                Settings
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-sm text-gray-400 hover:text-white transition-colors"
+                href="#">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                </svg>
+                Logout
+            </a>
         </div>
     </aside>
-    <!-- Main Content -->
-    <main class="md:ml-sidebar-width p-6 md:p-12 min-h-screen flex flex-col items-center">
-        <div class="max-w-4xl w-full">
-            <header class="mb-10 text-center md:text-left">
-                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Editar Usuário</h2>
-                <p class="font-body-md text-body-md text-on-surface-variant opacity-70">Manage your institutional
-                    identity and notification protocols.</p>
-            </header>
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <!-- Profile Picture Section -->
-                <section class="lg:col-span-4">
-                    <div class="glass-card p-8 rounded-2xl flex flex-col items-center text-center">
-                        <div class="relative group cursor-pointer">
-                            <div
-                                class="absolute inset-0 flex items-center justify-center bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                                <span class="material-symbols-outlined text-white">photo_camera</span>
-                            </div>
-                            <input class="hidden" id="avatar-input" type="file">
-                        </div>
-                        <h3 class="mt-6 font-headline-md text-headline-md text-on-surface">Alex Rivera</h3>
-                        <p class="font-label-caps text-label-caps text-primary mt-1">Senior Researcher</p>
-                        <button
-                            class="mt-6 w-full py-2 border border-white/10 rounded-xl font-label-caps text-label-caps hover:bg-white/5 transition-all"
-                            onclick="document.getElementById('avatar-input').click()">Alterar Avatar</button>
+    <!-- END: MainSidebar -->
+    <!-- BEGIN: MainContent -->
+    <main class="flex-1 flex flex-col overflow-hidden">
+        <!-- BEGIN: TopHeader -->
+        <header
+            class="h-16 border-b border-aether-border flex items-center justify-between px-8 bg-aether-surface/30 backdrop-blur-sm"
+            data-purpose="header">
+            <div class="relative w-96">
+                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2"></path>
+                    </svg>
+                </span>
+                <input
+                    class="block w-full pl-10 pr-3 py-2 border-0 bg-aether-surface-dim/50 rounded-md text-sm text-gray-200 placeholder-gray-500 focus:ring-1 focus:ring-aether-primary/50"
+                    placeholder="Pesquisar registros..." type="text" />
+            </div>
+            <div class="flex items-center gap-6">
+                <button class="text-gray-400 hover:text-white transition-colors relative">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path
+                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                    </svg>
+                    <span
+                        class="absolute -top-1 -right-1 block h-2 w-2 rounded-full bg-aether-primary shadow-[0_0_8px_rgba(160,196,255,1)]"></span>
+                </button>
+                <div class="flex items-center gap-3">
+                    <div class="text-right">
+                        <p
+                            class="text-[10px] text-aether-primary uppercase font-bold tracking-widest leading-none mb-1">
+                            Administrator</p>
+                        <p class="text-xs font-medium">Dr. Julian Vane</p>
                     </div>
-                </section>
-                <!-- Information Form Section -->
-                <section class="lg:col-span-8 flex flex-col gap-8">
-                    <!-- Base Info -->
-                    <div class="glass-card p-8 rounded-2xl">
-                        <div class="flex items-center gap-3 mb-8">
-                            <span class="material-symbols-outlined text-primary">person_edit</span>
-                            <h4 class="font-label-caps text-label-caps text-primary tracking-widest">Identificação
-                                Pessoal</h4>
+                    <img alt="Avatar" class="w-8 h-8 rounded-md border border-aether-border"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJo6TD4AOhBGZarVfHqUQ0VyGMoZF7lYiMTjJRz2Qi4HelrwHNTjgy8Z2DlLIRFvKY1oHhf3Akiwxs__a4Ct52x-u38Wq_puEe6Q53nxveBmLXX2MaKNIQZJU58UdMxSeIo_yttiQTM1ngdg5YvshMcJ148A308MCLOmj7Iji07ckf9x_4ZJjIaJOo7cxVHegyuYUv-4KFFY6edAyIcNsf8AlK6aPDnLHeqeUh_mgRDPz3YNNHYrDAXqluwd2uayBHm11JcQEExQTs" />
+                </div>
+            </div>
+        </header>
+        <!-- END: TopHeader -->
+        <!-- BEGIN: FormContainer -->
+        <div class="flex-1 overflow-y-auto p-12 flex flex-col items-center">
+            <!-- Page Title & Breadcrumbs -->
+            <div class="w-full max-w-4xl mb-12">
+                <nav
+                    class="flex items-center gap-2 text-[10px] uppercase tracking-[0.15em] text-aether-primary font-semibold mb-6">
+                    <a class="hover:underline" href="#">Dashboard</a>
+                    <svg class="w-3 h-3 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                    </svg>
+                    <a class="hover:underline" href="#">Alunos</a>
+                    <svg class="w-3 h-3 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                        <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                    </svg>
+                    <span class="text-gray-500">Editar</span>
+                </nav>
+                <h2 class="text-4xl font-bold tracking-tight mb-2">Editar Aluno</h2>
+                <p class="text-gray-400">Atualize as informações do aluno abaixo.</p>
+            </div>
+            <!-- Main Edit Card -->
+            <div class="w-full max-w-4xl glass-card rounded-xl p-8 lg:p-12 shadow-2xl" data-purpose="edit-student-card">
+                <div class="flex items-center gap-3 mb-10 border-b border-aether-border pb-6">
+                    <div class="p-2 bg-aether-primary/10 rounded-lg">
+                        <svg class="w-5 h-5 text-aether-primary" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                            <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                        </svg>
+                    </div>
+                    <span class="text-sm font-semibold uppercase tracking-widest text-aether-primary/80">Informações do
+                        Aluno</span>
+                </div>
+                <form class="space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Full Name Field -->
+                        <div data-purpose="form-group">
+                            <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-3 ml-1"
+                                for="full_name">Nome Completo</label>
+                            <div class="relative">
+                                <span
+                                    class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-500 pointer-events-none">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                        <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                    </svg>
+                                </span>
+                                <input
+                                    class="block w-full pl-11 pr-4 py-4 bg-aether-surface-dim border border-aether-border rounded-lg text-sm text-gray-100 placeholder-gray-600 focus:ring-1 focus:ring-aether-primary/50 focus:border-aether-primary/50 transition-all"
+                                    id="full_name" placeholder="Digite o nome completo..." type="text"
+                                    value="Alex Rivera" />
+                            </div>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="flex flex-col gap-2">
-                                <label
-                                    class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest">Nome
-                                    Completo</label>
+                        <!-- Email Field -->
+                        <div data-purpose="form-group">
+                            <label class="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-3 ml-1"
+                                for="email">E-mail Institucional</label>
+                            <div class="relative">
+                                <span
+                                    class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-500 pointer-events-none">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                                        <path
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                    </svg>
+                                </span>
                                 <input
-                                    class="bg-surface-container-lowest/50 border border-white/10 rounded-xl px-4 py-3 text-on-surface font-body-md neon-glow transition-all outline-none"
-                                    type="text" value="Alex Rivera">
+                                    class="block w-full pl-11 pr-4 py-4 bg-aether-surface-dim border border-aether-border rounded-lg text-sm text-gray-100 placeholder-gray-600 focus:ring-1 focus:ring-aether-primary/50 focus:border-aether-primary/50 transition-all"
+                                    id="email" placeholder="exemplo@aether.edu" type="email"
+                                    value="alex.rivera@aether.edu" />
                             </div>
-                            <div class="flex flex-col gap-2">
-                                <label
-                                    class="font-label-caps text-[10px] text-on-surface-variant uppercase tracking-widest">E-mail
-                                    Institucional</label>
-                                <input
-                                    class="bg-surface-container-lowest/50 border border-white/10 rounded-xl px-4 py-3 text-on-surface font-body-md neon-glow transition-all outline-none"
-                                    type="email" value="alex.rivera@aether.edu">
-                            </div>
-                            </label>
                         </div>
                     </div>
                     <!-- Actions -->
-                    <div class="flex flex-col sm:flex-row items-center justify-end gap-4 mt-4">
+                    <div
+                        class="flex flex-col sm:flex-row justify-end items-center gap-4 pt-8 border-t border-aether-border/50">
                         <button
-                            class="w-full sm:w-auto px-10 py-4 border border-white/10 text-on-surface rounded-xl font-label-caps text-label-caps hover:bg-white/5 transition-all">Cancelar</button>
+                            class="w-full sm:w-auto px-10 py-3 text-sm font-semibold text-gray-400 hover:text-white border border-aether-border rounded-lg hover:bg-aether-border/20 transition-all duration-200"
+                            type="button">
+                            Cancelar
+                        </button>
                         <button
-                            class="w-full sm:w-auto px-10 py-4 bg-primary text-on-primary rounded-xl font-label-caps text-label-caps font-bold shadow-[0_0_20px_rgba(173,198,255,0.2)] hover:shadow-[0_0_30px_rgba(173,198,255,0.4)] hover:brightness-110 transition-all">Salvar
-                            Alterações</button>
+                            class="w-full sm:w-auto px-10 py-3 text-sm font-bold text-aether-surface-dim bg-aether-primary rounded-lg hover:bg-blue-300 transition-all duration-200 shadow-glow-primary"
+                            type="submit">
+                            Salvar Alterações
+                        </button>
                     </div>
-                </section>
+                </form>
             </div>
+            <!-- BEGIN: PageFooter -->
+            <footer
+                class="mt-auto py-12 w-full max-w-4xl flex items-center justify-between text-[10px] text-gray-600 uppercase tracking-widest border-t border-aether-border/30">
+                <div class="flex items-center gap-4">
+                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                        SECURE NODE 04</span>
+                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
+                        SESSION: AE-9421</span>
+                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
+                        ENCRYPTION: AES-256</span>
+                </div>
+                <div class="text-right">
+                    © 2023 Aether OS. Academic Command Rev. 4.0.2
+                </div>
+            </footer>
+            <!-- END: PageFooter -->
         </div>
+        <!-- END: FormContainer -->
     </main>
-    <!-- Bottom Nav (Mobile) -->
-    <div
-        class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface/80 backdrop-blur-xl border-t border-white/10 flex items-center justify-around z-50">
-        <button class="text-on-surface-variant">
-            <span class="material-symbols-outlined">grid_view</span>
-        </button>
-        <button class="text-on-surface-variant">
-            <span class="material-symbols-outlined">calendar_month</span>
-        </button>
-        <button class="text-primary border-t-2 border-primary pt-1">
-            <span class="material-symbols-outlined">settings</span>
-        </button>
-        <button class="text-on-surface-variant">
-            <span class="material-symbols-outlined">chat_bubble</span>
-        </button>
-    </div>
-    <script>
-        // Micro-interaction for profile preview
-        const avatarInput = document.getElementById('avatar-input');
-        const preview = document.getElementById('profile-preview');
-
-        avatarInput.addEventListener('change', function (e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (event) {
-                    preview.src = event.target.result;
-                    // Mock success animation
-                    preview.style.filter = 'brightness(1.5) blur(5px)';
-                    setTimeout(() => {
-                        preview.style.filter = 'none';
-                    }, 500);
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // Atmospheric mouse glow effect on glass cards
-        document.querySelectorAll('.glass-card').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-        });
-    </script>
-
-
+    <!-- END: MainContent -->
 </body>
 
 </html>

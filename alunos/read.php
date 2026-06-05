@@ -2,14 +2,14 @@
 require_once 'conexao.php';
 
 $sql = "SELECT * FROM alunos";
- //$stmt = $pdo->prepare($sql);
- //$stmt->execute();
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
 
-// $alunos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$alunos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<table border="1">
+/*<table border="1">
     <tr>
         <th>ID</th>
         <th>Nome</th>
@@ -22,9 +22,8 @@ $sql = "SELECT * FROM alunos";
             <td><?= htmlspecialchars($aluno['nome']) ?></td>
             <td><?= htmlspecialchars($aluno['email']) ?></td>
         </tr>
-    <?php endforeach; ?>
+  <?php endforeach; ?>
 
-</table>
 <!DOCTYPE html>
 
 <html class="dark" lang="pt-BR">
@@ -32,7 +31,7 @@ $sql = "SELECT * FROM alunos";
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>ALUNO MODERN | Perfil do Estudante</title>
+    <title>AETHER EDU | Gestão de Alunos</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500&amp;display=swap"
@@ -49,53 +48,53 @@ $sql = "SELECT * FROM alunos";
             theme: {
                 extend: {
                     "colors": {
-                        "tertiary-container": "#ef6719",
-                        "on-surface": "#e0e2ed",
-                        "inverse-on-surface": "#2d3039",
-                        "error-container": "#93000a",
-                        "surface-bright": "#363942",
-                        "on-tertiary-fixed": "#351000",
-                        "surface-container-lowest": "#0b0e16",
-                        "surface-container-high": "#272a32",
-                        "secondary-container": "#464950",
-                        "on-primary-fixed-variant": "#004493",
-                        "on-surface-variant": "#c1c6d7",
-                        "on-secondary-fixed-variant": "#44474e",
-                        "primary-fixed": "#d8e2ff",
-                        "surface": "#10131b",
-                        "on-primary-fixed": "#001a41",
-                        "primary-container": "#4b8eff",
+                        "surface-variant": "#31353d",
                         "secondary-fixed": "#e1e2eb",
-                        "error": "#ffb4ab",
-                        "on-secondary-container": "#b6b8c1",
-                        "inverse-surface": "#e0e2ed",
-                        "on-primary": "#002e69",
-                        "background": "#10131b",
-                        "tertiary-fixed-dim": "#ffb595",
-                        "secondary-fixed-dim": "#c4c6cf",
-                        "surface-container-highest": "#31353d",
-                        "surface-dim": "#10131b",
-                        "surface-container-low": "#181c23",
-                        "on-tertiary": "#571e00",
-                        "on-secondary-fixed": "#191c22",
-                        "tertiary": "#ffb595",
-                        "on-tertiary-container": "#4c1a00",
-                        "on-error": "#690005",
-                        "tertiary-fixed": "#ffdbcc",
-                        "on-background": "#e0e2ed",
-                        "secondary": "#c4c6cf",
-                        "outline-variant": "#414755",
-                        "on-tertiary-fixed-variant": "#7c2e00",
+                        "outline": "#8b90a0",
+                        "secondary-container": "#464950",
                         "surface-container": "#1c2028",
                         "on-secondary": "#2e3037",
-                        "on-error-container": "#ffdad6",
-                        "primary-fixed-dim": "#adc6ff",
+                        "inverse-surface": "#e0e2ed",
+                        "on-primary": "#002e69",
+                        "on-tertiary-fixed": "#351000",
                         "on-primary-container": "#00285c",
+                        "tertiary-fixed-dim": "#ffb595",
+                        "surface-bright": "#363942",
+                        "on-tertiary-container": "#4c1a00",
+                        "on-surface": "#e0e2ed",
+                        "on-primary-fixed": "#001a41",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#31353d",
+                        "on-tertiary": "#571e00",
+                        "on-secondary-fixed-variant": "#44474e",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-container-low": "#181c23",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed-variant": "#7c2e00",
+                        "surface-dim": "#10131b",
+                        "surface": "#10131b",
+                        "tertiary-fixed": "#ffdbcc",
+                        "secondary": "#c4c6cf",
                         "primary": "#adc6ff",
-                        "outline": "#8b90a0",
-                        "surface-variant": "#31353d",
+                        "primary-container": "#4b8eff",
+                        "on-secondary-fixed": "#191c22",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#004493",
+                        "tertiary-container": "#ef6719",
+                        "inverse-primary": "#005bc1",
+                        "on-secondary-container": "#b6b8c1",
+                        "surface-container-high": "#272a32",
+                        "secondary-fixed-dim": "#c4c6cf",
+                        "on-error": "#690005",
+                        "on-background": "#e0e2ed",
+                        "outline-variant": "#414755",
+                        "on-surface-variant": "#c1c6d7",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0b0e16",
+                        "inverse-on-surface": "#2d3039",
                         "surface-tint": "#adc6ff",
-                        "inverse-primary": "#005bc1"
+                        "background": "#10131b",
+                        "tertiary": "#ffb595"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.25rem",
@@ -104,145 +103,284 @@ $sql = "SELECT * FROM alunos";
                         "full": "9999px"
                     },
                     "spacing": {
-                        "gutter": "24px",
-                        "container-padding-mobile": "20px",
                         "unit": "4px",
-                        "container-padding-desktop": "40px",
-                        "sidebar-width": "280px"
+                        "sidebar-width": "280px",
+                        "container-padding-mobile": "20px",
+                        "gutter": "24px",
+                        "container-padding-desktop": "40px"
                     },
                     "fontFamily": {
-                        "body-lg": ["Inter"],
-                        "headline-lg": ["Inter"],
                         "label-caps": ["Space Grotesk"],
-                        "headline-lg-mobile": ["Inter"],
-                        "display-lg": ["Inter"],
                         "headline-md": ["Inter"],
-                        "body-md": ["Inter"]
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
                     },
                     "fontSize": {
-                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
                         "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
-                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
-                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
                         "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
-                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
                     }
                 }
             }
         }
     </script>
     <style>
-        .glass-card {
-            background: rgba(255, 255, 255, 0.07);
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
         }
 
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+
+        .active-nav-border {
+            box-shadow: inset 2px 0 0 0 #adc6ff;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #10131b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #31353d;
         }
     </style>
 </head>
 
-<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
-    <!-- SideNavBar -->
+<body class="bg-background text-on-surface font-body-md selection:bg-primary/30">
+    <!-- Sidebar Navigation -->
     <aside
-        class="fixed left-0 top-0 h-screen w-sidebar-width hidden md:flex flex-col py-8 px-4 gap-y-2 bg-surface-container-low/40 backdrop-blur-2xl border-r border-white/10 z-[60]">
-        <div class="mb-10 px-4">
+        class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-low/40 backdrop-blur-2xl border-r border-white/10 flex flex-col py-8 px-4 gap-y-2 z-50">
+        <div class="px-4 mb-10">
             <h1 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tighter">AETHER OS</h1>
-            <p class="font-label-caps text-label-caps text-on-surface-variant uppercase mt-1">Comando Acadêmico</p>
+            <p class="font-label-caps text-label-caps text-on-surface-variant opacity-60">Academic Command</p>
         </div>
-        <nav class="flex-1 flex flex-col gap-y-1">
-            <a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
+        <nav class="flex-1 space-y-1">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all duration-300"
                 href="#">
                 <span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
-                <span class="font-body-md text-body-md">Painel</span>
+                <span class="font-label-caps text-label-caps">Dashboard</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all duration-300"
                 href="#">
-                <span class="material-symbols-outlined" data-icon="school">school</span>
-                <span class="font-body-md text-body-md">Alunos</span>
+                <span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+                <span class="font-label-caps text-label-caps">Calendar</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
+            <!-- Active State: Alunos logic mapping to Academic Records or similar, here mimicking Sidebar JSON structure -->
+            <a class="flex items-center gap-3 px-4 py-3 text-primary border-l-2 border-primary bg-primary/5 transition-all duration-300 translate-x-1"
                 href="#">
                 <span class="material-symbols-outlined" data-icon="analytics">analytics</span>
-                <span class="font-body-md text-body-md">Notas</span>
+                <span class="font-label-caps text-label-caps">Grades</span>
             </a>
-            <a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all duration-300"
                 href="#">
                 <span class="material-symbols-outlined" data-icon="assignment">assignment</span>
-                <span class="font-body-md text-body-md">Tarefas</span>
+                <span class="font-label-caps text-label-caps">Assignments</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all duration-300"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+                <span class="font-label-caps text-label-caps">Messages</span>
             </a>
         </nav>
-        <a class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all"
-            href="logout.php">
-            <span class="material-symbols-outlined" data-icon="logout">logout</span>
-            <span class="font-label-caps text-label-caps">Sair</span>
-        </a>
-        <div class="mt-6 px-4">
+        <div class="mt-auto pt-4 space-y-1 border-t border-white/5">
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all duration-300"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="settings">settings</span>
+                <span class="font-label-caps text-label-caps">Settings</span>
+            </a>
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all duration-300"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="logout">logout</span>
+                <span class="font-label-caps text-label-caps">Logout</span>
+            </a>
         </div>
     </aside>
-    <!-- TopNavBar -->
+    <!-- Top Navigation Bar -->
     <header
-        class="fixed top-0 right-0 left-0 md:left-sidebar-width h-16 bg-surface/60 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-gutter z-50">
-        <div class="flex items-center gap-8">
-            <span class="font-label-caps text-label-caps tracking-widest text-primary">ALUNO MODERN</span>
-        </div>
+        class="fixed top-0 left-sidebar-width right-0 h-16 bg-surface/60 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-gutter z-40">
         <div class="flex items-center gap-4">
-            <div class="h-8 w-8 rounded-full overflow-hidden border border-primary/30">
-                <img alt="User profile" class="w-full h-full object-cover"
-                    data-alt="A professional close-up portrait of a young male student with a focused and intelligent expression. He is set against a dark, tech-inspired background with subtle blue lens flares and digital geometric overlays. The lighting is dramatic and cool-toned, emphasizing sharp features and a modern, high-end educational aesthetic. The overall mood is serious and futuristic."
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnbGuBpbQkv38O4cD7QiM342vWWQ95J0vbKl4taYr_9UwCFcmqFe9pTH_YnEnxeO5Yk62D-eUAmYaPGJFWRMrbnN3s5wCYm3HdF3TbCRn6bezoCwaUwm0OxsIel0BX78o1RuG_sRH6h3kBPKlg8IyWGoeXzZ8zdOufFNgKZS78i2EpaUAnS_nRp3iJdHyO0uMHtSmZU-2A8f9WJZEwb-z8LaqFNf735-NEG3dymG52i72uJmd-hSzdXMyIm4_rnHeAE_NSNf1bWatb" />
+            <div class="bg-surface-container-highest px-3 py-1.5 flex items-center gap-2 border border-white/5">
+                <span class="material-symbols-outlined text-on-surface-variant text-[18px]"
+                    data-icon="search">search</span>
+                <input
+                    class="bg-transparent border-none text-body-md font-body-md focus:ring-0 text-on-surface placeholder:text-on-surface-variant/50 w-64"
+                    placeholder="Localizar registro..." type="text" />
+            </div>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="flex items-center gap-4">
+                <button class="text-on-surface-variant hover:text-primary transition-colors duration-200">
+                    <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+                </button>
+                <button class="text-on-surface-variant hover:text-primary transition-colors duration-200">
+                    <span class="material-symbols-outlined" data-icon="help">help</span>
+                </button>
+            </div>
+            <div class="h-8 w-[1px] bg-white/10"></div>
+            <div class="flex items-center gap-3">
+                <span class="font-label-caps text-label-caps text-primary tracking-widest">AETHER EDU</span>
+                <img alt="User profile"
+                    class="w-8 h-8 rounded-none border border-primary/30 object-cover grayscale hover:grayscale-0 transition-all cursor-pointer"
+                    data-alt="A professional close-up portrait of a male educator in a modern minimalist setting. He is wearing a dark navy blazer over a charcoal turtleneck. The lighting is crisp and cool, casting soft shadows that highlight the textures of his clothing. Behind him, a softly blurred glass office partition reflects deep blue tones and tech-inspired ambient light, maintaining a sophisticated academic command center aesthetic."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcV_evx9wcQhhEUiuJbZyWFySkSxMu7A64-ZARPfkaJwY_hRJ53P8drCC3M4PDa_eUVtZT2c6h_O3w_BNZTnIpAzeH_MQOmi-_nfnYZYCcvUu81oiZ9tXFGkmnDwacXK2O31-XLT6TItZtmnqEi4kwhF65-1OjIQ7VQBwYupgFTxzRClU7JWMG60cMW9zOOFFdHsEHm4XOwoLKAP2Xnq02HtfQuzGSAFgj76TI9JfEYLI_kDUmJ-g6z8meL6Fr8xyj3_jzCq50eL5d" />
             </div>
         </div>
     </header>
-    <!-- Main Canvas -->
-    <main class="pt-24 pb-12 px-gutter md:ml-sidebar-width min-h-screen">
-        <div class="max-w-[1440px] mx-auto space-y-8">
-            <!-- Student Hero Section -->
-            <section
-                class="glass-card rounded-xl p-8 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] rounded-full -mr-20 -mt-20">
+    <!-- Main Content Canvas -->
+    <main class="ml-sidebar-width pt-16 min-h-screen">
+        <div class="max-w-[1440px] mx-auto p-gutter lg:p-container-padding-desktop">
+            <!-- Page Header Area -->
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mb-2">Alunos</h2>
+                    <p class="text-on-surface-variant font-body-md opacity-70">Gerencie os alunos cadastrados no
+                        sistema.</p>
                 </div>
-                <div class="relative">
-                </div>
-                <div class="text-center md:text-left flex-1">
-                    <h2 class="font-display-lg text-display-lg text-on-surface tracking-tighter">Alexander Thorne</h2>
-                    <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
-                        <span
-                            class="flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-primary font-label-caps text-label-caps"><span
-                                class="material-symbols-outlined text-[16px]" data-icon="school">school</span> Classe de
-                            2026</span>
-                    </div>
-                    <div class="flex gap-3">
+                <a class="bg-primary text-on-primary px-6 py-3 font-label-caps text-label-caps flex items-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all"
+                    href="create.php">
+                    <span class="material-symbols-outlined text-[18px]" data-icon="person_add">person_add</span>
+                    ADICIONAR ALUNO
+                </a>
+            </div>
+            <!-- Management Table (Registro de Notas style) -->
+            <div class="glass-panel overflow-hidden">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-white/10 bg-white/5">
+                            <th class="py-4 px-6 font-label-caps text-label-caps text-on-surface-variant">ID</th>
+                            <th class="py-4 px-6 font-label-caps text-label-caps text-on-surface-variant">NOME</th>
+                            <th class="py-4 px-6 font-label-caps text-label-caps text-on-surface-variant">EMAIL</th>
+                            <th class="py-4 px-6 font-label-caps text-label-caps text-on-surface-variant text-right">
+                                AÇÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5">
+                        <!-- Sample Row 1 -->
+                        <tr class="hover:bg-white/[0.02] transition-colors group">
+                            <td class="py-4 px-6 font-label-caps text-label-caps text-primary/80">#1</td>
+                            <td class="py-4 px-6 font-headline-md text-body-md font-semibold text-on-surface">João Silva
+                            </td>
+                            <td class="py-4 px-6 font-body-md text-on-surface-variant">joao@email.com</td>
+                            <td class="py-4 px-6 text-right">
+                                <div class="flex justify-end gap-2">
+                                    <a class="w-10 h-10 flex items-center justify-center border border-white/10 hover:border-primary/50 hover:bg-primary/5 text-on-surface-variant hover:text-primary transition-all active:scale-90"
+                                        href="update.php?id=1" title="Editar">
+                                        <span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+                                    </a>
+                                    <button
+                                        class="w-10 h-10 flex items-center justify-center border border-white/10 hover:border-error/50 hover:bg-error/5 text-on-surface-variant hover:text-error transition-all active:scale-90"
+                                        onclick="confirmDelete(1)" title="Excluir">
+                                        <span class="material-symbols-outlined text-[18px]"
+                                            data-icon="delete">delete</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Sample Row 2 -->
+                        <tr class="hover:bg-white/[0.02] transition-colors group">
+                            <td class="py-4 px-6 font-label-caps text-label-caps text-primary/80">#2</td>
+                            <td class="py-4 px-6 font-headline-md text-body-md font-semibold text-on-surface">Maria
+                                Souza</td>
+                            <td class="py-4 px-6 font-body-md text-on-surface-variant">maria@email.com</td>
+                            <td class="py-4 px-6 text-right">
+                                <div class="flex justify-end gap-2">
+                                    <a class="w-10 h-10 flex items-center justify-center border border-white/10 hover:border-primary/50 hover:bg-primary/5 text-on-surface-variant hover:text-primary transition-all active:scale-90"
+                                        href="update.php?id=2" title="Editar">
+                                        <span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+                                    </a>
+                                    <button
+                                        class="w-10 h-10 flex items-center justify-center border border-white/10 hover:border-error/50 hover:bg-error/5 text-on-surface-variant hover:text-error transition-all active:scale-90"
+                                        onclick="confirmDelete(2)" title="Excluir">
+                                        <span class="material-symbols-outlined text-[18px]"
+                                            data-icon="delete">delete</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Dynamic Row Template (For Reference in PHP loop) -->
+                        <!-- 
+                        <tr class="hover:bg-white/[0.02] transition-colors group">
+                            <td class="py-4 px-6 font-label-caps text-label-caps text-primary/80">#<?php echo $row['id']; ?></td>
+                            <td class="py-4 px-6 font-headline-md text-body-md font-semibold text-on-surface"><?php echo $row['nome']; ?></td>
+                            <td class="py-4 px-6 font-body-md text-on-surface-variant"><?php echo $row['email']; ?></td>
+                            <td class="py-4 px-6 text-right">
+                                <div class="flex justify-end gap-2">
+                                    <a href="update.php?id=<?php echo $row['id']; ?>" class="w-10 h-10 flex items-center justify-center border border-white/10 hover:border-primary/50 hover:bg-primary/5 text-on-surface-variant hover:text-primary transition-all active:scale-90">
+                                        <span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+                                    </a>
+                                    <button onclick="confirmDelete(<?php echo $row['id']; ?>)" class="w-10 h-10 flex items-center justify-center border border-white/10 hover:border-error/50 hover:bg-error/5 text-on-surface-variant hover:text-error transition-all active:scale-90">
+                                        <span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr> 
+                        -->
+                    </tbody>
+                </table>
+                <!-- Footer / Pagination -->
+                <div class="px-6 py-4 border-t border-white/5 flex items-center justify-between bg-white/[0.02]">
+                    <span class="text-on-surface-variant font-label-caps text-[10px] uppercase tracking-widest">Exibindo
+                        2 de 2 registros</span>
+                    <div class="flex items-center gap-1">
                         <button
-                            class="px-6 py-2.5 rounded-lg border border-white/10 text-on-surface font-label-caps text-label-caps hover:bg-white/5 transition-all">Editar
-                            Perfil</button>
+                            class="w-8 h-8 flex items-center justify-center text-on-surface-variant opacity-30 cursor-not-allowed">
+                            <span class="material-symbols-outlined text-[20px]"
+                                data-icon="chevron_left">chevron_left</span>
+                        </button>
+                        <button
+                            class="w-8 h-8 flex items-center justify-center text-primary font-bold bg-primary/10 border border-primary/20">1</button>
+                        <button
+                            class="w-8 h-8 flex items-center justify-center text-on-surface-variant opacity-30 cursor-not-allowed">
+                            <span class="material-symbols-outlined text-[20px]"
+                                data-icon="chevron_right">chevron_right</span>
+                        </button>
                     </div>
-            </section>
-
-            <nav
-                class="fixed bottom-0 left-0 right-0 h-16 bg-surface/80 backdrop-blur-xl border-t border-white/10 md:hidden flex justify-around items-center z-[100] px-4">
-                <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
-                    <span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
-                </a>
-                <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
-                    <span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
-                </a>
-                <a class="flex flex-col items-center gap-1 text-primary" href="#">
-                    <span class="material-symbols-outlined" data-icon="settings" data-weight="fill">settings</span>
-                </a>
-                <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
-                    <span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
-                </a>
-                <div class="w-8 h-8 rounded-full overflow-hidden border border-white/20">
-                    <img alt="Mobile Profile" class="w-full h-full object-cover"
-                        data-alt="Small thumbnail profile picture of a young male student in a futuristic setting."
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuByx29CnpMoH6pZzwiMtq8UBRw9Y-umEMrjr3s3ADilaBh6_ioomXb04IjHZU3O4w84S5hIPjcXq_GLJnyCFTYrG3bePGsDJ3QVGY4GLnSTUtnHivkEtsLinyAs_Eg1CAzYq3HxaycANrGi-Rq06EGZ3S4WhsLu83vFencDWqC3xs0gRA6Rw_jHQj10yvHGjb9gdCfXrGbMa3fM8TG_1xz8ezeaY0eP4Y9YuNOr_QpzqddbTMqO7lL3V9icOIQTv6JkTUXuM3FFquBa" />
                 </div>
-            </nav>
+            </div>
+            <!-- Task focused info footer -->
+            <div class="mt-8 flex justify-between items-center px-4">
+                <div class="flex items-center gap-2 text-primary/40">
+                    <span class="material-symbols-outlined text-[16px]" data-icon="security">security</span>
+                    <span class="font-label-caps text-[10px] tracking-[0.2em] uppercase">Security Level:
+                        Administrative</span>
+                </div>
+                <div class="text-right">
+                    <span
+                        class="font-label-caps text-[10px] text-on-surface-variant/40 tracking-[0.2em] uppercase">AETHER
+                        SYSTEM CLOUD REV. 4.0.2</span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        function confirmDelete(id) {
+            if (confirm("Você tem certeza que deseja excluir este aluno? Esta ação não pode ser desfeita.")) {
+                window.location.href = "delete.php?id=" + id;
+            }
+        }
+
+        // Add subtle hover glow to glass panels
+        document.querySelectorAll('.glass-panel').forEach(panel => {
+            panel.addEventListener('mousemove', e => {
+                const rect = panel.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                panel.style.setProperty('--mouse-x', `${x}px`);
+                panel.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
 </body>
 
 </html>

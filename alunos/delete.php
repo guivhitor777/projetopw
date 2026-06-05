@@ -22,15 +22,17 @@ if ($id > 0) {
 }
 ?>
 
+
 <!DOCTYPE html>
-<html class="dark" lang="pt-BR">
+
+<html class="dark" lang="pt-br">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500&amp;display=swap"
         rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -38,95 +40,59 @@ if ($id > 0) {
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
-    <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.07);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
-        }
-
-        .danger-glow {
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
-        }
-
-        .neon-text-red {
-            text-shadow: 0 0 8px rgba(255, 180, 171, 0.6);
-        }
-
-        @keyframes pulse-red {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.7;
-            }
-        }
-
-        .animate-pulse-red {
-            animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-    </style>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     "colors": {
-                        "on-secondary-fixed": "#191c22",
-                        "surface-container-low": "#181c23",
-                        "on-tertiary-fixed-variant": "#7c2e00",
-                        "on-surface": "#e0e2ed",
+                        "primary-fixed": "#d8e2ff",
                         "on-primary-container": "#00285c",
-                        "primary-container": "#4b8eff",
-                        "surface-container-highest": "#31353d",
-                        "surface": "#10131b",
-                        "secondary-fixed-dim": "#c4c6cf",
-                        "error-container": "#93000a",
-                        "tertiary-container": "#ef6719",
-                        "on-secondary": "#2e3037",
+                        "surface-container": "#1c2028",
+                        "on-tertiary-container": "#4c1a00",
                         "on-error-container": "#ffdad6",
+                        "surface-dim": "#10131b",
+                        "inverse-primary": "#005bc1",
+                        "surface-container-highest": "#31353d",
+                        "on-secondary-fixed": "#191c22",
+                        "secondary-fixed-dim": "#c4c6cf",
+                        "surface-container-high": "#272a32",
+                        "on-secondary": "#2e3037",
+                        "tertiary-fixed-dim": "#ffb595",
+                        "primary-container": "#4b8eff",
+                        "inverse-on-surface": "#2d3039",
+                        "surface": "#10131b",
+                        "primary-fixed-dim": "#adc6ff",
+                        "secondary-container": "#464950",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0b0e16",
+                        "outline-variant": "#414755",
+                        "surface-bright": "#363942",
+                        "background": "#10131b",
                         "on-tertiary": "#571e00",
+                        "on-primary": "#002e69",
+                        "secondary": "#c4c6cf",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#ffdbcc",
+                        "surface-tint": "#adc6ff",
+                        "on-primary-fixed": "#001a41",
+                        "outline": "#8b90a0",
+                        "on-secondary-container": "#b6b8c1",
+                        "on-primary-fixed-variant": "#004493",
+                        "on-tertiary-fixed": "#351000",
+                        "inverse-surface": "#e0e2ed",
+                        "on-background": "#e0e2ed",
+                        "on-surface": "#e0e2ed",
+                        "on-error": "#690005",
+                        "tertiary-container": "#ef6719",
+                        "tertiary": "#ffb595",
                         "on-surface-variant": "#c1c6d7",
                         "on-secondary-fixed-variant": "#44474e",
-                        "inverse-primary": "#005bc1",
-                        "tertiary": "#ffb595",
-                        "error": "#ffb4ab",
-                        "on-tertiary-fixed": "#351000",
-                        "primary": "#adc6ff",
-                        "on-secondary-container": "#b6b8c1",
-                        "surface-container-lowest": "#0b0e16",
-                        "surface-container-high": "#272a32",
-                        "secondary-container": "#464950",
-                        "surface-container": "#1c2028",
-                        "on-primary-fixed": "#001a41",
-                        "on-primary": "#002e69",
-                        "inverse-on-surface": "#2d3039",
-                        "surface-bright": "#363942",
-                        "on-background": "#e0e2ed",
-                        "tertiary-fixed": "#ffdbcc",
-                        "outline-variant": "#414755",
-                        "on-primary-fixed-variant": "#004493",
-                        "secondary-fixed": "#e1e2eb",
-                        "secondary": "#c4c6cf",
-                        "tertiary-fixed-dim": "#ffb595",
                         "surface-variant": "#31353d",
-                        "surface-dim": "#10131b",
-                        "primary-fixed-dim": "#adc6ff",
-                        "primary-fixed": "#d8e2ff",
-                        "on-error": "#690005",
-                        "on-tertiary-container": "#4c1a00",
-                        "inverse-surface": "#e0e2ed",
-                        "surface-tint": "#adc6ff",
-                        "background": "#10131b",
-                        "outline": "#8b90a0"
+                        "surface-container-low": "#181c23",
+                        "primary": "#adc6ff",
+                        "on-tertiary-fixed-variant": "#7c2e00",
+                        "secondary-fixed": "#e1e2eb"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.25rem",
@@ -135,153 +101,199 @@ if ($id > 0) {
                         "full": "9999px"
                     },
                     "spacing": {
-                        "container-padding-mobile": "20px",
                         "gutter": "24px",
-                        "unit": "4px",
+                        "container-padding-mobile": "20px",
                         "sidebar-width": "280px",
-                        "container-padding-desktop": "40px"
+                        "container-padding-desktop": "40px",
+                        "unit": "4px"
                     },
                     "fontFamily": {
-                        "display-lg": ["Inter"],
-                        "headline-md": ["Inter"],
-                        "headline-lg": ["Inter"],
-                        "label-caps": ["Space Grotesk"],
                         "headline-lg-mobile": ["Inter"],
-                        "body-md": ["Inter"],
-                        "body-lg": ["Inter"]
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Space Grotesk"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"]
                     },
                     "fontSize": {
-                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
-                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
-                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
                         "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
-                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
                     }
                 },
             },
         }
     </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-overlay {
+            background: rgba(11, 14, 20, 0.85);
+            backdrop-filter: blur(8px);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
 </head>
 
-<body class="bg-surface text-on-surface font-body-md overflow-hidden">
-    <!-- Background Atmospheric Effect -->
-    <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
-        <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-error/5 rounded-full blur-[120px]"></div>
-        <div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px]">
+<body class="bg-background text-on-background min-h-screen font-body-md overflow-hidden">
+    <!-- SideNavBar Shell -->
+    <aside
+        class="w-[280px] h-full fixed left-0 top-0 bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col h-full py-gutter shadow-2xl z-40">
+        <div class="px-6 mb-12">
+            <h1 class="font-display-lg text-display-lg tracking-tighter text-primary">AETHER EDU</h1>
+            <p class="font-label-caps text-label-caps text-on-surface-variant opacity-60">Academic Command Center</p>
         </div>
-    </div>
-    <!-- SideNavBar (Suppressed for focused task, but kept as context anchor) -->
-    <!-- Content starts here -->
-    <div class="flex flex-col items-center justify-center min-h-screen px-gutter">
-        <!-- Modal Container -->
-        <div class="glass-card w-full max-w-xl rounded-xl p-8 md:p-12 relative overflow-hidden danger-glow">
-            <!-- Security Status Bar -->
-            <div
-                class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-error to-transparent opacity-50">
+        <nav class="flex-1 px-4 space-y-2">
+            <!-- Active logic: Assume student management is under Dashboard or an implied sub-category -->
+            <a class="flex items-center gap-4 px-4 py-3 rounded transition-all duration-300 text-on-surface-variant hover:bg-white/5 hover:text-primary active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                <span class="font-label-caps text-label-caps uppercase">Dashboard</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded transition-all duration-300 text-primary border-l-2 border-primary bg-primary/10 active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="group">group</span>
+                <span class="font-label-caps text-label-caps uppercase">Alunos</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded transition-all duration-300 text-on-surface-variant hover:bg-white/5 hover:text-primary active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+                <span class="font-label-caps text-label-caps uppercase">Calendar</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded transition-all duration-300 text-on-surface-variant hover:bg-white/5 hover:text-primary active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="grade">grade</span>
+                <span class="font-label-caps text-label-caps uppercase">Grades</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded transition-all duration-300 text-on-surface-variant hover:bg-white/5 hover:text-primary active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+                <span class="font-label-caps text-label-caps uppercase">Assignments</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded transition-all duration-300 text-on-surface-variant hover:bg-white/5 hover:text-primary active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="mail">mail</span>
+                <span class="font-label-caps text-label-caps uppercase">Messages</span>
+            </a>
+        </nav>
+        <div class="px-4 mt-auto">
+            <button
+                class="w-full py-4 bg-primary text-on-primary font-label-caps text-label-caps uppercase tracking-widest hover:opacity-90 transition-opacity active:scale-[0.98]">
+                New Research
+            </button>
+        </div>
+    </aside>
+    <!-- TopNavBar Shell -->
+    <header
+        class="h-20 fixed top-0 right-0 left-[280px] z-30 bg-surface/40 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-container-desktop w-full shadow-sm">
+        <div class="flex items-center gap-6">
+            <div class="relative focus-within:ring-1 focus-within:ring-primary rounded-lg overflow-hidden">
+                <span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl"
+                    data-icon="search">search</span>
+                <input
+                    class="bg-surface-container-lowest border-none pl-12 pr-4 py-2 w-80 text-sm focus:ring-0 text-on-surface"
+                    placeholder="Global Command Search..." type="text" />
             </div>
-            <div class="flex flex-col items-center text-center">
-                <!-- Critical Icon -->
-                <div class="mb-8 p-6 rounded-full bg-error-container/20 border border-error/30 animate-pulse-red">
-                    <span class="material-symbols-outlined text-error text-[64px] neon-text-red"
-                        data-icon="report">report</span>
-                </div>
-                <!-- Header Typography -->
-                <h1 class="font-headline-lg text-headline-lg text-on-surface mb-4 tracking-tight">
-                    Confirmar Exclusão de Conta
-                </h1>
+        </div>
+        <div class="flex items-center gap-6">
+            <button class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors">
+                <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+            </button>
+            <button class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors">
+                <span class="material-symbols-outlined" data-icon="settings">settings</span>
+            </button>
+            <div class="h-10 w-10 bg-primary-container rounded-full overflow-hidden border border-white/10">
+                <img alt="User Profile Avatar" class="w-full h-full object-cover"
+                    data-alt="A professional headshot of a high-level academic administrator for an educational platform. The person has a focused expression, wearing modern minimal glasses. The background is a soft-focus office with blue and black tech accents, maintaining the sleek, futuristic command center aesthetic of the UI."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxOc5Iu4kafwifWfXbEiOkM3EL1l4aotc9RIMoXg-nK57o757HN8p9ATl1sukHPxe-vAKe9tEu8bP1ntWNK-3ZOo099LpR8TkQFPEtAOncDxMyjiASBVF83hPi5niaJ9wm4ea5_l40_d_R3j3in8UOSe8aS70OWZl56k0NurqyhyWHtbHGwn8ayyaUkiplO7fiCTLSMbpRsHIgnNb2mrQHzLEm8FWp7V8Sm5m3ggdILuKQiXBLN_KTKzsNvUeehn3iuhgJseB2Ql2v" />
+            </div>
+        </div>
+    </header>
+    <!-- Main Content Canvas (Background Activity) -->
+    <main class="pl-[280px] pt-20 h-screen w-full relative">
+        <div class="p-gutter grid grid-cols-12 gap-6 opacity-30">
+            <!-- Mock Background Content -->
+            <div class="col-span-12 glass-card rounded-lg p-8 h-40 flex items-end">
                 <div
-                    class="flex items-center gap-2 mb-8 py-2 px-4 rounded-full bg-error-container/30 border border-error/20">
-                    <span class="material-symbols-outlined text-error text-sm" data-icon="security"
-                        style="font-variation-settings: 'FILL' 1;">security</span>
-                    <span class="font-label-caps text-label-caps text-error">Ação Irreversível — Nível de Segurança:
-                        Crítico</span>
+                    class="h-full w-full border border-dashed border-white/20 flex items-center justify-center font-label-caps text-on-surface-variant">
+                    Listagem de Alunos / Filtros Ativos</div>
+            </div>
+            <div class="col-span-4 glass-card rounded-lg h-60"></div>
+            <div class="col-span-4 glass-card rounded-lg h-60"></div>
+            <div class="col-span-4 glass-card rounded-lg h-60"></div>
+        </div>
+        <!-- Confirmation Modal Overlay -->
+        <div class="fixed inset-0 z-50 flex items-center justify-center p-6 modal-overlay">
+            <div
+                class="glass-card w-full max-w-lg rounded-lg shadow-2xl p-10 flex flex-col items-center animate-in fade-in zoom-in duration-300">
+                <!-- Circular Red Icon -->
+                <div
+                    class="w-20 h-20 rounded-full bg-error-container/20 border border-error/30 flex items-center justify-center mb-8">
+                    <span class="material-symbols-outlined text-error text-5xl" data-icon="warning">warning</span>
                 </div>
-                <!-- Warning Content -->
-                <div class="space-y-6 mb-10 text-on-surface-variant">
-                    <p class="font-body-lg text-body-lg">
-                        Você está prestes a encerrar sua jornada no <span class="text-primary font-bold">AETHER
-                            OS</span>. Esta ação removerá permanentemente todos os seus dados de nossos servidores
-                        seguros.
-                    </p>
-                    <!-- Bento-style Data List -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-                        <div class="glass-card p-4 rounded-lg bg-surface-container/50">
-                            <div class="flex items-center gap-3 mb-2">
-                                <span class="material-symbols-outlined text-error"
-                                    data-icon="analytics">analytics</span>
-                                <h3 class="font-label-caps text-label-caps text-on-surface">Histórico Acadêmico</h3>
-                            </div>
-                            <p class="text-xs opacity-70">Notas, créditos e progresso curricular serão eliminados.</p>
-                        </div>
-                        <div class="glass-card p-4 rounded-lg bg-surface-container/50">
-                            <div class="flex items-center gap-3 mb-2">
-                                <span class="material-symbols-outlined text-error"
-                                    data-icon="folder_shared">folder_shared</span>
-                                <h3 class="font-label-caps text-label-caps text-on-surface">Arquivos &amp; Projetos</h3>
-                            </div>
-                            <p class="text-xs opacity-70">Todos os uploads e submissões serão deletados.</p>
-                        </div>
-                        <div class="glass-card p-4 rounded-lg bg-surface-container/50 md:col-span-2">
-                            <div class="flex items-center gap-3 mb-2">
-                                <span class="material-symbols-outlined text-error"
-                                    data-icon="key_visualizer">key_visualizer</span>
-                                <h3 class="font-label-caps text-label-caps text-on-surface">Identidade Digital</h3>
-                            </div>
-                            <p class="text-xs opacity-70">Seu perfil, badges e acessos biométricos serão revogados
-                                imediatamente.</p>
-                        </div>
+                <!-- Modal Title -->
+                <h2 class="font-headline-lg text-headline-lg text-white mb-4">Excluir Aluno</h2>
+                <!-- Warning Text -->
+                <p class="font-body-md text-on-surface-variant text-center mb-8 max-w-sm">
+                    Tem certeza que deseja excluir este aluno? Esta ação não poderá ser desfeita e todos os registros
+                    acadêmicos serão perdidos.
+                </p>
+                <!-- Student Info Card -->
+                <div
+                    class="w-full bg-surface-container-lowest/50 border border-white/5 rounded p-6 mb-10 flex items-center gap-5">
+                    <div class="w-12 h-12 rounded bg-surface-variant flex items-center justify-center overflow-hidden">
+                        <img alt="Student Thumbnail"
+                            data-alt="A small profile thumbnail of a male student named João Silva. The photo is a clean, modern studio portrait with a neutral background, lit with cool tones that align with the electric blue and dark slate color palette of the AETHER EDU command center system."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH_VvQhQtbD8N2Ieq8zdj7z5lNln-juZv3K1ruAldMjrCVn9fGrQsDcMLmEZy2l_Vm0F-8Np0FD1BBTMRmF_NYzTTRnTasydhNipZ8cTmLcYBtpCnKlIkulggv3cYUZ0vGZoWpoEw6QFsr6ENm1dkZSeBtLSTIPVzRuadrbqKklX6LQZuvWOnNog7QCpVxwiZAAk4kN0zfUlOO2BCUmN62esy3vU61dS7vCKIAxQakG1jeS7p8KoekPfGv1fV6CFlo6Z-5-OA1-DGO" />
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-headline-md text-headline-md text-primary">João Silva</span>
+                        <span
+                            class="font-label-caps text-label-caps text-on-surface-variant opacity-60">joao@email.com</span>
                     </div>
                 </div>
-                <!-- Action Buttons -->
-                <div class="flex flex-col md:flex-row-reverse gap-4 w-full">
-                    <!-- Danger Action -->
+                <!-- Actions -->
+                <div class="flex gap-4 w-full">
                     <button
-                        class="flex-1 bg-error-container text-on-error-container hover:bg-error transition-all duration-300 font-label-caps text-label-caps py-4 rounded-lg flex items-center justify-center gap-2 active:scale-95 group">
-                        Confirmar Exclusão
-                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform"
-                            data-icon="delete_forever">delete_forever</span>
+                        class="flex-1 py-4 border border-outline-variant text-on-surface font-label-caps text-label-caps uppercase tracking-widest hover:bg-white/5 transition-all duration-300 active:scale-[0.98]">
+                        Cancelar
                     </button>
-                    <!-- Cancel Action -->
                     <button
-                        class="flex-1 border border-outline/30 hover:bg-white/5 text-on-surface transition-all duration-300 font-label-caps text-label-caps py-4 rounded-lg active:scale-95"
-                        onclick="window.history.back()">
-                        Manter Conta
+                        class="flex-1 py-4 bg-error text-on-error font-label-caps text-label-caps uppercase tracking-widest hover:opacity-90 transition-all duration-300 active:scale-[0.98]">
+                        Excluir Aluno
                     </button>
                 </div>
-                <p class="mt-8 text-xs text-on-surface-variant/40 italic">
-                    Ao confirmar, você aceita que a recuperação destes dados não é possível via suporte técnico.
-                </p>
             </div>
         </div>
-        <!-- System Image Background Decor -->
-        <div class="mt-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-700 max-w-sm hidden md:block">
-            <img alt="Security confirmation" class="w-full h-24 object-cover rounded-xl border border-white/5"
-                data-alt="A macro close-up of a high-tech obsidian keyboard with a single glowing red emergency key in a dark, futuristic laboratory setting. The lighting is moody and cinematic, with deep shadows and sharp electric blue highlights reflecting off glass surfaces. The style is ultra-modern and professional, evoking a sense of high-stakes digital security and critical system commands. The overall color palette is dominated by deep blacks and cool grays, contrasted by a vibrant neon red light source."
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsOgr9DLiV_iKxpe4RmdVFXv2atkVS_urYSHpP1FXqNMA1bS9-GLEe0_4ibzJqR2iuMwdCMyQ2mfGTWcM3gbGAtlhsghIViDBdEOGBwBV1xYB4fEJPlDysyZyjKSh2ux2NTS0PmSC3TNkCF2OWio3JpbU0Ten4Bt00STEJp1Q-uaPFknhLm3IN_NwiDS8q57fIypsL9raXHvndNAvX0kabG1-d8E_lepWVfIZETewACtFybPlm0ynjrBUZft18YYlprKXkll3oIZZJ" />
-        </div>
-    </div>
-    <!-- Micro-interactions Script -->
+    </main>
     <script>
-        // Atmospheric tilt effect for the card
-        const card = document.querySelector('.glass-card');
-        document.addEventListener('mousemove', (e) => {
-            const xAxis = (window.innerWidth / 2 - e.pageX) / 50;
-            const yAxis = (window.innerHeight / 2 - e.pageY) / 50;
-            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-        });
-
-        // Soften entrance animation
-        window.addEventListener('load', () => {
-            card.style.opacity = '0';
-            card.style.transform = 'scale(0.95) translateY(20px)';
-            card.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-
-            setTimeout(() => {
-                card.style.opacity = '1';
-                card.style.transform = 'scale(1) translateY(0)';
-            }, 100);
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                const icon = button.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.style.fontVariationSettings = "'FILL' 1, 'wght' 400";
+                }
+            });
+            button.addEventListener('mouseleave', () => {
+                const icon = button.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.style.fontVariationSettings = "'FILL' 0, 'wght' 400";
+                }
+            });
         });
     </script>
 </body>

@@ -1,32 +1,33 @@
 <?php
 
- //require_once 'conexao.php';
+//require_once 'conexao.php';
 
-$sql = "SELECT
-            notas.id,
-            alunos.nome,
-            notas.disciplina,
-            notas.nota
-        FROM notas
-        INNER JOIN alunos
-        ON notas.aluno_id = alunos.id";
+//$sql = "SELECT
+//            notas.id,
+//          alunos.nome,
+//         notas.disciplina,
+//        notas.nota
+//    FROM notas
+//   INNER JOIN alunos
+//   ON notas.aluno_id = alunos.id";
 
- //$stmt = $pdo->prepare($sql);
+//$stmt = $pdo->prepare($sql);
 //$stmt->execute();
 
 //$notas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html class="dark" lang="pt-BR">
+
+<html class="dark" lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>AETHER OS - Grade Detail</title>
+    <title>AETHER EDU | Notas</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500&amp;display=swap"
         rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -40,53 +41,53 @@ $sql = "SELECT
             theme: {
                 extend: {
                     "colors": {
+                        "primary": "#adc6ff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "surface-container-lowest": "#0b0e16",
+                        "on-surface-variant": "#c1c6d7",
+                        "on-secondary-container": "#b6b8c1",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb595",
+                        "outline": "#8b90a0",
+                        "surface-container-high": "#272a32",
+                        "surface-bright": "#363942",
                         "on-secondary-fixed": "#191c22",
+                        "on-background": "#e0e2ed",
+                        "surface-variant": "#31353d",
+                        "background": "#10131b",
+                        "surface-dim": "#10131b",
+                        "primary-fixed": "#d8e2ff",
+                        "secondary": "#c4c6cf",
+                        "on-primary-fixed-variant": "#004493",
+                        "on-secondary-fixed-variant": "#44474e",
+                        "on-primary": "#002e69",
+                        "error": "#ffb4ab",
                         "surface-container-low": "#181c23",
-                        "on-tertiary-fixed-variant": "#7c2e00",
-                        "on-surface": "#e0e2ed",
+                        "on-tertiary-container": "#4c1a00",
+                        "secondary-container": "#464950",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#c4c6cf",
+                        "surface-container": "#1c2028",
+                        "on-tertiary": "#571e00",
+                        "outline-variant": "#414755",
+                        "on-tertiary-fixed": "#351000",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-tint": "#adc6ff",
+                        "tertiary": "#ffb595",
                         "on-primary-container": "#00285c",
                         "primary-container": "#4b8eff",
-                        "surface-container-highest": "#31353d",
-                        "surface": "#10131b",
-                        "secondary-fixed-dim": "#c4c6cf",
-                        "error-container": "#93000a",
-                        "tertiary-container": "#ef6719",
-                        "on-secondary": "#2e3037",
-                        "on-error-container": "#ffdad6",
-                        "on-tertiary": "#571e00",
-                        "on-surface-variant": "#c1c6d7",
-                        "on-secondary-fixed-variant": "#44474e",
-                        "inverse-primary": "#005bc1",
-                        "tertiary": "#ffb595",
-                        "error": "#ffb4ab",
-                        "on-tertiary-fixed": "#351000",
-                        "primary": "#adc6ff",
-                        "on-secondary-container": "#b6b8c1",
-                        "surface-container-lowest": "#0b0e16",
-                        "surface-container-high": "#272a32",
-                        "secondary-container": "#464950",
-                        "surface-container": "#1c2028",
                         "on-primary-fixed": "#001a41",
-                        "on-primary": "#002e69",
-                        "inverse-on-surface": "#2d3039",
-                        "surface-bright": "#363942",
-                        "on-background": "#e0e2ed",
-                        "tertiary-fixed": "#ffdbcc",
-                        "outline-variant": "#414755",
-                        "on-primary-fixed-variant": "#004493",
                         "secondary-fixed": "#e1e2eb",
-                        "secondary": "#c4c6cf",
-                        "tertiary-fixed-dim": "#ffb595",
-                        "surface-variant": "#31353d",
-                        "surface-dim": "#10131b",
-                        "primary-fixed-dim": "#adc6ff",
-                        "primary-fixed": "#d8e2ff",
-                        "on-error": "#690005",
-                        "on-tertiary-container": "#4c1a00",
+                        "on-secondary": "#2e3037",
+                        "tertiary-container": "#ef6719",
+                        "on-surface": "#e0e2ed",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#31353d",
                         "inverse-surface": "#e0e2ed",
-                        "surface-tint": "#adc6ff",
-                        "background": "#10131b",
-                        "outline": "#8b90a0"
+                        "inverse-primary": "#005bc1",
+                        "surface": "#10131b",
+                        "on-tertiary-fixed-variant": "#7c2e00",
+                        "inverse-on-surface": "#2d3039"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.25rem",
@@ -95,28 +96,28 @@ $sql = "SELECT
                         "full": "9999px"
                     },
                     "spacing": {
-                        "container-padding-mobile": "20px",
-                        "gutter": "24px",
                         "unit": "4px",
                         "sidebar-width": "280px",
-                        "container-padding-desktop": "40px"
+                        "container-padding-mobile": "20px",
+                        "container-padding-desktop": "40px",
+                        "gutter": "24px"
                     },
                     "fontFamily": {
-                        "display-lg": ["Inter"],
-                        "headline-md": ["Inter"],
-                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
                         "label-caps": ["Space Grotesk"],
                         "headline-lg-mobile": ["Inter"],
-                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
                         "body-lg": ["Inter"]
                     },
                     "fontSize": {
-                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
-                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
                         "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
                         "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
-                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
                         "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
                     }
                 },
@@ -125,182 +126,305 @@ $sql = "SELECT
     </script>
     <style>
         .glass-card {
-            background: rgba(255, 255, 255, 0.07);
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .sidebar-blur {
-            background: rgba(24, 28, 35, 0.4);
-            backdrop-filter: blur(32px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top-color: rgba(255, 255, 255, 0.15);
         }
 
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
 
-        body {
-            background-color: #0B0E14;
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #414755;
+            border-radius: 10px;
         }
     </style>
 </head>
 
-<body class="text-on-surface selection:bg-primary selection:text-on-primary">
-    <!-- TopNavBar -->
-    <nav
-        class="bg-surface/60 backdrop-blur-xl text-primary font-body-md text-body-md docked full-width top-0 sticky z-50 border-b border-white/10 flex justify-between items-center w-full px-gutter h-16">
-        <div class="flex items-center gap-6">
-            <span class="font-label-caps text-label-caps tracking-widest text-primary uppercase">AETHER EDU</span>
-        <div class="flex items-center gap-4">
-            <button
-                class="material-symbols-outlined hover:text-primary transition-colors duration-200">notifications</button>
-            <button
-                class="material-symbols-outlined hover:text-primary transition-colors duration-200">settings</button>
-            <button class="material-symbols-outlined hover:text-primary transition-colors duration-200">help</button>
-            <div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20">
-                <img alt="User profile" class="w-full h-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRWhW-2L3XsUP6VLEevuVgND5rnG-6JMPt6P831ZUrQ93SAkvcx8J3JiLAnlfIHcoGX_pSsO8N7Ri4DS6iFMkuzmz9GBsjFSNMf2EKFo_x7BIE9lNceXot-QBxqU4PoHV9z34jwQw_alPqOs1JL2knOLJz_xpJc_FVrBjhvJSThaXioZjVJvhNP56dcLhIisH6CzwNrHG91sSGg4c9JQnfvXyiEeDQoor4Cqc_ProSHSpKVjtDUYl1BLlJt5U--USX8XxnN3buB7-J" />
+<body
+    class="bg-background text-on-background font-body-md overflow-x-hidden selection:bg-primary/30 selection:text-primary">
+    <!-- SideNavBar -->
+    <aside
+        class="fixed left-0 top-0 h-full w-sidebar-width bg-surface-container dark:bg-surface-container-lowest/80 backdrop-blur-xl border-r border-outline-variant/10 flex flex-col z-50">
+        <div class="p-gutter flex items-center gap-3">
+            <div class="w-10 h-10 bg-primary/20 rounded flex items-center justify-center border border-primary/30">
+                <span class="material-symbols-outlined text-primary">auto_awesome</span>
+            </div>
+            <div>
+                <h1 class="font-label-caps text-label-caps tracking-widest text-primary uppercase">AETHER EDU</h1>
+                <p class="text-[10px] text-on-surface-variant font-medium tracking-tight">Academic OS</p>
             </div>
         </div>
-    </nav>
-    <div class="flex min-h-[calc(100vh-64px)]">
-        <!-- SideNavBar -->
-        <aside
-            class="hidden md:flex flex-col py-8 px-4 gap-y-2 fixed left-0 top-16 h-[calc(100vh-64px)] w-sidebar-width bg-surface-container-low/40 backdrop-blur-2xl border-r border-white/10 z-40">
-            <div class="mb-8 px-2">
-                <h2 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tighter">AETHER OS</h2>
-                <p class="font-label-caps text-label-caps text-on-surface-variant opacity-60">Academic Command</p>
-            </div>
-            <nav class="space-y-1">
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all group"
-                    href="#">
-                    <span class="material-symbols-outlined">grid_view</span>
-                    <span class="font-label-caps text-label-caps">Painel</span>
-                </a>
-                 <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
+        <nav class="flex-1 mt-6 px-4 space-y-2">
+            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-variant/20 hover:text-primary transition-colors group"
                 href="#">
-                <span class="material-symbols-outlined" data-icon="school">school</span>
-                <span class="font-body-md text-body-md">Alunos</span>
-                </a>
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary border-l-2 border-primary bg-primary/5 transition-all group"
-                    href="#">
-                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
-                    <span class="font-label-caps text-label-caps">Notas</span>
-                </a>
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all group"
-                    href="#">
-                    <span class="material-symbols-outlined">assignment</span>
-                    <span class="font-label-caps text-label-caps">Tarefas</span>
-                </a>
-            </nav>
-            <div class="mt-auto space-y-1">
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-error/80 hover:bg-error/5 transition-all group"
-                    href="#">
-                    <span class="material-symbols-outlined">logout</span>
-                    <span class="font-label-caps text-label-caps">Sair</span>
-                </a>
-            </div>
-        </aside>
-        <!-- Main Content -->
-        <main class="flex-1 md:ml-sidebar-width p-gutter md:p-container-desktop">
-            <div class="max-w-4xl mx-auto">
-                <!-- Back Button & Title -->
-                <div class="flex items-center justify-between mb-12">
-                    <div class="flex flex-col gap-2">
-                        <button
-                            class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors group mb-4"
-                            onclick="history.back()">
-                            <span
-                                class="material-symbols-outlined transition-transform group-hover:-translate-x-1">arrow_back</span>
-                            <span class="font-label-caps text-label-caps">Voltar para listagem</span>
-                        </button>
-                        <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Detalhes da
-                            Avaliação</h1>
-                    </div>
-                </div>
-                <!-- Grade Detail Card -->
-                <div class="glass-card rounded-xl overflow-hidden shadow-2xl relative">
-                    <!-- Tech Glow Decoration -->
-                    <div
-                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/40 to-transparent">
-                    </div>
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-[80px] rounded-full -mr-16 -mt-16">
-                    </div>
-                    <div class="p-8 md:p-12">
-                        <!-- Header Information -->
-                        <div
-                            class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12 border-b border-white/5 pb-12">
-                            <div>
-                                <p class="font-label-caps text-label-caps text-primary mb-2">DISCIPLINA</p>
-                                <h2 class="font-display-lg text-display-lg md:text-display-lg text-on-surface">
-                                    Arquitetura de Sistemas Cloud</h2>
-                                <div class="flex items-center gap-4 mt-4">
-                                    <div
-                                        class="flex items-center gap-2 glass-card bg-surface-container-high/40 px-3 py-1.5 rounded-full">
-                                        <span
-                                            class="material-symbols-outlined text-[18px] text-on-surface-variant">calendar_today</span>
-                                        <span class="font-label-caps text-label-caps text-on-surface-variant">2º
-                                            Semestre • 2023</span>
-                                    </div>
-                                    <div
-                                        class="flex items-center gap-2 glass-card bg-surface-container-high/40 px-3 py-1.5 rounded-full">
-                                        <span
-                                            class="material-symbols-outlined text-[18px] text-on-surface-variant">event_available</span>
-                                        <span class="font-label-caps text-label-caps text-on-surface-variant">Registrado
-                                            em 14 Nov 2023</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col items-end gap-3 min-w-[180px]">
-                                <p class="font-label-caps text-label-caps text-on-surface-variant">NOTA FINAL</p>
-                                <div
-                                    class="text-[64px] font-bold text-on-surface leading-none tracking-tighter flex items-start">
-                                    9.8<span
-                                        class="text-headline-md text-on-surface-variant font-normal opacity-50 mt-2">/10</span>
-                                </div>
-                                <span
-                                    class="bg-primary/20 text-primary px-4 py-1.5 rounded-full font-label-caps text-label-caps border border-primary/30 animate-pulse">
-                                    EXCELENTE
-                                </span>
-                            </div>
-                        </div>
-                        <!-- Content Grid -->
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-                            <!-- Teacher Observations -->
-                            
-                    <!-- Footer Action -->
-                    <div
-                        class="bg-surface-container-high/20 border-t border-white/5 p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-                        <div class="flex items-center gap-2 text-on-surface-variant">
-                            <span class="material-symbols-outlined text-[18px]">verified_user</span>
-                        </div>
-                        <button
-                            class="bg-primary text-on-primary-fixed px-8 py-3 rounded-lg font-label-caps text-label-caps font-bold hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/20">
-                            Editar
-                        </button>
-                    </div>
-                </div>
-                <!-- Related Content -->
+                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">dashboard</span>
+                <span class="font-body-md">Dashboard</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-variant/20 hover:text-primary transition-colors group"
+                href="#">
+                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">calendar_month</span>
+                <span class="font-body-md">Calendar</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-primary font-bold border-l-2 border-primary bg-primary/5 group"
+                href="#">
+                <span class="material-symbols-outlined scale-110">grade</span>
+                <span class="font-body-md">Grades</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-variant/20 hover:text-primary transition-colors group"
+                href="#">
+                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">assignment</span>
+                <span class="font-body-md">Assignments</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:bg-surface-variant/20 hover:text-primary transition-colors group"
+                href="#">
+                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">mail</span>
+                <span class="font-body-md">Messages</span>
+            </a>
+        </nav>
+        <div class="p-gutter border-t border-outline-variant/10">
+            <a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant font-medium hover:text-error transition-colors group"
+                href="#">
+                <span
+                    class="material-symbols-outlined group-hover:translate-x-[-2px] transition-transform">logout</span>
+                <span class="font-body-md">Sair</span>
+            </a>
+        </div>
+    </aside>
+    <!-- Main Content Wrapper -->
+    <main class="ml-sidebar-width min-h-screen">
+        <!-- TopNavBar -->
+        <header
+            class="flex justify-between items-center h-16 px-container-padding-desktop bg-surface/40 dark:bg-surface-dim/40 backdrop-blur-2xl border-b border-outline-variant/10 sticky top-0 z-40">
+            <div class="flex items-center gap-6">
+                <div class="relative group">
+                    <span
+                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none group-focus-within:text-primary transition-colors">search</span>
+                    <input
+                        class="bg-surface-container-low border border-outline-variant/20 rounded-lg pl-10 pr-4 py-2 text-sm w-64 focus:outline-none focus:border-primary/50 transition-all placeholder:text-outline-variant"
+                        placeholder="Procurar nota..." type="text" />
                 </div>
             </div>
-        </main>
-    </div>
-    <!-- Atmospheric Glow Background Elements -->
-    <div
-        class="fixed top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-primary/5 blur-[120px] pointer-events-none z-[-1]">
-    </div>
-    <div
-        class="fixed bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-tertiary/5 blur-[150px] pointer-events-none z-[-1]">
-    </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/20 rounded-full">
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+                <button
+                    class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-variant/20 rounded-full">
+                    <span class="material-symbols-outlined">settings</span>
+                </button>
+                <div class="w-px h-6 bg-outline-variant/20 mx-2"></div>
+                <div class="flex items-center gap-3 pl-2">
+                    <div class="text-right">
+                        <p class="text-xs font-bold text-on-surface leading-none">Prof. Ricardo</p>
+                        <p class="text-[10px] text-on-surface-variant uppercase tracking-wider mt-1">Matemática</p>
+                    </div>
+                    <img alt="User Profile" class="w-8 h-8 rounded-lg border border-outline-variant/30"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-P1DvUqoS8UsWf3Zl5YL8b7JdcPhRD8pkrWf5Oeju3EPvlXCvASq5vbZ6c4YU0BlQBACNQvbPaH_65eOL73Ku3pyB3ntIkcTgOfgxICkhJkGF0JLHm36IVOSHxcczAkHclJowcya2plSVzXvaE9C9k_3I5yrkHEhdGz0B7CHlbLmKLyUv5ojMruSY2IVD39sAt3igrCg8dZR38lAIR-qStujppMbYmftjCW5SJL_zqFMrDrETGrrDvQZwDnf-NJLOVPuDZiEM4H5g" />
+                </div>
+            </div>
+        </header>
+        <!-- Page Content -->
+        <div class="p-container-padding-desktop max-w-[1440px] mx-auto">
+            <!-- Content Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                <div>
+                    <h2 class="font-headline-lg text-headline-lg text-on-surface">Notas</h2>
+                    <p class="text-on-surface-variant mt-2 font-body-md">Gerencie as notas dos alunos.</p>
+                </div>
+                <a class="bg-primary text-on-primary px-6 py-3 rounded-lg font-bold flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all shadow-lg shadow-primary/20"
+                    href="create.php">
+                    <span class="material-symbols-outlined">add</span>
+                    <span>Adicionar Nota</span>
+                </a>
+            </div>
+            <!-- Table Section -->
+            <div class="glass-card rounded-xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-outline-variant/20 bg-white/5">
+                                <th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant">ID</th>
+                                <th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant">ALUNO</th>
+                                <th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant">DISCIPLINA
+                                </th>
+                                <th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant">NOTA</th>
+                                <th
+                                    class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant text-right">
+                                    AÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-outline-variant/10">
+                            <!-- Placeholder Data Rows -->
+                            <!-- In production, this would be: while($row = $result->fetch_assoc()) { ... } -->
+                            <!-- Mock Row 1 -->
+                            <tr class="hover:bg-white/[0.02] transition-colors group">
+                                <td class="px-6 py-5 text-on-surface-variant font-label-caps">#1</td>
+                                <td class="px-6 py-5 font-medium text-on-surface">João Silva</td>
+                                <td class="px-6 py-5 text-on-surface-variant">Matemática</td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="px-3 py-1 rounded bg-primary-container/20 text-primary border border-primary/20 font-bold text-sm">9.5</span>
+                                </td>
+                                <td class="px-6 py-5 text-right">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <a class="w-9 h-9 flex items-center justify-center rounded bg-surface-variant/30 text-on-surface-variant hover:text-primary hover:bg-primary/10 transition-all"
+                                            href="update.php?id=1" title="Editar">
+                                            <span class="material-symbols-outlined text-[18px]">edit</span>
+                                        </a>
+                                        <button
+                                            class="w-9 h-9 flex items-center justify-center rounded bg-surface-variant/30 text-on-surface-variant hover:text-error hover:bg-error/10 transition-all"
+                                            onclick="confirmDelete(1)" title="Excluir">
+                                            <span class="material-symbols-outlined text-[18px]">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Mock Row 2 -->
+                            <tr class="hover:bg-white/[0.02] transition-colors group">
+                                <td class="px-6 py-5 text-on-surface-variant font-label-caps">#2</td>
+                                <td class="px-6 py-5 font-medium text-on-surface">Maria Souza</td>
+                                <td class="px-6 py-5 text-on-surface-variant">Português</td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="px-3 py-1 rounded bg-primary-container/20 text-primary border border-primary/20 font-bold text-sm">8.7</span>
+                                </td>
+                                <td class="px-6 py-5 text-right">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <a class="w-9 h-9 flex items-center justify-center rounded bg-surface-variant/30 text-on-surface-variant hover:text-primary hover:bg-primary/10 transition-all"
+                                            href="update.php?id=2">
+                                            <span class="material-symbols-outlined text-[18px]">edit</span>
+                                        </a>
+                                        <button
+                                            class="w-9 h-9 flex items-center justify-center rounded bg-surface-variant/30 text-on-surface-variant hover:text-error hover:bg-error/10 transition-all"
+                                            onclick="confirmDelete(2)">
+                                            <span class="material-symbols-outlined text-[18px]">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Mock Row 3 -->
+                            <tr class="hover:bg-white/[0.02] transition-colors group">
+                                <td class="px-6 py-5 text-on-surface-variant font-label-caps">#3</td>
+                                <td class="px-6 py-5 font-medium text-on-surface">Carlos Oliveira</td>
+                                <td class="px-6 py-5 text-on-surface-variant">História</td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="px-3 py-1 rounded bg-primary-container/20 text-primary border border-primary/20 font-bold text-sm">7.8</span>
+                                </td>
+                                <td class="px-6 py-5 text-right">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <a class="w-9 h-9 flex items-center justify-center rounded bg-surface-variant/30 text-on-surface-variant hover:text-primary hover:bg-primary/10 transition-all"
+                                            href="update.php?id=3">
+                                            <span class="material-symbols-outlined text-[18px]">edit</span>
+                                        </a>
+                                        <button
+                                            class="w-9 h-9 flex items-center justify-center rounded bg-surface-variant/30 text-on-surface-variant hover:text-error hover:bg-error/10 transition-all"
+                                            onclick="confirmDelete(3)">
+                                            <span class="material-symbols-outlined text-[18px]">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Mock Row 4 -->
+                            <tr class="hover:bg-white/[0.02] transition-colors group">
+                                <td class="px-6 py-5 text-on-surface-variant font-label-caps">#4</td>
+                                <td class="px-6 py-5 font-medium text-on-surface">Ana Pereira</td>
+                                <td class="px-6 py-5 text-on-surface-variant">Inglês</td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="px-3 py-1 rounded bg-primary-container/20 text-primary border border-primary/20 font-bold text-sm">9.2</span>
+                                </td>
+                                <td class="px-6 py-5 text-right">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <a class="w-9 h-9 flex items-center justify-center rounded bg-surface-variant/30 text-on-surface-variant hover:text-primary hover:bg-primary/10 transition-all"
+                                            href="update.php?id=4">
+                                            <span class="material-symbols-outlined text-[18px]">edit</span>
+                                        </a>
+                                        <button
+                                            class="w-9 h-9 flex items-center justify-center rounded bg-surface-variant/30 text-on-surface-variant hover:text-error hover:bg-error/10 transition-all"
+                                            onclick="confirmDelete(4)">
+                                            <span class="material-symbols-outlined text-[18px]">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Mock Row 5 -->
+                            <tr class="hover:bg-white/[0.02] transition-colors group">
+                                <td class="px-6 py-5 text-on-surface-variant font-label-caps">#5</td>
+                                <td class="px-6 py-5 font-medium text-on-surface">Lucas Costa</td>
+                                <td class="px-6 py-5 text-on-surface-variant">Física</td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="px-3 py-1 rounded bg-primary-container/20 text-primary border border-primary/20 font-bold text-sm">8.1</span>
+                                </td>
+                                <td class="px-6 py-5 text-right">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <a class="w-9 h-9 flex items-center justify-center rounded bg-surface-variant/30 text-on-surface-variant hover:text-primary hover:bg-primary/10 transition-all"
+                                            href="update.php?id=5">
+                                            <span class="material-symbols-outlined text-[18px]">edit</span>
+                                        </a>
+                                        <button
+                                            class="w-9 h-9 flex items-center justify-center rounded bg-surface-variant/30 text-on-surface-variant hover:text-error hover:bg-error/10 transition-all"
+                                            onclick="confirmDelete(5)">
+                                            <span class="material-symbols-outlined text-[18px]">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Pagination / Status Footer -->
+                <div class="px-6 py-4 bg-white/5 border-t border-outline-variant/10 flex items-center justify-between">
+                    <p class="text-[12px] text-on-surface-variant font-medium">Mostrando <span
+                            class="text-on-surface">5</span> de <span class="text-on-surface">32</span> lançamentos</p>
+                    <div class="flex items-center gap-1">
+                        <button
+                            class="w-8 h-8 flex items-center justify-center rounded text-on-surface-variant hover:bg-surface-variant/30 transition-colors">
+                            <span class="material-symbols-outlined text-[18px]">chevron_left</span>
+                        </button>
+                        <button
+                            class="w-8 h-8 flex items-center justify-center rounded bg-primary text-on-primary font-bold text-xs">1</button>
+                        <button
+                            class="w-8 h-8 flex items-center justify-center rounded text-on-surface-variant hover:bg-surface-variant/30 transition-colors font-bold text-xs">2</button>
+                        <button
+                            class="w-8 h-8 flex items-center justify-center rounded text-on-surface-variant hover:bg-surface-variant/30 transition-colors font-bold text-xs">3</button>
+                        <button
+                            class="w-8 h-8 flex items-center justify-center rounded text-on-surface-variant hover:bg-surface-variant/30 transition-colors">
+                            <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
     <script>
-        // Simple micro-interaction for cards
-        document.querySelectorAll('.glass-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
+        function confirmDelete(id) {
+            if (confirm("Tem certeza que deseja excluir esta nota? Esta ação não pode ser desfeita.")) {
+                window.location.href = `delete.php?id=${id}`;
+            }
+        }
+
+        // Atmospheric hover effect for rows
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('mousemove', (e) => {
+                const rect = row.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
+                row.style.setProperty('--mouse-x', `${x}px`);
+                row.style.setProperty('--mouse-y', `${y}px`);
             });
         });
     </script>

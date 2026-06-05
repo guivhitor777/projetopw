@@ -49,23 +49,6 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(173, 198, 255, 0.3), transparent);
         }
-
-        .glow-blue {
-            box-shadow: 0 0 20px rgba(0, 91, 193, 0.2);
-        }
-
-        .chart-bar {
-            transition: height 1s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-link-hover {
-            transition: all 0.3s ease;
-        }
-
-        .nav-link-hover:hover {
-            color: #adc6ff;
-            text-shadow: 0 0 8px rgba(173, 198, 255, 0.5);
-        }
     </style>
     <script id="tailwind-config">
         tailwind.config = {
@@ -73,53 +56,18 @@
             theme: {
                 extend: {
                     colors: {
-                        "on-secondary": "#2e3037",
-                        "secondary": "#c4c6cf",
-                        "on-tertiary": "#571e00",
-                        "on-error": "#690005",
-                        "on-error-container": "#ffdad6",
-                        "surface-container-highest": "#31353d",
-                        "surface-bright": "#363942",
-                        "inverse-on-surface": "#2d3039",
-                        "secondary-container": "#464950",
-                        "inverse-primary": "#005bc1",
-                        "on-secondary-fixed": "#191c22",
-                        "tertiary-fixed-dim": "#ffb595",
-                        "outline-variant": "#414755",
-                        "primary-fixed": "#d8e2ff",
-                        "on-primary-fixed-variant": "#004493",
-                        "inverse-surface": "#e0e2ed",
-                        "on-primary-fixed": "#001a41",
-                        "error": "#ffb4ab",
-                        "surface-container-lowest": "#0b0e16",
-                        "tertiary-fixed": "#ffdbcc",
-                        "primary-fixed-dim": "#adc6ff",
                         "primary-container": "#4b8eff",
-                        "outline": "#8b90a0",
                         "tertiary-container": "#ef6719",
-                        "error-container": "#93000a",
-                        "secondary-fixed-dim": "#c4c6cf",
                         "primary": "#adc6ff",
-                        "tertiary": "#ffb595",
                         "surface": "#10131b",
-                        "on-tertiary-fixed": "#351000",
-                        "on-tertiary-container": "#4c1a00",
                         "surface-variant": "#31353d",
                         "surface-container": "#1c2028",
-                        "secondary-fixed": "#e1e2eb",
-                        "on-surface": "#e0e2ed",
-                        "on-surface-variant": "#c1c6d7",
-                        "on-background": "#e0e2ed",
-                        "surface-dim": "#10131b",
-                        "surface-tint": "#adc6ff",
                         "on-secondary-fixed-variant": "#44474e",
                         "background": "#10131b",
                         "surface-container-low": "#181c23",
                         "surface-container-high": "#272a32",
                         "on-secondary-container": "#b6b8c1",
                         "on-primary": "#002e69",
-                        "on-primary-container": "#00285c",
-                        "on-tertiary-fixed-variant": "#7c2e00"
                     },
                     borderRadius: {
                         "DEFAULT": "0.25rem",
@@ -161,35 +109,52 @@
 <body class="bg-background text-on-background min-h-screen">
     <!-- SideNavBar -->
     <aside
-        class="fixed left-0 top-0 h-full w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
-        <div class="mb-10 px-4">
-            <h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter">Aluno Modern</h1>
+    class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
+
+    <div class="mb-10 px-4">
+        <h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter">
+            Aluno Modern
+        </h1>
+    </div>
+
+    <nav class="flex flex-col flex-1">
+
+        <div class="space-y-2">
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary"
+                href="#">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span>Painel</span>
+            </a>
+
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                href="../alunos/read.php">
+                <span class="material-symbols-outlined">school</span>
+                <span>Alunos</span>
+            </a>
+
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                href="../notas/read.php">
+                <span class="material-symbols-outlined">grade</span>
+                <span>Notas</span>
+            </a>
+
+            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                href="../tarefas/read.php">
+                <span class="material-symbols-outlined">assignment</span>
+                <span>Tarefas</span>
+            </a>
         </div>
-        <nav class="flex-1 space-y-2">
-            <!-- Active: Dashboard -->
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary transition-all duration-300"
-                href="#">
-                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-                <span class="font-body-md text-body-md">Painel</span>
-            </a>
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
-                href="#">
-                <span class="material-symbols-outlined" data-icon="school">school</span>
-                <span class="font-body-md text-body-md">Alunos</span>
-            </a>
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
-                href="#">
-                <span class="material-symbols-outlined" data-icon="grade">grade</span>
-                <span class="font-body-md text-body-md">Notas</span>
-            </a>
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
-                href="#">
-                <span class="material-symbols-outlined" data-icon="assignment">assignment</span>
-                <span class="font-body-md text-body-md">Tarefas</span>
-            </a>
-        </nav>
-        </div>
-    </aside>
+
+        <!-- Sair sempre embaixo -->
+        <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+            href="logout.php">
+            <span class="material-symbols-outlined">logout</span>
+            <span>Sair</span>
+        </a>
+
+    </nav>
+
+</aside>
     <!-- Main Content Area -->
     <main class="ml-[280px] min-h-screen">
         <!-- TopNavBar -->
@@ -201,12 +166,9 @@
             </div>
             <div class="flex items-center gap-3 pl-4 border-l border-white/10">
                 <div class="text-right">
-                    <p class="font-label-caps text-[10px] text-primary">Nível 4 - Engenharia</p>
-                    <p class="font-body-md text-sm font-bold">Arthur Pendragon</p>
+                    <p class="font-label-caps text-[10px] text-primary">Nível Máx.</p>
+                    <p class="font-body-md text-sm font-bold">Adminitrador</p>
                 </div>
-                <img alt="Student Profile" class="w-10 h-10 rounded-full border border-primary/30"
-                    data-alt="A highly detailed portrait of a focused male student with sharp features, wearing a modern, minimalist technical collar. The lighting is dramatic and cinematic, with cool blue neon rim lights against a deep dark background, reflecting a professional high-tech aerospace aesthetic. The mood is serious and intellectual."
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxlZ-V7Oxmx5hEZGmpoqt2Tdnpq9hzLWIZugfukVXHTzvPfEtYZYK9PNgZxdq-r3qlxYIcqb0whYjU1cspVA_UKAenI8rb9k5B3hYM-tAeTaCg3STv64sd77dVVSaHQFGhr5pmkGCe8Z4wqYg4XTbdbrqb375P0p6Y_mkV4Wdy-_egOy51CAG9q0-tW59Bzmu43UmZfCtn8vfZ0AOvKjMFbLJvi8IbCnPS11tGpAHbmQyFwbVXmPHKwGaNv_rUkJx9elc4jirUVFMQ" />
             </div>
             </div>
         </header>
@@ -270,14 +232,12 @@
         </div>
         <!-- 3. Middle Row (Evolution & Status) -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
-            <!-- Footer Decoration -->
-            <footer class="p-gutter text-center border-t border-white/5 mt-10">
-                <p class="font-label-caps text-[10px] text-on-surface-variant tracking-widest uppercase opacity-40">
-                    AETHER EDU Core v4.2.0 • Sincronização Encriptada via Protocolo Quantum-Link
-                </p>
-            </footer>
+        <footer class="text-center py-6 border-t border-white/10 mt-10">
+    <p class="text-sm text-gray-400">
+        Sistema Escolar • Projeto PW
+    </p>
+</footer>
     </main>
-    <!-- Contextual FAB (Only for main screens) -->
 </body>
 
 </html>

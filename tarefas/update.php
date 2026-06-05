@@ -1,36 +1,36 @@
 <?php
 
-require_once 'conexao.php';
+//require_once 'conexao.php';
 
-$id = $_GET['id'] ?? 0;
+//$id = $_GET['id'] ?? 0;
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $titulo = trim($_POST['titulo']);
-    $descricao = trim($_POST['descricao']);
-    $data_entrega = $_POST['data_entrega'];
-    $status = $_POST['status'];
+ //   $titulo = trim($_POST['titulo']);
+ //   $descricao = trim($_POST['descricao']);
+ //   $data_entrega = $_POST['data_entrega'];
+ //   $status = $_POST['status'];
 
-    $sql = "UPDATE tarefas
-            SET titulo = :titulo,
-                descricao = :descricao,
-                data_entrega = :data_entrega,
-                status = :status
-            WHERE id = :id";
+  //  $sql = "UPDATE tarefas
+   //         SET titulo = :titulo,
+   //             descricao = :descricao,
+   //             data_entrega = :data_entrega,
+   //             status = :status
+   //         WHERE id = :id";
 
-    $stmt = $pdo->prepare($sql);
+   // $stmt = $pdo->prepare($sql);
 
-    $stmt->bindParam(':titulo', $titulo);
-    $stmt->bindParam(':descricao', $descricao);
-    $stmt->bindParam(':data_entrega', $data_entrega);
-    $stmt->bindParam(':status', $status);
-    $stmt->bindParam(':id', $id);
+  //  $stmt->bindParam(':titulo', $titulo);
+  //  $stmt->bindParam(':descricao', $descricao);
+  //  $stmt->bindParam(':data_entrega', $data_entrega);
+  //  $stmt->bindParam(':status', $status);
+  //  $stmt->bindParam(':id', $id);
 
-    $stmt->execute();
+  //  $stmt->execute();
 
-    header("Location: listar_tarefas.php");
-    exit;
-}
+   // header("Location: listar_tarefas.php");
+   // exit;
+//}
 ?>
 
 <!DOCTYPE html>
