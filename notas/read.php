@@ -92,7 +92,7 @@ $stmt = $pdo->query($sql);
 
             <div class="space-y-2">
                 <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary"
-                    href="#">
+                    href="../painel.php">
                     <span class="material-symbols-outlined">dashboard</span>
                     <span>Painel</span>
                 </a>
@@ -103,7 +103,8 @@ $stmt = $pdo->query($sql);
                     <span>Alunos</span>
                 </a>
 
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                <a
+                    class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 border-l-2 border-transparent hover:border-primary transition-colors"
                     href="../notas/read.php">
                     <span class="material-symbols-outlined">grade</span>
                     <span>Notas</span>
@@ -117,12 +118,11 @@ $stmt = $pdo->query($sql);
             </div>
 
             <!-- Sair sempre embaixo -->
-            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-                href="logout.php">
+            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
+                href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
                 <span class="material-symbols-outlined">logout</span>
                 <span>Sair</span>
             </a>
-
         </nav>
 
     </aside>
@@ -210,6 +210,7 @@ $stmt = $pdo->query($sql);
                                             </a>
 
                                             <a href="delete.php?id=<?= $nota['id'] ?>"
+                                                onclick="return confirm('Tem certeza que deseja apagar esta nota?');"
                                                 class="text-on-surface-variant hover:text-error transition-colors"
                                                 title="Excluir">
                                                 <span class="material-symbols-outlined text-[20px]">delete</span>
@@ -229,19 +230,7 @@ $stmt = $pdo->query($sql);
                 <!-- Pagination -->
                 <div
                     class="px-6 py-4 border-t border-outline-variant/10 flex items-center justify-between bg-white/[0.01]">
-                    <p class="text-xs text-on-surface-variant">Mostrando <span class="text-on-surface">2</span>
-                        registros</p>
                     <div class="flex items-center gap-1">
-                        <button
-                            class="w-8 h-8 flex items-center justify-center rounded text-on-surface-variant hover:bg-white/5 transition-colors">
-                            <span class="material-symbols-outlined text-[18px]">chevron_left</span>
-                        </button>
-                        <button
-                            class="w-8 h-8 flex items-center justify-center rounded bg-primary text-on-primary font-bold text-xs">1</button>
-                        <button
-                            class="w-8 h-8 flex items-center justify-center rounded text-on-surface-variant hover:bg-white/5 transition-colors">
-                            <span class="material-symbols-outlined text-[18px]">chevron_right</span>
-                        </button>
                     </div>
                 </div>
             </div>

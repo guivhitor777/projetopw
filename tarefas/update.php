@@ -4,32 +4,39 @@ require_once '../conexao.php';
 
 $id = $_GET['id'] ?? 0;
 
+$sql = "SELECT * FROM tarefas WHERE id = :id";
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':id', $id);
+$stmt->execute();
+
+$tarefa = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$tarefa) {
+    die("Tarefa não encontrada.");
+}
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-   $titulo = trim($_POST['titulo']);
-   $descricao = trim($_POST['descricao']);
-   $data_entrega = $_POST['data_entrega'];
-   $status = $_POST['status'];
+    $disciplina = trim($_POST['disciplina']);
+    $descricao = trim($_POST['descricao']);
+    $prazo = $_POST['prazo'];
 
-  $sql = "UPDATE tarefas
-         SET titulo = :titulo,
+    $sql = "UPDATE tarefas
+         SET disciplina = :disciplina,
              descricao = :descricao,
-             data_entrega = :data_entrega,
-             status = :status
+             prazo = :prazo
          WHERE id = :id";
 
- $stmt = $pdo->prepare($sql);
+    $stmt = $pdo->prepare($sql);
 
-  $stmt->bindParam(':titulo', $titulo);
-  $stmt->bindParam(':descricao', $descricao);
-  $stmt->bindParam(':data_entrega', $data_entrega);
-  $stmt->bindParam(':status', $status);
-  $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':disciplina', $disciplina);
+    $stmt->bindParam(':descricao', $descricao);
+    $stmt->bindParam(':prazo', $prazo);
+    $stmt->bindParam(':id', $id);
 
-  $stmt->execute();
+    $stmt->execute();
 
- header("Location: listar_tarefas.php");
- exit;
+    header("Location: read.php");
+    exit;
 }
 ?>
 
@@ -167,67 +174,67 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body class="bg-background text-on-surface font-body-md min-h-screen overflow-x-hidden selection:bg-primary/30">
     <!-- Top Navigation -->
     <header
-            class="h-16 flex justify-between items-center px-container-padding-desktop bg-surface/30 backdrop-blur-lg border-b border-white/5 sticky top-0 z-40">
-            <div class="flex items-center gap-6">
-                <div class="relative">
-                </div>
+        class="h-16 flex justify-between items-center px-container-padding-desktop bg-surface/30 backdrop-blur-lg border-b border-white/5 sticky top-0 z-40">
+        <div class="flex items-center gap-6">
+            <div class="relative">
             </div>
-            <div class="flex items-center gap-3 pl-4 border-l border-white/10">
-                <div class="text-right">
-                    <p class="font-label-caps text-[10px] text-primary">Nível Máx.</p>
-                    <p class="font-body-md text-sm font-bold">Adminitrador</p>
-                </div>
+        </div>
+        <div class="flex items-center gap-3 pl-4 border-l border-white/10">
+            <div class="text-right">
+                <p class="font-label-caps text-[10px] text-primary">Nível Máx.</p>
+                <p class="font-body-md text-sm font-bold">Adminitrador</p>
             </div>
-            </div>
-        </header>
+        </div>
+        </div>
+    </header>
     <!-- Side Navigation -->
     <aside
-    class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
+        class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
 
-    <div class="mb-10 px-4">
-        <h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter">
-            Aluno Modern
-        </h1>
-    </div>
-
-    <nav class="flex flex-col flex-1">
-
-        <div class="space-y-2">
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary"
-                href="#">
-                <span class="material-symbols-outlined">dashboard</span>
-                <span>Painel</span>
-            </a>
-
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-                href="../alunos/read.php">
-                <span class="material-symbols-outlined">school</span>
-                <span>Alunos</span>
-            </a>
-
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-                href="../notas/read.php">
-                <span class="material-symbols-outlined">grade</span>
-                <span>Notas</span>
-            </a>
-
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-                href="../tarefas/read.php">
-                <span class="material-symbols-outlined">assignment</span>
-                <span>Tarefas</span>
-            </a>
+        <div class="mb-10 px-4">
+            <h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter">
+                Aluno Modern
+            </h1>
         </div>
 
-        <!-- Sair sempre embaixo -->
-        <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-            href="logout.php">
-            <span class="material-symbols-outlined">logout</span>
-            <span>Sair</span>
-        </a>
+        <nav class="flex flex-col flex-1">
 
-    </nav>
+            <div class="space-y-2">
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary"
+                    href="../painel.php">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span>Painel</span>
+                </a>
 
-</aside>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                    href="../alunos/read.php">
+                    <span class="material-symbols-outlined">school</span>
+                    <span>Alunos</span>
+                </a>
+
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                    href="../notas/read.php">
+                    <span class="material-symbols-outlined">grade</span>
+                    <span>Notas</span>
+                </a>
+
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                    href="../tarefas/read.php">
+                    <span class="material-symbols-outlined">assignment</span>
+                    <span>Tarefas</span>
+                </a>
+            </div>
+
+            <!-- Sair sempre embaixo -->
+            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
+                href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
+                <span class="material-symbols-outlined">logout</span>
+                <span>Sair</span>
+            </a>
+
+        </nav>
+
+    </aside>
     <!-- Main Content -->
     <main
         class="md:ml-sidebar-width p-gutter transition-all duration-500 min-h-[calc(100vh-64px)] flex flex-col items-center justify-center">
@@ -246,7 +253,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <!-- Form Card -->
         <div
             class="w-full max-w-2xl glass-panel rounded-xl p-10 neon-border-primary animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <form action="update.php?id=1" class="space-y-8" method="POST">
+            <form action="update.php?id=<?= $id ?>" method="POST">
                 <!-- Disciplina -->
                 <div class="space-y-3">
                     <label class="font-label-caps text-[11px] tracking-[0.2em] text-primary/70 uppercase"
@@ -258,7 +265,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input
                             class="w-full bg-transparent border-none focus:ring-0 pl-12 pr-4 py-4 text-on-surface placeholder:text-on-surface-variant/30"
                             id="disciplina" name="disciplina" placeholder="Digite a disciplina..." type="text"
-                            value="Matemática" />
+                            value="<?= htmlspecialchars($tarefa['disciplina']) ?>">
                     </div>
                 </div>
                 <!-- Descrição -->
@@ -272,7 +279,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <textarea
                             class="w-full bg-transparent border-none focus:ring-0 pl-12 pr-4 py-4 text-on-surface placeholder:text-on-surface-variant/30 resize-none"
                             id="descricao" name="descricao" placeholder="Detalhes da tarefa..."
-                            rows="5">Resolver exercícios sobre equações do 2º grau.</textarea>
+                            rows="5"><?= htmlspecialchars($tarefa['descricao']) ?></textarea>
                     </div>
                 </div>
                 <!-- Prazo de Entrega -->
@@ -284,7 +291,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <span
                             class="material-symbols-outlined absolute left-4 text-on-surface-variant/50">calendar_today</span>
                         <input class="w-full bg-transparent border-none focus:ring-0 pl-12 pr-4 py-4 text-on-surface"
-                            id="prazo" name="prazo" type="date" value="2025-05-25" />
+                            id="prazo" name="prazo" type="date" value="<?= $tarefa['prazo'] ?>" />
                     </div>
                 </div>
                 <!-- Actions -->

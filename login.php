@@ -3,30 +3,26 @@ require_once 'conexao.php';
 
 session_start();
 
-if (isset($_SESSION['usuario_id'])) {
-    header('Location: /pages/categorias/index.php');
+// 1. CHECAGEM DO TOPO: Se já estiver logado, vai direto para o painel
+if (isset($_SESSION['usuario_id']) && $_SESSION['usuario_tipo'] === 'adm') {
+    header('Location: painel.php');
     exit();
 }
 
 $erro = '';
 
-// Verifica envio do formulário
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $email = trim($_POST['email'] ?? '');
     $senha = trim($_POST['senha'] ?? '');
 
-    // Validação
     if (empty($email) || empty($senha)) {
-
         $erro = 'Por favor, preencha o e-mail e a senha.';
-
     } else {
 
-        $pdo = getConexao();
-
+        // Buscando o usuário e o tipo no banco
         $stmt = $pdo->prepare("
-            SELECT id, nome, email, senha
+            SELECT id, nome, email, senha, tipo
             FROM usuarios
             WHERE email = :email
             LIMIT 1
@@ -38,24 +34,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $usuario = $stmt->fetch();
 
-        // Verifica senha
+        // 2. VERIFICAÇÃO DE SENHA: Se o usuário existe e a senha bate
         if ($usuario && password_verify($senha, $usuario['senha'])) {
 
-            $_SESSION['usuario_id']    = $usuario['id'];
-            $_SESSION['usuario_nome']  = $usuario['nome'];
-            $_SESSION['usuario_email'] = $usuario['email'];
+            // 3. TRAVA DE SEGURANÇA: Só deixa passar se o tipo for exatamente 'adm'
+            if ($usuario['tipo'] === 'adm') {
+                
+                // Salva os dados na sessão do navegador
+                $_SESSION['usuario_id']    = $usuario['id'];
+                $_SESSION['usuario_nome']  = $usuario['nome'];
+                $_SESSION['usuario_email'] = $usuario['email'];
+                $_SESSION['usuario_tipo']  = $usuario['tipo'];
 
-            header('Location: /pages/categorias/index.php');
-            exit();
+                // Redireciona para o painel
+                header('Location: painel.php');
+                exit();
+                
+            } else {
+                // Se a senha está certa, mas o usuário NÃO é ADM
+                $erro = 'Acesso restrito apenas para administradores.';
+            }
 
         } else {
-
+            // Se o e-mail não existe ou a senha está errada
             $erro = 'E-mail ou senha inválidos.';
-
         }
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br" class="dark">
@@ -77,7 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 
     <style>
-
         body {
             font-family: 'Inter', sans-serif;
         }
@@ -92,8 +98,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background-color: #0b0e14;
             background-image:
                 radial-gradient(circle at 2px 2px,
-                rgba(173, 198, 255, 0.05) 1px,
-                transparent 0);
+                    rgba(173, 198, 255, 0.05) 1px,
+                    transparent 0);
 
             background-size: 40px 40px;
         }
@@ -102,7 +108,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             box-shadow: 0 0 15px rgba(173, 198, 255, 0.2);
             border-color: #adc6ff;
         }
-
     </style>
 
 </head>
@@ -182,14 +187,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             alternate_email
                         </span>
 
-                        <input
-                            type="email"
-                            name="email"
-                            required
-                            value="<?= htmlspecialchars($email ?? '') ?>"
+                        <input type="email" name="email" required value="<?= htmlspecialchars($email ?? '') ?>"
                             placeholder="usuario@email.com"
-                            class="w-full h-14 pl-12 pr-4 rounded-lg bg-black/30 border border-gray-700 text-white glow-input outline-none"
-                        >
+                            class="w-full h-14 pl-12 pr-4 rounded-lg bg-black/30 border border-gray-700 text-white glow-input outline-none">
 
                     </div>
 
@@ -211,23 +211,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             lock
                         </span>
 
-                        <input
-                            type="password"
-                            name="senha"
-                            required
-                            placeholder="••••••••"
-                            class="w-full h-14 pl-12 pr-4 rounded-lg bg-black/30 border border-gray-700 text-white glow-input outline-none"
-                        >
+                        <input type="password" name="senha" required placeholder="••••••••"
+                            class="w-full h-14 pl-12 pr-4 rounded-lg bg-black/30 border border-gray-700 text-white glow-input outline-none">
 
                     </div>
 
                 </div>
 
                 <!-- Botão -->
-                <button
-                    type="submit"
-                    class="w-full h-14 bg-blue-400 text-black font-bold rounded-lg hover:brightness-110 transition-all"
-                >
+                <button type="submit"
+                    class="w-full h-14 bg-blue-400 text-black font-bold rounded-lg hover:brightness-110 transition-all">
                     ENTRAR
                 </button>
 
@@ -235,18 +228,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <!-- Footer -->
             <div class="mt-8 pt-6 border-t border-white/10 text-center">
-
-                <p class="text-gray-400 text-sm mb-4">
-                    Não possui acesso?
-                </p>
-
-                <button
-                    onclick="window.location.href='cadastro.php'"
-                    class="w-full border border-blue-300/30 bg-blue-300/10 text-blue-300 py-3 rounded-full hover:bg-blue-300/20 transition"
-                >
-                    CRIAR CONTA
-                </button>
-
             </div>
 
         </div>
@@ -254,4 +235,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </main>
 
 </body>
+
 </html>

@@ -1,39 +1,46 @@
 <?php
+
 require_once '../conexao.php';
+
 $mensagem = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     $nome = trim($_POST['nome'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $senha = trim($_POST['senha'] ?? '');
 
     if (empty($nome) || empty($email) || empty($senha)) {
-
         $mensagem = "Preencha todos os campos.";
-
     } else {
-
         $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-
         $sql = "INSERT INTO alunos (nome, email, senha)
             VALUES (:nome, :email, :senha)";
 
         $stmt = $pdo->prepare($sql);
 
+
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':senha', $senhaHash);
-
+        $stmt->bindParam('', $senha);
         if ($stmt->execute()) {
+
             $mensagem = "Cadastro realizado com sucesso!";
+
             header("Location: read.php");
-        exit;
+
+            exit;
+
         } else {
+
             $mensagem = "Erro ao cadastrar.";
+
         }
+
     }
+
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -186,8 +193,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         Completo</label>
                     <div
                         class="relative glow-border border border-white/10 rounded-lg bg-black/20 transition-all duration-300">
-                        <input
-                            name="nome"
+                        <input name="nome"
                             class="w-full bg-transparent border-none text-on-surface placeholder:text-outline-variant focus:ring-0 py-3 px-4 font-body-md text-body-md"
                             placeholder="EX: LEONARDO DA VINCI" type="text" />
                     </div>
@@ -201,8 +207,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         class="relative glow-border border border-white/10 rounded-lg bg-black/20 transition-all duration-300 flex items-center">
                         <span class="material-symbols-outlined text-outline-variant ml-4"
                             data-icon="alternate_email">alternate_email</span>
-                        <input
-                            name="email"
+                        <input name="email"
                             class="w-full bg-transparent border-none text-on-surface placeholder:text-outline-variant focus:ring-0 py-3 px-3 font-body-md text-body-md"
                             placeholder="nome@gmail.com" type="email" />
                     </div>
@@ -217,8 +222,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             class="relative glow-border border border-white/10 rounded-lg bg-black/20 transition-all duration-300 flex items-center">
                             <span class="material-symbols-outlined text-outline-variant ml-3"
                                 data-icon="lock_open">lock_open</span>
-                            <input
-                                name="senha"
+                            <input name="senha"
                                 class="w-full bg-transparent border-none text-on-surface placeholder:text-outline-variant focus:ring-0 py-3 px-2 font-body-md text-body-md"
                                 placeholder="••••••••" type="password" />
                             <span
@@ -232,21 +236,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             Senha</label>
                         <div
                             class="relative glow-border border border-white/10 rounded-lg bg-black/20 transition-all duration-300 flex items-center">
-                            <input
-                                name="senha"
+                            <input name="senha"
                                 class="w-full bg-transparent border-none text-on-surface placeholder:text-outline-variant focus:ring-0 py-3 px-4 font-body-md text-body-md"
                                 placeholder="••••••••" type="password" />
                         </div>
                     </div>
-                </div>
-                <!-- Terms/Privacy Placeholder -->
-                <div class="flex items-start gap-3 py-2">
-                    <input
-                        class="mt-1 rounded border-white/10 bg-black/40 text-primary focus:ring-primary/50 focus:ring-offset-0"
-                        type="checkbox" />
-                    <p class="font-label-caps text-[10px] leading-tight text-on-surface-variant uppercase">
-                        Eu aceito os protocolos de segurança e termos de uso do ecossistema AETHER OS.
-                    </p>
                 </div>
                 <!-- Action Button -->
                 <button
@@ -254,12 +248,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     type="submit">
                     CADASTRAR NO SISTEMA
                 </button>
-                <!-- Login Link -->
-                <div class="text-center pt-2">
-                    <p class="font-label-caps text-label-caps text-on-surface-variant tracking-widest">
-                        Já possui acesso? <a class="text-primary hover:underline ml-2" href="#">FAZER LOGIN</a>
-                    </p>
-                </div>
             </form>
         </section>
         <!-- Footer Info -->

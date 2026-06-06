@@ -1,8 +1,14 @@
 <?php
+// Inicia a sessão para ter acesso a ela
 session_start();
-session_unset();
 
+// Limpa todas as variáveis salvas na sessão (id, nome, tipo, etc.)
+$_SESSION = array();
+
+// Destrói a sessão completamente no servidor
 session_destroy();
-header('Location: /login.php');
 
+// Redireciona o usuário de volta para a tela de login
+header("Location: login.php");
 exit();
+?>

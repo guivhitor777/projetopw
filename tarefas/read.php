@@ -1,14 +1,13 @@
 <?php
-
 require_once '../conexao.php';
 
 $sql = "SELECT * FROM tarefas";
-
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 
 $tarefas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 <!DOCTYPE html>
 
 <html class="dark" lang="pt-br">
@@ -165,8 +164,8 @@ $tarefas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <nav class="flex flex-col flex-1">
 
             <div class="space-y-2">
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary"
-                    href="#">
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 border-l-2 border-transparent hover:border-primary transition-colors"
+                    href="../painel.php">
                     <span class="material-symbols-outlined">dashboard</span>
                     <span class="font-label-caps text-label-caps">
                         Painel
@@ -185,7 +184,7 @@ $tarefas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <span>Notas</span>
                 </a>
 
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 border-l-2 border-transparent hover:border-primary transition-colors"
                     href="../tarefas/read.php">
                     <span class="material-symbols-outlined">assignment</span>
                     <span>Tarefas</span>
@@ -193,12 +192,11 @@ $tarefas = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
 
             <!-- Sair sempre embaixo -->
-            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-                href="logout.php">
+            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
+                href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
                 <span class="material-symbols-outlined">logout</span>
                 <span>Sair</span>
             </a>
-
         </nav>
 
     </aside>
@@ -238,176 +236,94 @@ $tarefas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <h2 class="font-headline-lg text-headline-lg text-on-surface">Tarefas</h2>
                 <p class="text-on-surface-variant mt-2 font-body-md">Gerencie as tarefas dos alunos.</p>
             </div>
-            <button
-                class="bg-primary text-on-primary font-label-caps text-label-caps px-8 py-4 rounded transition-all btn-glow flex items-center gap-2">
+            <a href="create.php"
+                class="bg-primary text-on-primary font-label-caps text-label-caps px-8 py-4 rounded transition-all btn-glow flex items-center gap-2 inline-flex">
                 <span class="material-symbols-outlined text-[18px]">add</span>
                 ADICIONAR TAREFA
-            </button>
+            </a>
         </div>
         <!-- Data Table Container -->
         <div class="glass-panel rounded-xl overflow-hidden shadow-2xl">
             <table class="w-full text-left border-collapse">
                 <thead>
                     <tr class="border-b border-white/10 bg-white/5">
-                        <th class="px-6 py-5 font-label-caps text-label-caps text-primary uppercase tracking-widest">ID
-                        </th>
                         <th class="px-6 py-5 font-label-caps text-label-caps text-primary uppercase tracking-widest">
-                            Disciplina</th>
+                            ID
+                        </th>
+
+                        <th class="px-6 py-5 font-label-caps text-label-caps text-primary uppercase tracking-widest">
+                            Disciplina
+                        </th>
+
                         <th
                             class="px-6 py-5 font-label-caps text-label-caps text-primary uppercase tracking-widest w-1/3">
-                            Descrição</th>
+                            Descrição
+                        </th>
+
                         <th class="px-6 py-5 font-label-caps text-label-caps text-primary uppercase tracking-widest">
-                            Prazo de Entrega</th>
+                            Prazo de Entrega
+                        </th>
+
                         <th
                             class="px-6 py-5 font-label-caps text-label-caps text-primary uppercase tracking-widest text-center">
-                            Ações</th>
+                            Ações
+                        </th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-white/5">
-                    <!-- Row 1 -->
-                    <tr class="table-row-hover transition-colors">
-                        <td class="px-6 py-5 font-label-caps text-on-surface-variant">01</td>
-                        <td class="px-6 py-5">
-                            <span
-                                class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">Matemática</span>
-                        </td>
-                        <td class="px-6 py-5 text-on-surface">Resolver exercícios página 45</td>
-                        <td class="px-6 py-5 text-on-surface-variant font-mono text-sm">20/06/2026</td>
-                        <td class="px-6 py-5">
-                            <div class="flex justify-center space-x-2">
-                                <button
-                                    class="p-2 bg-surface-container-highest hover:bg-white/10 rounded transition-colors text-on-surface-variant hover:text-primary">
+
+                <tbody>
+                    <?php foreach ($tarefas as $tarefa): ?>
+                        <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
+
+                            <td class="px-6 py-5">
+                                <?= $tarefa['id'] ?>
+                            </td>
+
+                            <td class="px-6 py-5">
+                                <?= htmlspecialchars($tarefa['disciplina']) ?>
+                            </td>
+
+                            <td class="px-6 py-5">
+                                <?= htmlspecialchars($tarefa['descricao']) ?>
+                            </td>
+
+                            <td class="px-6 py-5">
+                                <?= date('d/m/Y', strtotime($tarefa['prazo'])) ?>
+                            </td>
+
+                            <td class="px-6 py-5 text-center">
+                                <a href="update.php?id=<?= $tarefa['id'] ?>"
+                                    class="text-on-surface-variant hover:text-primary transition-colors" title="Editar">
                                     <span class="material-symbols-outlined text-[20px]">edit</span>
-                                </button>
-                                <button class="p-2 bg-error/10 hover:bg-error/20 rounded transition-colors text-error">
+                                </a>
+
+                                <a href="delete.php?id=<?= $tarefa['id'] ?>"
+                                    onclick="return confirm('Tem certeza que deseja apagar esta tarefa?');"
+                                    class="text-on-surface-variant hover:text-error transition-colors" title="Excluir">
                                     <span class="material-symbols-outlined text-[20px]">delete</span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <!-- Row 2 -->
-                    <tr class="table-row-hover transition-colors">
-                        <td class="px-6 py-5 font-label-caps text-on-surface-variant">02</td>
-                        <td class="px-6 py-5">
-                            <span
-                                class="px-3 py-1 bg-tertiary/10 text-tertiary rounded-full text-xs font-semibold">Português</span>
-                        </td>
-                        <td class="px-6 py-5 text-on-surface">Produção textual sobre meio ambiente</td>
-                        <td class="px-6 py-5 text-on-surface-variant font-mono text-sm">22/06/2026</td>
-                        <td class="px-6 py-5">
-                            <div class="flex justify-center space-x-2">
-                                <button
-                                    class="p-2 bg-surface-container-highest hover:bg-white/10 rounded transition-colors text-on-surface-variant hover:text-primary">
-                                    <span class="material-symbols-outlined text-[20px]">edit</span>
-                                </button>
-                                <button class="p-2 bg-error/10 hover:bg-error/20 rounded transition-colors text-error">
-                                    <span class="material-symbols-outlined text-[20px]">delete</span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <!-- Row 3 -->
-                    <tr class="table-row-hover transition-colors">
-                        <td class="px-6 py-5 font-label-caps text-on-surface-variant">03</td>
-                        <td class="px-6 py-5">
-                            <span
-                                class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">História</span>
-                        </td>
-                        <td class="px-6 py-5 text-on-surface">Pesquisa sobre Revolução Francesa</td>
-                        <td class="px-6 py-5 text-on-surface-variant font-mono text-sm">25/06/2026</td>
-                        <td class="px-6 py-5">
-                            <div class="flex justify-center space-x-2">
-                                <button
-                                    class="p-2 bg-surface-container-highest hover:bg-white/10 rounded transition-colors text-on-surface-variant hover:text-primary">
-                                    <span class="material-symbols-outlined text-[20px]">edit</span>
-                                </button>
-                                <button class="p-2 bg-error/10 hover:bg-error/20 rounded transition-colors text-error">
-                                    <span class="material-symbols-outlined text-[20px]">delete</span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <!-- Row 4 -->
-                    <tr class="table-row-hover transition-colors">
-                        <td class="px-6 py-5 font-label-caps text-on-surface-variant">04</td>
-                        <td class="px-6 py-5">
-                            <span
-                                class="px-3 py-1 bg-tertiary/10 text-tertiary rounded-full text-xs font-semibold">Geografia</span>
-                        </td>
-                        <td class="px-6 py-5 text-on-surface">Trabalho sobre biomas brasileiros</td>
-                        <td class="px-6 py-5 text-on-surface-variant font-mono text-sm">28/06/2026</td>
-                        <td class="px-6 py-5">
-                            <div class="flex justify-center space-x-2">
-                                <button
-                                    class="p-2 bg-surface-container-highest hover:bg-white/10 rounded transition-colors text-on-surface-variant hover:text-primary">
-                                    <span class="material-symbols-outlined text-[20px]">edit</span>
-                                </button>
-                                <button class="p-2 bg-error/10 hover:bg-error/20 rounded transition-colors text-error">
-                                    <span class="material-symbols-outlined text-[20px]">delete</span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <!-- Row 5 -->
-                    <tr class="table-row-hover transition-colors">
-                        <td class="px-6 py-5 font-label-caps text-on-surface-variant">05</td>
-                        <td class="px-6 py-5">
-                            <span
-                                class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold">Física</span>
-                        </td>
-                        <td class="px-6 py-5 text-on-surface">Lista de exercícios de cinemática</td>
-                        <td class="px-6 py-5 text-on-surface-variant font-mono text-sm">30/06/2026</td>
-                        <td class="px-6 py-5">
-                            <div class="flex justify-center space-x-2">
-                                <button
-                                    class="p-2 bg-surface-container-highest hover:bg-white/10 rounded transition-colors text-on-surface-variant hover:text-primary">
-                                    <span class="material-symbols-outlined text-[20px]">edit</span>
-                                </button>
-                                <button class="p-2 bg-error/10 hover:bg-error/20 rounded transition-colors text-error">
-                                    <span class="material-symbols-outlined text-[20px]">delete</span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <!-- Row 6 -->
-                    <tr class="table-row-hover transition-colors border-none">
-                        <td class="px-6 py-5 font-label-caps text-on-surface-variant">06</td>
-                        <td class="px-6 py-5">
-                            <span
-                                class="px-3 py-1 bg-tertiary/10 text-tertiary rounded-full text-xs font-semibold">Química</span>
-                        </td>
-                        <td class="px-6 py-5 text-on-surface">Balanceamento de equações</td>
-                        <td class="px-6 py-5 text-on-surface-variant font-mono text-sm">02/07/2026</td>
-                        <td class="px-6 py-5">
-                            <div class="flex justify-center space-x-2">
-                                <button
-                                    class="p-2 bg-surface-container-highest hover:bg-white/10 rounded transition-colors text-on-surface-variant hover:text-primary">
-                                    <span class="material-symbols-outlined text-[20px]">edit</span>
-                                </button>
-                                <button class="p-2 bg-error/10 hover:bg-error/20 rounded transition-colors text-error">
-                                    <span class="material-symbols-outlined text-[20px]">delete</span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
+                                </a>
+                            </td>
+
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
-        </div>
-        <!-- Footer Info -->
-        <div
-            class="mt-8 flex justify-between items-center text-on-surface-variant/60 font-label-caps text-[10px] tracking-[0.2em] uppercase">
-            <div>© 2024 AETHER EDU - SYSTEM SECURED</div>
-            <div class="flex items-center space-x-4">
-                <span>Total: 6 TAREFAS ENCONTRADAS</span>
-                <span class="w-[2px] h-3 bg-white/10"></span>
-                <span>PÁGINA 1 DE 1</span>
+            <!-- Footer Info -->
+            <div
+                class="mt-8 flex justify-between items-center text-on-surface-variant/60 font-label-caps text-[10px] tracking-[0.2em] uppercase">
+                <div>© 2024 AETHER EDU - SYSTEM SECURED</div>
+                <div class="flex items-center space-x-4">
+                    <span>Total: 6 TAREFAS ENCONTRADAS</span>
+                    <span class="w-[2px] h-3 bg-white/10"></span>
+                    <span>PÁGINA 1 DE 1</span>
+                </div>
             </div>
-        </div>
     </main>
     <!-- Background Atmospheric Effect -->
     <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
         <div class="absolute -top-[10%] -right-[10%] w-[60%] h-[60%] rounded-full bg-primary/5 blur-[120px]"></div>
-        <div class="absolute -bottom-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-tertiary/5 blur-[100px]"></div>
+        <div class="absolute -bottom-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-tertiary/5 blur-[100px]">
+        </div>
     </div>
     <script>
         // Micro-interactions for table rows

@@ -1,35 +1,40 @@
 <?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Certifique-se de que o caminho da conexão está correto para esta pasta
 require_once '../conexao.php';
 
-$id = $_GET['id'];
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+    die("ID não informado.");
+}
 
+// Forçamos o ID a ser um número inteiro por segurança
+$id = (int) $_GET['id'];
+
+// 1. Verificamos se a nota realmente existe no banco (opcional, mas bom)
 $sql = "SELECT * FROM notas WHERE id = :id";
 $stmt = $pdo->prepare($sql);
-$stmt->bindParam(':id', $id);
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 $stmt->execute();
-
 $nota = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if (!$nota) {
+    die("Nota não encontrada.");
+}
 
-    $sql = "DELETE FROM notas WHERE id = :id";
+// 2. Executa a exclusão direto (removido o IF do POST)
+$sql = "DELETE FROM notas WHERE id = :id";
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':id', $id);
-
-    if ($stmt->execute()) {
-
-        header("Location: read.php");
-        exit();
-
-    }
+if ($stmt->execute()) {
+    // IMPORTANTE: Removi o echo "Vou redirecionar...". 
+    // Se você der echo ANTES do header(), o redirecionamento falha e dá erro!
+    header("Location: http://localhost/projetopw/notas/read.php");
+    exit();
+} else {
+    echo "Erro ao tentar deletar a nota.";
 }
 ?>
-<form method="POST">
-    
-    <button type="submit"
-        class="bg-red-500 text-white px-6 py-3 rounded">
-        Excluir Nota
-    </button>
-
-</form>

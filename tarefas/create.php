@@ -3,31 +3,30 @@ require_once '../conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-  $titulo = trim($_POST['titulo']);
+    $disciplina = trim($_POST['disciplina']);
     $descricao = trim($_POST['descricao']);
-    $data_entrega = $_POST['data_entrega'];
-   $status = $_POST['status'];
+    $prazo = $_POST['prazo'];
 
-$sql = "INSERT INTO tarefas
-            (titulo, descricao, data_entrega, status)
+    $sql = "INSERT INTO tarefas
+            (disciplina, descricao, prazo)
             VALUES
-            (:titulo, :descricao, :data_entrega, :status)";
+            (:disciplina, :descricao, :prazo)";
 
- $stmt = $pdo->prepare($sql);
- $stmt->bindParam(':titulo', $titulo);
- $stmt->bindParam(':descricao', $descricao);
- $stmt->bindParam(':data_entrega', $data_entrega);
- $stmt->bindParam(':status', $status);
+    $stmt = $pdo->prepare($sql);
 
- if ($stmt->execute()) {
-    echo "Tarefa cadastrada com sucesso!";
- } else {
-     echo "Erro ao cadastrar tarefa.";
- }
+    $stmt->bindParam(':disciplina', $disciplina);
+    $stmt->bindParam(':descricao', $descricao);
+    $stmt->bindParam(':prazo', $prazo);
+
+    if ($stmt->execute()) {
+        header("Location: read.php");
+        exit();
+    }
 }
 ?>
 <!DOCTYPE html>
 <html class="dark" lang="pt-br">
+
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -171,53 +170,52 @@ $sql = "INSERT INTO tarefas
 
 <body class="bg-background text-on-surface font-body-md overflow-x-hidden">
     <!-- SideNavBar (Authority: JSON & Strategy) -->
- <aside
-    class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
+    <aside
+        class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
 
-    <div class="mb-10 px-4">
-        <h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter">
-            Aluno Modern
-        </h1>
-    </div>
-
-    <nav class="flex flex-col flex-1">
-
-        <div class="space-y-2">
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary"
-                href="#">
-                <span class="material-symbols-outlined">dashboard</span>
-                <span>Painel</span>
-            </a>
-
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-                href="../alunos/read.php">
-                <span class="material-symbols-outlined">school</span>
-                <span>Alunos</span>
-            </a>
-
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-                href="../notas/read.php">
-                <span class="material-symbols-outlined">grade</span>
-                <span>Notas</span>
-            </a>
-
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-                href="../tarefas/read.php">
-                <span class="material-symbols-outlined">assignment</span>
-                <span>Tarefas</span>
-            </a>
+        <div class="mb-10 px-4">
+            <h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter">
+                Aluno Modern
+            </h1>
         </div>
 
-        <!-- Sair sempre embaixo -->
-        <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-            href="logout.php">
-            <span class="material-symbols-outlined">logout</span>
-            <span>Sair</span>
-        </a>
+        <nav class="flex flex-col flex-1">
 
-    </nav>
+            <div class="space-y-2">
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary"
+                    href="../painel.php">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span>Painel</span>
+                </a>
 
-</aside>
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                    href="../alunos/read.php">
+                    <span class="material-symbols-outlined">school</span>
+                    <span>Alunos</span>
+                </a>
+
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                    href="../notas/read.php">
+                    <span class="material-symbols-outlined">grade</span>
+                    <span>Notas</span>
+                </a>
+
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                    href="../tarefas/read.php">
+                    <span class="material-symbols-outlined">assignment</span>
+                    <span>Tarefas</span>
+                </a>
+            </div>
+
+            <!-- Sair sempre embaixo -->
+            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
+                href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
+                <span class="material-symbols-outlined">logout</span>
+                <span>Sair</span>
+            </a>
+        </nav>
+
+    </aside>
     <!-- TopNavBar (Authority: JSON) -->
     <!-- Main Content Canvas -->
     <main class="md:ml-sidebar-width min-h-[calc(100vh-64px)] p-6 md:p-12 flex items-center justify-center relative">
@@ -246,8 +244,7 @@ $sql = "INSERT INTO tarefas
                         </label>
                         <input
                             class="w-full rounded-lg border border-white/10 px-4 py-3 text-body-md text-on-surface placeholder:text-on-surface-variant/30 focus:ring-0"
-                            id="disciplina" name="disciplina" placeholder="Ex: Dinâmica Orbital" required=""
-                            type="text" />
+                            id="disciplina" name="disciplina" placeholder="Ex: Artes" required="" type="text" />
                     </div>
                     <!-- Field: Descrição -->
                     <div class="space-y-2">

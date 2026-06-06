@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <div class="space-y-2">
                 <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary"
-                    href="#">
+                    href="../painel.php">
                     <span class="material-symbols-outlined">dashboard</span>
                     <span>Painel</span>
                 </a>
@@ -130,12 +130,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
             <!-- Sair sempre embaixo -->
-            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-                href="logout.php">
+            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
+                href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
                 <span class="material-symbols-outlined">logout</span>
                 <span>Sair</span>
             </a>
-
         </nav>
 
     </aside>

@@ -109,52 +109,52 @@
 <body class="bg-background text-on-background min-h-screen">
     <!-- SideNavBar -->
     <aside
-    class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
+        class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
 
-    <div class="mb-10 px-4">
-        <h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter">
-            Aluno Modern
-        </h1>
-    </div>
-
-    <nav class="flex flex-col flex-1">
-
-        <div class="space-y-2">
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary"
-                href="#">
-                <span class="material-symbols-outlined">dashboard</span>
-                <span>Painel</span>
-            </a>
-
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-                href="../alunos/read.php">
-                <span class="material-symbols-outlined">school</span>
-                <span>Alunos</span>
-            </a>
-
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-                href="../notas/read.php">
-                <span class="material-symbols-outlined">grade</span>
-                <span>Notas</span>
-            </a>
-
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-                href="../tarefas/read.php">
-                <span class="material-symbols-outlined">assignment</span>
-                <span>Tarefas</span>
-            </a>
+        <div class="mb-10 px-4">
+            <h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter">
+                Aluno Modern
+            </h1>
         </div>
 
-        <!-- Sair sempre embaixo -->
-        <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-            href="logout.php">
-            <span class="material-symbols-outlined">logout</span>
-            <span>Sair</span>
-        </a>
+        <nav class="flex flex-col flex-1">
 
-    </nav>
+            <div class="space-y-2">
+                <a href="painel.php"
+                    class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary-500 transition-colors">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span>Painel</span>
+                </a>
 
-</aside>
+                <a href="alunos/read.php" ...
+                    class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 border-l-2 border-transparent hover:border-primary transition-colors">
+                    <span class="material-symbols-outlined">school</span>
+                    <span>Alunos</span>
+                </a>
+
+                <a href="notas/read.php" ...
+                    class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 border-l-2 border-transparent hover:border-primary transition-colors">
+                    <span class="material-symbols-outlined">grade</span>
+                    <span>Notas</span>
+                </a>
+
+                <a href="tarefas/read.php" ...
+                    class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 border-l-2 border-transparent hover:border-primary transition-colors">
+                    <span class="material-symbols-outlined">assignment</span>
+                    <span>Tarefas</span>
+                </a>
+            </div>
+
+            <!-- Sair sempre embaixo -->
+            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                href="logout.php">
+                <span class="material-symbols-outlined">logout</span>
+                <span>Sair</span>
+            </a>
+
+        </nav>
+
+    </aside>
     <!-- Main Content Area -->
     <main class="ml-[280px] min-h-screen">
         <!-- TopNavBar -->
@@ -172,9 +172,8 @@
             </div>
             </div>
         </header>
-        <!-- Dashboard Content -->
+
         <div class="p-gutter max-w-[1440px] mx-auto space-y-gutter">
-            <!-- 1. Welcome & Status -->
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <h2 class="font-display-lg text-display-lg text-white">Bem-vindo ao Aluno Modern</h2>
@@ -188,14 +187,15 @@
                 </div>
             </div>
         </div>
-        <!-- 2. Top Row Metrics -->
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
             <div class="glass-card p-6 rounded-none group hover:border-primary/40 transition-all duration-500 relative">
-                <button
+                <a href="alunos/read.php"
                     class="absolute top-4 right-4 px-4 py-2 bg-primary text-on-primary rounded-lg transition-all hover:brightness-110 shadow-sm shadow-primary/20 flex items-center gap-2 font-medium">
                     Acessar Alunos
                     <span class="material-symbols-outlined text-sm">north_east</span>
-                </button>
+                </a>
+
                 <div class="flex items-end justify-between">
                     <h3 class="font-display-lg text-4xl text-primary font-bold">Alunos</h3>
                 </div>
@@ -204,11 +204,11 @@
                 </div>
             </div>
             <div class="glass-card p-6 rounded-none group hover:border-primary/40 transition-all duration-500 relative">
-                <button
+                <a href="notas/read.php"
                     class="absolute top-4 right-4 px-4 py-2 bg-primary text-on-primary rounded-lg transition-all hover:brightness-110 shadow-sm shadow-primary/20 flex items-center gap-2 font-medium">
                     Acessar Notas
                     <span class="material-symbols-outlined text-sm">north_east</span>
-                </button>
+                </a>
                 <div class="flex items-end justify-between">
                     <h3 class="font-display-lg text-4xl text-white font-bold">Notas</h3>
                 </div>
@@ -217,11 +217,11 @@
                 </div>
             </div>
             <div class="glass-card p-6 rounded-none group hover:border-primary/40 transition-all duration-500 relative">
-                <button
+                <a href="tarefas/read.php"
                     class="absolute top-4 right-4 px-4 py-2 bg-primary text-on-primary rounded-lg transition-all hover:brightness-110 shadow-sm shadow-primary/20 flex items-center gap-2 font-medium">
                     Acessar Tarefas
                     <span class="material-symbols-outlined text-sm">north_east</span>
-                </button>
+                </a>
                 <div class="flex items-end justify-between">
                     <h3 class="font-display-lg text-4xl text-tertiary-container font-bold">Tarefas</h3>
                 </div>
@@ -232,11 +232,11 @@
         </div>
         <!-- 3. Middle Row (Evolution & Status) -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
-        <footer class="text-center py-6 border-t border-white/10 mt-10">
-    <p class="text-sm text-gray-400">
-        Sistema Escolar • Projeto PW
-    </p>
-</footer>
+            <footer class="text-center py-6 border-t border-white/10 mt-10">
+                <p class="text-sm text-gray-400">
+                    Sistema Escolar • Projeto PW
+                </p>
+            </footer>
     </main>
 </body>
 

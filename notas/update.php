@@ -120,7 +120,7 @@ $nota = $stmt->fetch(PDO::FETCH_ASSOC);
 
             <div class="space-y-2">
                 <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary"
-                    href="#">
+                    href="../painel.php">
                     <span class="material-symbols-outlined">dashboard</span>
                     <span>Painel</span>
                 </a>
@@ -145,8 +145,8 @@ $nota = $stmt->fetch(PDO::FETCH_ASSOC);
             </div>
 
             <!-- Sair sempre embaixo -->
-            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-                href="logout.php">
+            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
+                href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
                 <span class="material-symbols-outlined">logout</span>
                 <span>Sair</span>
             </a>
@@ -183,8 +183,7 @@ $nota = $stmt->fetch(PDO::FETCH_ASSOC);
                                     fingerprint
                                 </span>
 
-                                <input type="number" name="id_aluno" value="<?= $nota['id_aluno'] ?>"
-                                class="w-full bg-surface-container-lowest border border-white/10 rounded-lg py-3 pl-12
+                                <input type="number" name="id_aluno" value="<?= $nota['id_aluno'] ?>" class="w-full bg-surface-container-lowest border border-white/10 rounded-lg py-3 pl-12
                                 pr-4 text-on-surface focus:border-primary/50 focus:ring-1 focus:ring-primary/20
                                 outline-none transition-all">
                             </div>
@@ -203,8 +202,7 @@ $nota = $stmt->fetch(PDO::FETCH_ASSOC);
                                     school
                                 </span>
 
-                                <input type="text" name="disciplina" value="<?= $nota['disciplina'] ?>"
-                                class="w-full bg-surface-container-lowest border border-white/10 rounded-lg py-3 pl-12
+                                <input type="text" name="disciplina" value="<?= $nota['disciplina'] ?>" class="w-full bg-surface-container-lowest border border-white/10 rounded-lg py-3 pl-12
                                 pr-4 text-on-surface focus:border-primary/50 focus:ring-1 focus:ring-primary/20
                                 outline-none transition-all">
                             </div>

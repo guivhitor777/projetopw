@@ -106,12 +106,12 @@ $stmt = $pdo->query($sql);
 
             <div class="space-y-2">
                 <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary"
-                    href="#">
+                    href="../painel.php">
                     <span class="material-symbols-outlined">dashboard</span>
                     <span>Painel</span>
                 </a>
 
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary transition-colors"
                     href="../alunos/read.php">
                     <span class="material-symbols-outlined">school</span>
                     <span>Alunos</span>
@@ -131,12 +131,11 @@ $stmt = $pdo->query($sql);
             </div>
 
             <!-- Sair sempre embaixo -->
-            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-                href="logout.php">
+            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
+                href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
                 <span class="material-symbols-outlined">logout</span>
                 <span>Sair</span>
             </a>
-
         </nav>
 
     </aside>
@@ -225,23 +224,10 @@ $stmt = $pdo->query($sql);
 
                 </tbody>
 
-                <!-- Pagination Info -->
-                <div class="px-8 py-4 bg-white/5 border-t border-white/5 flex items-center justify-between">
-                    <span class="text-on-surface-variant text-xs font-medium">Exibindo 2 de 2 registros
-                        encontrados</span>
-                    <div class="flex gap-2">
-                        <button
-                            class="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs hover:bg-white/10 transition-colors">Anterior</button>
-                        <button class="px-3 py-1 bg-primary text-on-primary font-bold rounded text-xs">1</button>
-                        <button
-                            class="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs hover:bg-white/10 transition-colors">Próximo</button>
-                    </div>
+                <!-- System Footer Text -->
+                <div class="mt-12 text-on-surface-variant/40 text-sm font-medium">
+                    Sistema Escolar • Projeto PW
                 </div>
-        </div>
-        <!-- System Footer Text -->
-        <div class="mt-12 text-on-surface-variant/40 text-sm font-medium">
-            Sistema Escolar • Projeto PW
-        </div>
         </div>
         <!-- Active Windows-style notice mimic -->
         <div class="fixed bottom-4 right-8 text-right opacity-30 select-none pointer-events-none hidden lg:block">
