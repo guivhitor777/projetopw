@@ -1,13 +1,13 @@
 <?php
 
-//require_once 'conexao.php';
+require_once '../conexao.php';
 
-//$sql = "SELECT * FROM tarefas";
+$sql = "SELECT * FROM tarefas";
 
-//$stmt = $pdo->prepare($sql);
-//$stmt->execute();
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
 
-//$tarefas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$tarefas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 
@@ -153,68 +153,81 @@
 </head>
 
 <body class="font-body-md text-body-md selection:bg-primary/30">
-    <!-- Side Navigation -->
-    <nav
-        class="w-[280px] h-full fixed left-0 top-0 flex flex-col h-full py-gutter bg-surface/40 backdrop-blur-xl border-r border-white/10 shadow-2xl z-50">
-        <div class="px-6 mb-10">
-            <h1 class="font-display-lg text-display-lg tracking-tighter text-primary">AETHER EDU</h1>
-            <p class="font-label-caps text-label-caps text-on-surface-variant mt-1 opacity-70">Academic Command Center
-            </p>
+    <aside
+        class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
+
+        <div class="mb-10 px-4">
+            <h1 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tighter">
+                Aluno Modern
+            </h1>
         </div>
-        <div class="flex-1 space-y-1">
-            <a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all duration-300 group"
-                href="#">
-                <span class="material-symbols-outlined mr-4 opacity-70 group-hover:opacity-100">dashboard</span>
-                <span class="font-label-caps text-label-caps uppercase">Dashboard</span>
+
+        <nav class="flex flex-col flex-1">
+
+            <div class="space-y-2">
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary"
+                    href="#">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span class="font-label-caps text-label-caps">
+                        Painel
+                    </span>
+                </a>
+
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                    href="../alunos/read.php">
+                    <span class="material-symbols-outlined">school</span>
+                    <span>Alunos</span>
+                </a>
+
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                    href="../notas/read.php">
+                    <span class="material-symbols-outlined">grade</span>
+                    <span>Notas</span>
+                </a>
+
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                    href="../tarefas/read.php">
+                    <span class="material-symbols-outlined">assignment</span>
+                    <span>Tarefas</span>
+                </a>
+            </div>
+
+            <!-- Sair sempre embaixo -->
+            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                href="logout.php">
+                <span class="material-symbols-outlined">logout</span>
+                <span>Sair</span>
             </a>
-            <a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all duration-300 group"
-                href="#">
-                <span class="material-symbols-outlined mr-4 opacity-70 group-hover:opacity-100">calendar_month</span>
-                <span class="font-label-caps text-label-caps uppercase">Calendar</span>
-            </a>
-            <a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all duration-300 group"
-                href="#">
-                <span class="material-symbols-outlined mr-4 opacity-70 group-hover:opacity-100">grade</span>
-                <span class="font-label-caps text-label-caps uppercase">Grades</span>
-            </a>
-            <a class="flex items-center px-6 py-3 sidebar-active transition-all duration-300 group" href="#">
-                <span class="material-symbols-outlined mr-4"
-                    style="font-variation-settings: 'FILL' 1;">assignment</span>
-                <span class="font-label-caps text-label-caps uppercase">Assignments</span>
-            </a>
-            <a class="flex items-center px-6 py-3 text-on-surface-variant hover:bg-white/5 hover:text-primary transition-all duration-300 group"
-                href="#">
-                <span class="material-symbols-outlined mr-4 opacity-70 group-hover:opacity-100">mail</span>
-                <span class="font-label-caps text-label-caps uppercase">Messages</span>
-            </a>
-        </div>
-        <div class="px-6 mt-auto">
-            <button
-                class="w-full bg-primary/10 border border-primary/20 text-primary py-3 px-4 rounded-lg font-label-caps text-label-caps hover:bg-primary/20 transition-all active:scale-[0.98]">
-                New Research
-            </button>
-        </div>
+
+        </nav>
+
+    </aside>
+    </nav>
+
+    <div class="p-4 border-t border-aether-border">
+        <a href="../logout.php"
+            class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:text-red-400 transition">
+            <span class="material-symbols-outlined">logout</span>
+            <span>Sair</span>
+        </a>
+    </div>
+
+    </aside>
+    </div>
     </nav>
     <!-- Top Navigation Bar -->
     <header
-        class="h-20 fixed top-0 right-0 left-[280px] z-40 flex justify-between items-center px-container-desktop bg-surface/40 backdrop-blur-xl border-b border-white/10 shadow-sm">
-        <div
-            class="flex items-center space-x-4 bg-surface-container-low px-4 py-2 rounded-full border border-white/5 focus-within:ring-1 focus-within:ring-primary transition-all">
-            <span class="material-symbols-outlined text-on-surface-variant">search</span>
-            <input class="bg-transparent border-none focus:ring-0 text-sm w-64 placeholder:text-on-surface-variant/50"
-                placeholder="Global Search..." type="text" />
-        </div>
-        <div class="flex items-center space-x-6">
-            <button class="text-on-surface-variant hover:text-primary transition-colors">
-                <span class="material-symbols-outlined">notifications</span>
-            </button>
-            <button class="text-on-surface-variant hover:text-primary transition-colors">
-                <span class="material-symbols-outlined">settings</span>
-            </button>
-            <div class="h-10 w-10 rounded-full overflow-hidden border border-primary/30">
-                <img alt="User Profile Avatar" class="w-full h-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4RMEgsvU1cNMe63jaLcoWAj-Jbs19bReRaay1DOY22P0HvmdCdPDnFQn1ntrL7u3RU82LdxjUhNT5_f11MfUeZ6mGR65o2TGO3UpkbjX5nFNMv3W-JAGwtDSMf9py9RcAskPo51XxYFSV4asuiVqLjuH6d_04kvTGag_vhZfCgmX6x6TylH3E_o19Qh48DTAXbPuMHEz70UJLn7Fw7-xXi2NQuTf5M63FqGlT124BqfZV9JmmSMDSfo8xkYDJE0LZ4koeVI8fG8E2" />
+        class="h-16 flex justify-between items-center px-container-padding-desktop bg-surface/30 backdrop-blur-lg border-b border-white/5 sticky top-0 z-40">
+        <div class="flex items-center gap-6">
+            <div class="relative">
             </div>
+        </div>
+        <div class="flex items-center gap-3 pl-4 border-l border-white/10">
+            <div class="text-right">
+                <p class="font-label-caps text-[10px] text-primary">Nível Máx.</p>
+                <p class="font-body-md text-sm font-bold">Adminitrador</p>
+            </div>
+        </div>
         </div>
     </header>
     <!-- Main Content Canvas -->

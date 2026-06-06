@@ -1,18 +1,18 @@
 <?php
 
-//require_once 'conexao.php';
+require_once '../conexao.php';
 
-//$id = $_GET['id'] ?? 0;
+$id = $_GET['id'] ?? 0;
 
-//$sql = "DELETE FROM tarefas WHERE id = :id";
+$sql = "DELETE FROM tarefas WHERE id = :id";
 
-//$stmt = $pdo->prepare($sql);
-//$stmt->bindParam(':id', $id);
+$stmt = $pdo->prepare($sql);
+$stmt->bindParam(':id', $id);
 
-//if ($stmt->execute()) {
-//  header("Location: listar_tarefas.php");
-// exit;
-//}
+if ($stmt->execute()) {
+header("Location: listar_tarefas.php");
+exit;
+}
 ?>
 
 <!DOCTYPE html>

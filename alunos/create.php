@@ -1,37 +1,39 @@
 <?php
-//require_once 'conexao.php';
+require_once '../conexao.php';
 $mensagem = "";
 
-//if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-//    $nome = trim($_POST['nome'] ?? '');
-//    $email = trim($_POST['email'] ?? '');
-  //  $senha = trim($_POST['senha'] ?? '');
+    $nome = trim($_POST['nome'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $senha = trim($_POST['senha'] ?? '');
 
-  //  if (empty($nome) || empty($email) || empty($senha)) {
+    if (empty($nome) || empty($email) || empty($senha)) {
 
-   //     $mensagem = "Preencha todos os campos.";
+        $mensagem = "Preencha todos os campos.";
 
- //   } else {
+    } else {
 
-  //      $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+        $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
-//        $sql = "INSERT INTO alunos (nome, email, senha)
- //               VALUES (:nome, :email, :senha)";
+        $sql = "INSERT INTO alunos (nome, email, senha)
+            VALUES (:nome, :email, :senha)";
 
- //       $stmt = $pdo->prepare($sql);
+        $stmt = $pdo->prepare($sql);
 
-   //     $stmt->bindParam(':nome', $nome);
-  //      $stmt->bindParam(':email', $email);
-  //      $stmt->bindParam(':senha', $senhaHash);
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':senha', $senhaHash);
 
-   //     if ($stmt->execute()) {
-    //        $mensagem = "Cadastro realizado com sucesso!";
-   //     } else {
-  //          $mensagem = "Erro ao cadastrar.";
- //       }
- //   }
-//}
+        if ($stmt->execute()) {
+            $mensagem = "Cadastro realizado com sucesso!";
+            header("Location: read.php");
+        exit;
+        } else {
+            $mensagem = "Erro ao cadastrar.";
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -177,8 +179,7 @@ $mensagem = "";
         </div>
         <!-- Registration Form -->
         <section class="glass-panel p-8 rounded-2xl">
-            <form action="#" class="space-y-5" method="POST">
-                <!-- Name -->
+            <form action="" class="space-y-5" method="POST">
                 <div class="space-y-2">
                     <label
                         class="font-label-caps text-label-caps text-on-surface-variant block uppercase tracking-widest">Nome
@@ -186,6 +187,7 @@ $mensagem = "";
                     <div
                         class="relative glow-border border border-white/10 rounded-lg bg-black/20 transition-all duration-300">
                         <input
+                            name="nome"
                             class="w-full bg-transparent border-none text-on-surface placeholder:text-outline-variant focus:ring-0 py-3 px-4 font-body-md text-body-md"
                             placeholder="EX: LEONARDO DA VINCI" type="text" />
                     </div>
@@ -200,8 +202,9 @@ $mensagem = "";
                         <span class="material-symbols-outlined text-outline-variant ml-4"
                             data-icon="alternate_email">alternate_email</span>
                         <input
+                            name="email"
                             class="w-full bg-transparent border-none text-on-surface placeholder:text-outline-variant focus:ring-0 py-3 px-3 font-body-md text-body-md"
-                            placeholder="nome@aether.edu" type="email" />
+                            placeholder="nome@gmail.com" type="email" />
                     </div>
                 </div>
                 <!-- Password -->
@@ -215,6 +218,7 @@ $mensagem = "";
                             <span class="material-symbols-outlined text-outline-variant ml-3"
                                 data-icon="lock_open">lock_open</span>
                             <input
+                                name="senha"
                                 class="w-full bg-transparent border-none text-on-surface placeholder:text-outline-variant focus:ring-0 py-3 px-2 font-body-md text-body-md"
                                 placeholder="••••••••" type="password" />
                             <span
@@ -229,6 +233,7 @@ $mensagem = "";
                         <div
                             class="relative glow-border border border-white/10 rounded-lg bg-black/20 transition-all duration-300 flex items-center">
                             <input
+                                name="senha"
                                 class="w-full bg-transparent border-none text-on-surface placeholder:text-outline-variant focus:ring-0 py-3 px-4 font-body-md text-body-md"
                                 placeholder="••••••••" type="password" />
                         </div>
