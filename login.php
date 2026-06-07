@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="w-16 h-16 rounded-xl glass-card flex items-center justify-center mb-4">
 
                 <span class="material-symbols-outlined text-blue-300 text-3xl">
-                    rocket_launch
+                    person
                 </span>
 
             </div>
@@ -140,10 +140,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1 class="text-blue-300 tracking-[0.3em] text-sm font-bold">
                 ALUNO MODERN
             </h1>
-
-            <p class="text-gray-400 text-sm mt-2">
-                Academic Command Interface
-            </p>
 
         </div>
 

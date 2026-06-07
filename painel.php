@@ -112,10 +112,11 @@
         class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
 
         <div class="mb-10 px-4">
-            <h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter">
+            <h1 class="text-3xl font-bold text-primary tracking-tighter">
                 Aluno Modern
             </h1>
         </div>
+
 
         <nav class="flex flex-col flex-1">
 
@@ -146,8 +147,8 @@
             </div>
 
             <!-- Sair sempre embaixo -->
-            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
-                href="logout.php">
+            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
+                href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
                 <span class="material-symbols-outlined">logout</span>
                 <span>Sair</span>
             </a>
@@ -232,10 +233,17 @@
         </div>
         <!-- 3. Middle Row (Evolution & Status) -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
-            <footer class="text-center py-6 border-t border-white/10 mt-10">
-                <p class="text-sm text-gray-400">
-                    Sistema Escolar • Projeto PW
-                </p>
+            <footer
+                class="fixed bottom-4 left-0 right-0 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 opacity-40 text-center">
+                <div class="flex items-center gap-4">
+                    <div class="h-[1px] w-8 bg-white/30 hidden sm:block"></div>
+                    <span class="font-label-caps text-[10px] tracking-[0.3em] text-on-surface uppercase">
+                        Aluno Modern
+                    </span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[14px]" data-icon="verified_user">verified_user</span>
+                </div>
             </footer>
     </main>
 </body>

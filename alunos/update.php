@@ -96,45 +96,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
 
         <div class="mb-10 px-4">
-            <h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter">
+            <h1 class="text-3xl font-bold text-primary tracking-tighter">
                 Aluno Modern
             </h1>
         </div>
 
+
         <nav class="flex flex-col flex-1">
 
-            <div class="space-y-2">
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary"
+            <<div class="space-y-2">
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
                     href="../painel.php">
                     <span class="material-symbols-outlined">dashboard</span>
                     <span>Painel</span>
                 </a>
 
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary transition-colors"
                     href="../alunos/read.php">
                     <span class="material-symbols-outlined">school</span>
                     <span>Alunos</span>
                 </a>
 
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
                     href="../notas/read.php">
                     <span class="material-symbols-outlined">grade</span>
                     <span>Notas</span>
                 </a>
 
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
                     href="../tarefas/read.php">
                     <span class="material-symbols-outlined">assignment</span>
                     <span>Tarefas</span>
                 </a>
-            </div>
+                </div>
 
-            <!-- Sair sempre embaixo -->
-            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
-                href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
-                <span class="material-symbols-outlined">logout</span>
-                <span>Sair</span>
-            </a>
+                <!-- Sair sempre embaixo -->
+                <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
+                    href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span>Sair</span>
+                </a>
         </nav>
 
     </aside>
@@ -161,18 +162,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="flex-1 overflow-y-auto p-12 flex flex-col items-center">
             <!-- Page Title & Breadcrumbs -->
             <div class="w-full max-w-4xl mb-12">
-                <nav
-                    class="flex items-center gap-2 text-[10px] uppercase tracking-[0.15em] text-aether-primary font-semibold mb-6">
-                    <a class="hover:underline" href="#">Dashboard</a>
-                    <svg class="w-3 h-3 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-                        <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-                    </svg>
-                    <a class="hover:underline" href="#">Alunos</a>
-                    <svg class="w-3 h-3 text-gray-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-                        <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-                    </svg>
-                    <span class="text-gray-500">Editar</span>
-                </nav>
                 <h2 class="text-4xl font-bold tracking-tight mb-2">Editar Aluno</h2>
                 <p class="text-gray-400">Atualize as informações do aluno abaixo.</p>
             </div>
@@ -263,24 +252,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <!-- Actions -->
             <!-- BEGIN: PageFooter -->
             <footer
-                class="mt-auto py-12 w-full max-w-4xl flex items-center justify-between text-[10px] text-gray-600 uppercase tracking-widest border-t border-aether-border/30">
+                class="fixed bottom-4 left-0 right-0 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 opacity-40 text-center">
                 <div class="flex items-center gap-4">
-                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                        SECURE NODE 04</span>
-                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
-                        SESSION: AE-9421</span>
-                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
-                        ENCRYPTION: AES-256</span>
+                    <div class="h-[1px] w-8 bg-white/30 hidden sm:block"></div>
+                    <span class="font-label-caps text-[10px] tracking-[0.3em] text-on-surface uppercase">
+                        Aluno Modern
+                    </span>
                 </div>
-                <div class="text-right">
-                    © 2023 Aether OS. Academic Command Rev. 4.0.2
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[14px]" data-icon="verified_user">verified_user</span>
                 </div>
             </footer>
-            <!-- END: PageFooter -->
-        </div>
-        <!-- END: FormContainer -->
     </main>
-    <!-- END: MainContent -->
+    </div>
+    </main>
 </body>
 
 </html>

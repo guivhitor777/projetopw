@@ -83,7 +83,7 @@ $stmt = $pdo->query($sql);
         class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
 
         <div class="mb-10 px-4">
-            <h1 class="font-headline-lg text-headline-lg text-primary tracking-tighter">
+            <h1 class="text-3xl font-bold text-primary tracking-tighter">
                 Aluno Modern
             </h1>
         </div>
@@ -91,38 +91,31 @@ $stmt = $pdo->query($sql);
         <nav class="flex flex-col flex-1">
 
             <div class="space-y-2">
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary"
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
                     href="../painel.php">
                     <span class="material-symbols-outlined">dashboard</span>
                     <span>Painel</span>
                 </a>
 
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
                     href="../alunos/read.php">
                     <span class="material-symbols-outlined">school</span>
                     <span>Alunos</span>
                 </a>
 
-                <a
-                    class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 border-l-2 border-transparent hover:border-primary transition-colors"
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary transition-colors"
                     href="../notas/read.php">
                     <span class="material-symbols-outlined">grade</span>
                     <span>Notas</span>
                 </a>
 
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5"
+                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
                     href="../tarefas/read.php">
                     <span class="material-symbols-outlined">assignment</span>
                     <span>Tarefas</span>
                 </a>
             </div>
-
-            <!-- Sair sempre embaixo -->
-            <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
-                href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
-                <span class="material-symbols-outlined">logout</span>
-                <span>Sair</span>
-            </a>
+            
         </nav>
 
     </aside>
@@ -236,9 +229,19 @@ $stmt = $pdo->query($sql);
             </div>
         </div>
         <!-- Footer -->
-        <footer class="p-8 mt-auto border-t border-outline-variant/10 text-center">
-            <p class="text-xs text-on-surface-variant font-medium">Sistema Escolar • Projeto PW</p>
+        <footer
+            class="fixed bottom-4 left-0 right-0 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 opacity-40 text-center">
+            <div class="flex items-center gap-4">
+                <div class="h-[1px] w-8 bg-white/30 hidden sm:block"></div>
+                <span class="font-label-caps text-[10px] tracking-[0.3em] text-on-surface uppercase">
+                    Aluno Modern
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[14px]" data-icon="verified_user">verified_user</span>
+            </div>
         </footer>
+    </main>
     </main>
     <script>
         function confirmDelete(id) {

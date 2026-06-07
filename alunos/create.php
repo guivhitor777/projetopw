@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':senha', $senhaHash);
-        $stmt->bindParam('', $senha);
         if ($stmt->execute()) {
 
             $mensagem = "Cadastro realizado com sucesso!";
@@ -177,12 +176,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="flex flex-col items-center mb-8">
             <div class="w-16 h-16 glass-panel rounded-xl flex items-center justify-center mb-6 border-primary/20">
                 <span class="material-symbols-outlined text-primary text-4xl"
-                    data-icon="rocket_launch">rocket_launch</span>
+                    data-icon="rocket_launch">school</span>
             </div>
             <h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Criar Conta</h1>
-            <p class="font-body-md text-body-md text-on-surface-variant text-center max-w-sm">
-                Cadastre-se no Sistema de Comando Acadêmico para iniciar sua trajetória.
-            </p>
         </div>
         <!-- Registration Form -->
         <section class="glass-panel p-8 rounded-2xl">
@@ -194,8 +190,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div
                         class="relative glow-border border border-white/10 rounded-lg bg-black/20 transition-all duration-300">
                         <input name="nome"
-                            class="w-full bg-transparent border-none text-on-surface placeholder:text-outline-variant focus:ring-0 py-3 px-4 font-body-md text-body-md"
-                            placeholder="EX: LEONARDO DA VINCI" type="text" />
+                            class="w-full bg-transparent border-none text-on-surface placeholder:text-outline-variant focus:border-primary-500 py-3 px-4 font-body-md text-body-md"
+                            placeholder="EX: Renan Meu Amor" type="text" />
                     </div>
                 </div>
                 <!-- Email -->
@@ -225,9 +221,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <input name="senha"
                                 class="w-full bg-transparent border-none text-on-surface placeholder:text-outline-variant focus:ring-0 py-3 px-2 font-body-md text-body-md"
                                 placeholder="••••••••" type="password" />
-                            <span
-                                class="material-symbols-outlined text-outline-variant mr-3 cursor-pointer hover:text-primary transition-colors"
-                                data-icon="visibility">visibility</span>
                         </div>
                     </div>
                     <div class="space-y-2">
@@ -251,17 +244,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
         </section>
         <!-- Footer Info -->
-        <footer class="mt-12 flex justify-between items-center opacity-40">
+        <footer
+            class="fixed bottom-4 left-0 right-0 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 opacity-40 text-center">
             <div class="flex items-center gap-4">
-                <div class="h-[1px] w-8 bg-white/30"></div>
-                <span class="font-label-caps text-[10px] tracking-[0.3em] text-on-surface uppercase">Sistema
-                    Operacional</span>
+                <div class="h-[1px] w-8 bg-white/30 hidden sm:block"></div>
+                <span class="font-label-caps text-[10px] tracking-[0.3em] text-on-surface uppercase">
+                    Aluno Modern
+                </span>
             </div>
             <div class="flex items-center gap-2">
                 <span class="material-symbols-outlined text-[14px]" data-icon="verified_user">verified_user</span>
-                <span class="font-label-caps text-[10px] tracking-wider text-on-surface">v4.0.2 SECURE BIND</span>
             </div>
         </footer>
+    </main>
     </main>
     <!-- Decorative Corner Accents -->
     <div class="fixed top-8 left-8 w-16 h-16 border-t border-l border-white/10 pointer-events-none"></div>
