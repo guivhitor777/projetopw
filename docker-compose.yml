@@ -142,7 +142,7 @@ services:
     phpmyadmin:
         image: phpmyadmin:latest
 
-        container_name: lojaWilson_phpmyadmin
+        container_name: alunomodern_phpmyadmin
 
         environment:
             TZ: America/Sao_Paulo
