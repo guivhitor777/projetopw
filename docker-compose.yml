@@ -37,7 +37,8 @@ services:
             dockerfile: docker/Dockerfile
 
         # Nome amigável para identificar o container nos logs e comandos
-        container_name: lojaWilson_php
+        container_name: alunomodern_php
+
 
         # ports: mapeia portas entre SEU COMPUTADOR e o CONTAINER
         # Formato: "porta_do_seu_pc:porta_dentro_do_container"
@@ -66,7 +67,7 @@ services:
 
         # networks: conecta este serviço à nossa rede interna privada
         networks:
-            - rede_lojaWilson
+            - rede_alunomodern
 
     # ============================================================
     # SERVIÇO 2: mysql
@@ -108,7 +109,7 @@ services:
             - "3306:3306"
 
         networks:
-            - rede_lojaWilson
+            - rede_alunomodern
 
     # ============================================================
     # SERVIÇO 3: phpmyadmin
@@ -160,7 +161,7 @@ services:
             - mysql
 
         networks:
-            - rede_lojaWilson
+            - rede_alunomodern
 
 # ============================================================
 # VOLUMES - Armazenamento Persistente
@@ -182,5 +183,5 @@ volumes:
 # O driver "bridge" é o tipo padrão e mais comum de rede Docker.
 # ============================================================
 networks:
-    rede_lojaWilson:
+    rede_alunomodern:
         driver: bridge

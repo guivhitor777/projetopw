@@ -1,19 +1,12 @@
 <?php
 
-$host = "localhost";
-$banco = "crudalunos";
-$usuario = "root";
-$senha = "";
-
-try {
-    $pdo = new PDO(
-        "mysql:host=$host;dbname=$banco;charset=utf8",
-        $usuario,
-        $senha
-    );
-
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-} catch(PDOException $e) {
-    die("Erro na conexão: " . $e->getMessage());
-}
+$pdo = new PDO(
+    "mysql:host=mysql;dbname=" . getenv('MYSQL_DATABASE') . ";charset=utf8mb4",
+    getenv('MYSQL_USER'),
+    getenv('MYSQL_PASSWORD'),
+    [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+    ]
+);
+?>
