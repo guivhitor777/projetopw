@@ -28,28 +28,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             LIMIT 1
         ");
 
-        $stmt->execute([
-            ':email' => $email
-        ]);
+        $stmt->execute([':email' => $email]);
 
-        $usuario = $stmt->fetch();
+        $usuario = $stmt->fetch(PDO::FETCH_OBJ);
 
         // 2. VERIFICAÇÃO DE SENHA: Se o usuário existe e a senha bate
-        if ($usuario && password_verify($senha, $usuario['senha'])) {
+        if ($usuario && password_verify($senha, $usuario->senha)) {
 
             // 3. TRAVA DE SEGURANÇA: Só deixa passar se o tipo for exatamente 'adm'
-            if ($usuario['tipo'] === 'adm') {
-                
+            if ($usuario->tipo === 'adm') {
+
                 // Salva os dados na sessão do navegador
-                $_SESSION['usuario_id']    = $usuario['id'];
-                $_SESSION['usuario_nome']  = $usuario['nome'];
-                $_SESSION['usuario_email'] = $usuario['email'];
-                $_SESSION['usuario_tipo']  = $usuario['tipo'];
+                $_SESSION['usuario_id']    = $usuario->id;
+                $_SESSION['usuario_nome']  = $usuario->nome;
+                $_SESSION['usuario_email'] = $usuario->email;
+                $_SESSION['usuario_tipo']  = $usuario->tipo;
 
                 // Redireciona para o painel
                 header('Location: painel.php');
                 exit();
-                
+
             } else {
                 // Se a senha está certa, mas o usuário NÃO é ADM
                 $erro = 'Acesso restrito apenas para administradores.';
