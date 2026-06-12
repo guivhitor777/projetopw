@@ -1,5 +1,4 @@
 <?php
-
 require_once '../conexao.php';
 
 $mensagem = "";
@@ -8,38 +7,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = trim($_POST['nome'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $senha = trim($_POST['senha'] ?? '');
+    $confirmar_senha = trim($_POST['confirmar_senha'] ?? '');
 
-    if (empty($nome) || empty($email) || empty($senha)) {
+    if (empty($nome) || empty($email) || empty($senha) || empty($confirmar_senha)) {
         $mensagem = "Preencha todos os campos.";
+    } elseif ($senha !== $confirmar_senha) {
+        $mensagem = "os dados não coincidem.";
     } else {
         $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO alunos (nome, email, senha)
-            VALUES (:nome, :email, :senha)";
-
+        $sql = "INSERT INTO alunos (nome, email, senha) VALUES (:nome, :email, :senha)";
         $stmt = $pdo->prepare($sql);
-
-
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':senha', $senhaHash);
+
         if ($stmt->execute()) {
-
-            $mensagem = "Cadastro realizado com sucesso!";
-
-            header("Location: read.php");
-
+            header("Location: read.php?status=sucesso");
             exit;
-
         } else {
-
             $mensagem = "Erro ao cadastrar.";
-
         }
-
     }
-
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>AETHER EDU - Criar Conta</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500&amp;display=swap"
         rel="stylesheet" />
@@ -175,8 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <!-- Logo/Header -->
         <div class="flex flex-col items-center mb-8">
             <div class="w-16 h-16 glass-panel rounded-xl flex items-center justify-center mb-6 border-primary/20">
-                <span class="material-symbols-outlined text-primary text-4xl"
-                    data-icon="rocket_launch">school</span>
+                <span class="material-symbols-outlined text-primary text-4xl" data-icon="rocket_launch">school</span>
             </div>
             <h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Criar Conta</h1>
         </div>
@@ -229,7 +218,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             Senha</label>
                         <div
                             class="relative glow-border border border-white/10 rounded-lg bg-black/20 transition-all duration-300 flex items-center">
-                            <input name="senha"
+                            <input name="confirmar_senha"
                                 class="w-full bg-transparent border-none text-on-surface placeholder:text-outline-variant focus:ring-0 py-3 px-4 font-body-md text-body-md"
                                 placeholder="••••••••" type="password" />
                         </div>
@@ -267,6 +256,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="hidden"
         data-alt="A highly detailed cinematic view of a futuristic dark blue and black laboratory workstation in 2050. The scene features multiple glowing holographic interfaces and glass touch surfaces emitting a soft electric blue light. The lighting is low-key with sharp rim highlights on metallic and obsidian-like textures, creating a professional and visionary atmosphere. The overall style is minimalist and high-tech, evoking an advanced academic command center or a professional command bridge.">
     </div>
+    <?php if (!empty($mensagem)): ?>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro!',
+                text: '<?= $mensagem ?>',
+                confirmButtonColor: '#adc6ff',
+                background: '#10131b',
+                color: '#e0e2ed'
+            });
+        </script>
+    <?php endif; ?>
 </body>
 
 </html>

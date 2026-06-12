@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':id', $id);
 
     if ($stmt->execute()) {
-        header("Location: read.php");
+        header("Location: read.php?status=editado");
         exit;
     }
 }
@@ -43,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Editar Aluno - AETHER EDU</title>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
         rel="stylesheet" />
     <script data-purpose="tailwind-config">
@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <nav class="flex flex-col flex-1">
 
-            <<div class="space-y-2">
+            <div class="space-y-2">
                 <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
                     href="../painel.php">
                     <span class="material-symbols-outlined">dashboard</span>
@@ -234,11 +234,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         <div
                             class="flex flex-col sm:flex-row justify-end items-center gap-4 pt-8 border-t border-aether-border/50">
-                            <button
-                                class="w-full sm:w-auto px-10 py-3 text-sm font-semibold text-gray-400 hover:text-white border border-aether-border rounded-lg hover:bg-aether-border/20 transition-all duration-200"
-                                type="button">
+                            <a href="read.php"
+                                class="w-full sm:w-auto px-10 py-3 text-sm font-semibold text-gray-400 hover:text-white border border-aether-border rounded-lg hover:bg-aether-border/20 transition-all duration-200 text-center">
                                 Cancelar
-                            </button>
+                            </a>
                             <button
                                 class="w-full sm:w-auto px-10 py-3 text-sm font-bold text-aether-surface-dim bg-aether-primary rounded-lg hover:bg-blue-300 transition-all duration-200 shadow-glow-primary"
                                 type="submit">
@@ -266,6 +265,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </main>
     </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'question',
+                title: 'Salvar alterações?',
+                text: 'Deseja atualizar os dados deste aluno?',
+                showCancelButton: true,
+                confirmButtonText: 'Sim, salvar',
+                cancelButtonText: 'Cancelar',
+                confirmButtonColor: '#adc6ff',
+                cancelButtonColor: '#414755',
+                background: '#0b0e16',
+                color: '#e0e2ed'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    e.target.submit();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

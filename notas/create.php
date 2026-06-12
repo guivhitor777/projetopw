@@ -4,25 +4,30 @@ require_once '../conexao.php';
 
 $mensagem = "";
 
+// Carrega alunos SEMPRE, fora do if POST
+$alunos = $pdo->query("SELECT id, nome FROM alunos")->fetchAll(PDO::FETCH_ASSOC);
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $id_aluno = $_POST['id_aluno'] ?? '';
     $disciplina = $_POST['disciplina'] ?? '';
     $nota = $_POST['nota'] ?? '';
 
-    $sql = "INSERT INTO notas (id_aluno, disciplina, nota)
-            VALUES (:id_aluno, :disciplina, :nota)";
+    if (empty($id_aluno) || empty($disciplina) || empty($nota)) {
+        $mensagem = "Preencha todos os campos.";
+    } else {
+        $sql = "INSERT INTO notas (id_aluno, disciplina, nota) VALUES (:id_aluno, :disciplina, :nota)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':id_aluno', $id_aluno);
+        $stmt->bindParam(':disciplina', $disciplina);
+        $stmt->bindParam(':nota', $nota);
 
-    $stmt = $pdo->prepare($sql);
-
-    $stmt->bindParam(':id_aluno', $id_aluno);
-    $stmt->bindParam(':disciplina', $disciplina);
-    $stmt->bindParam(':nota', $nota);
-
-    if ($stmt->execute()) {
-
-        header("Location: read.php");
-        exit();
+        if ($stmt->execute()) {
+            header("Location: read.php?status=sucesso");
+            exit();
+        } else {
+            $mensagem = "Erro ao cadastrar.";
+        }
     }
 }
 ?>
@@ -36,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Cadastrar Nota | AETHER EDU</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500&amp;display=swap"
         rel="stylesheet" />
@@ -221,8 +227,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </label>
 
                         <div class="relative group">
-                            <input type="number" name="id_aluno" placeholder="Ex: 1" required
-                                class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-lg px-4 py-3 text-on-surface">
+                            <select name="id_aluno"
+                                class="w-full bg-surface-container-lowest border border-white/10 rounded-lg py-3 pl-12 pr-4 text-on-surface outline-none transition-all">
+                                <option value="">Selecione um aluno...</option>
+                                <?php foreach ($alunos as $aluno): ?>
+                                    <option value="<?= $aluno['id'] ?>"><?= $aluno['id'] ?> —
+                                        <?= htmlspecialchars($aluno['nome']) ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                     </div>
 
@@ -274,7 +287,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </main>
     </main>
     <script>
-        // Simple input validation visual feedback
         document.querySelectorAll('input').forEach(input => {
             input.addEventListener('input', function () {
                 if (this.checkValidity()) {
@@ -287,6 +299,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             });
         });
     </script>
+
+    <?php if (!empty($mensagem)): ?>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro!',
+                text: '<?= $mensagem ?>',
+                confirmButtonColor: '#adc6ff',
+                background: '#10131b',
+                color: '#e0e2ed'
+            });
+        </script>
+    <?php endif; ?>
 </body>
 
 </html>

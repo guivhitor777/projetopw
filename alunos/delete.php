@@ -13,8 +13,8 @@ if ($id) {
     $stmt->bindParam(':id', $id);
 
     if ($stmt->execute()) {
-        header("Location: read.php");
-        exit;
+        header("Location: read.php?status=deletado");
+        exit();
     } else {
         echo "Erro ao excluir aluno.";
     }

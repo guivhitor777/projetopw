@@ -32,7 +32,7 @@ $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 if ($stmt->execute()) {
     // IMPORTANTE: Removi o echo "Vou redirecionar...". 
     // Se você der echo ANTES do header(), o redirecionamento falha e dá erro!
-    header("Location: http://localhost/projetopw/notas/read.php");
+    header("Location: read.php?status=deletado");
     exit();
 } else {
     echo "Erro ao tentar deletar a nota.";

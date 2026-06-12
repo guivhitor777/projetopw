@@ -14,6 +14,7 @@ $tarefa = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$tarefa) {
     die("Tarefa não encontrada.");
 }
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $disciplina = trim($_POST['disciplina']);
@@ -21,22 +22,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $prazo = $_POST['prazo'];
 
     $sql = "UPDATE tarefas
-         SET disciplina = :disciplina,
-             descricao = :descricao,
-             prazo = :prazo
-         WHERE id = :id";
+            SET disciplina = :disciplina,
+                descricao = :descricao,
+                prazo = :prazo
+            WHERE id = :id";
 
     $stmt = $pdo->prepare($sql);
-
     $stmt->bindParam(':disciplina', $disciplina);
     $stmt->bindParam(':descricao', $descricao);
     $stmt->bindParam(':prazo', $prazo);
     $stmt->bindParam(':id', $id);
 
-    $stmt->execute();
-
-    header("Location: read.php");
-    exit;
+    if ($stmt->execute()) {
+        header("Location: read.php?status=editado");
+        exit;
+    }
 }
 ?>
 
@@ -49,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>AETHER EDU - Editar Tarefa</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
         rel="stylesheet" />
@@ -240,14 +241,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <main
         class="md:ml-sidebar-width p-gutter transition-all duration-500 min-h-[calc(100vh-64px)] flex flex-col items-center justify-center">
         <div class="w-full max-w-2xl mb-8">
-            <nav
-                class="flex items-center gap-2 text-[10px] font-label-caps tracking-widest text-on-surface-variant/60 uppercase mb-4">
-                <a class="hover:text-primary transition-colors" href="#">Dashboard</a>
-                <span class="material-symbols-outlined text-[12px]">chevron_right</span>
-                <a class="hover:text-primary transition-colors" href="read.php">Tarefas</a>
-                <span class="material-symbols-outlined text-[12px]">chevron_right</span>
-                <span class="text-primary">Editar</span>
-            </nav>
             <h2 class="font-headline-lg text-headline-lg text-on-surface">Editar Tarefa</h2>
             <p class="text-on-surface-variant mt-1">Atualize as informações da tarefa abaixo.</p>
         </div>
@@ -325,14 +318,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </footer>
     </main>
     </main>
+
     <script>
-        // ESC key to cancel
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 window.location.href = 'read.php';
             }
         });
+
+
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'question',
+                title: 'Salvar alterações?',
+                text: 'Deseja atualizar os dados desta tarefa?',
+                showCancelButton: true,
+                confirmButtonText: 'Sim, salvar',
+                cancelButtonText: 'Cancelar',
+                confirmButtonColor: '#adc6ff',
+                cancelButtonColor: '#414755',
+                background: '#10131b',
+                color: '#e0e2ed'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    e.target.submit();
+                }
+            });
+        });
     </script>
+
 </body>
 
 </html>

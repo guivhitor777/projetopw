@@ -13,8 +13,8 @@ if ($id > 0) {
     $stmt->bindParam(':id', $id, PDO::PARAM_INT); // Informamos que o parâmetro é um número inteiro
 
     if ($stmt->execute()) {
-        header("Location: read.php?status=sucesso");
-        exit;
+        header("Location: read.php?status=deletado");
+        exit();
     } else {
         // Opcional: tratar caso a execução falhe por erro no banco
         header("Location: read.php?status=erro");

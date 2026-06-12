@@ -9,77 +9,35 @@ $tarefas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-
 <html class="dark" lang="pt-br">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Tarefas | AETHER EDU</title>
+    <title>Aluno Modern | Tarefas</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500&display=swap"
         rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <!-- Theme Configuration -->
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     "colors": {
-                        "outline-variant": "#414755",
-                        "error-container": "#93000a",
-                        "on-tertiary": "#571e00",
-                        "surface-container-high": "#272a32",
-                        "secondary-fixed-dim": "#c4c6cf",
-                        "tertiary-fixed": "#ffdbcc",
-                        "surface-tint": "#adc6ff",
-                        "surface-container": "#1c2028",
-                        "surface-dim": "#10131b",
-                        "secondary-fixed": "#e1e2eb",
-                        "on-secondary-fixed-variant": "#44474e",
-                        "on-background": "#e0e2ed",
-                        "outline": "#8b90a0",
-                        "on-tertiary-fixed": "#351000",
-                        "on-primary-fixed": "#001a41",
-                        "inverse-primary": "#005bc1",
-                        "secondary": "#c4c6cf",
-                        "on-primary": "#002e69",
-                        "on-tertiary-container": "#4c1a00",
-                        "on-secondary": "#2e3037",
-                        "on-secondary-container": "#b6b8c1",
-                        "error": "#ffb4ab",
-                        "inverse-surface": "#e0e2ed",
-                        "primary-fixed-dim": "#adc6ff",
-                        "primary-container": "#4b8eff",
-                        "primary-fixed": "#d8e2ff",
-                        "surface-variant": "#31353d",
-                        "tertiary": "#ffb595",
-                        "surface-container-lowest": "#0b0e16",
-                        "secondary-container": "#464950",
-                        "surface-container-highest": "#31353d",
-                        "tertiary-fixed-dim": "#ffb595",
-                        "on-secondary-fixed": "#191c22",
-                        "surface-container-low": "#181c23",
-                        "surface": "#10131b",
-                        "on-error-container": "#ffdad6",
-                        "surface-bright": "#363942",
-                        "on-surface-variant": "#c1c6d7",
-                        "on-primary-fixed-variant": "#004493",
-                        "on-primary-container": "#00285c",
                         "primary": "#adc6ff",
-                        "background": "#10131b",
-                        "on-tertiary-fixed-variant": "#7c2e00",
-                        "inverse-on-surface": "#2d3039",
-                        "tertiary-container": "#ef6719",
-                        "on-error": "#690005",
-                        "on-surface": "#e0e2ed"
+                        "on-primary": "#002e69",
+                        "background": "#0b0e14",
+                        "surface": "#0b0e14",
+                        "surface-container": "#11151d",
+                        "on-surface": "#e0e2ed",
+                        "on-surface-variant": "#9ba1ad",
+                        "outline-variant": "#414755",
+                        "error": "#ffb4ab",
+                        "tertiary": "#ffb595"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.25rem",
@@ -88,38 +46,22 @@ $tarefas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         "full": "9999px"
                     },
                     "spacing": {
-                        "container-padding-desktop": "40px",
-                        "gutter": "24px",
                         "sidebar-width": "280px",
-                        "unit": "4px",
-                        "container-padding-mobile": "20px"
+                        "gutter": "24px"
                     },
                     "fontFamily": {
-                        "display-lg": ["Inter"],
-                        "body-lg": ["Inter"],
-                        "body-md": ["Inter"],
-                        "headline-md": ["Inter"],
-                        "headline-lg": ["Inter"],
-                        "label-caps": ["Space Grotesk"],
-                        "headline-lg-mobile": ["Inter"]
-                    },
-                    "fontSize": {
-                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
-                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
-                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
-                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                        "body": ["Inter", "sans-serif"],
+                        "label-caps": ["Space Grotesk"]
                     }
-                },
-            },
+                }
+            }
         }
     </script>
     <style>
         body {
-            background-color: #0B0E14;
+            background-color: #0b0e14;
             color: #e0e2ed;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
 
@@ -129,225 +71,222 @@ $tarefas = $stmt->fetchAll(PDO::FETCH_ASSOC);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .sidebar-active {
-            background: rgba(173, 198, 255, 0.1);
-            border-left: 2px solid #adc6ff;
-            color: #adc6ff;
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
         }
 
-        .btn-glow {
-            box-shadow: 0 0 20px rgba(173, 198, 255, 0.3);
-            transition: all 0.3s ease;
+        ::-webkit-scrollbar {
+            width: 6px;
         }
 
-        .btn-glow:hover {
-            box-shadow: 0 0 30px rgba(173, 198, 255, 0.5);
-            transform: translateY(-1px);
+        ::-webkit-scrollbar-track {
+            background: #0b0e14;
         }
 
-        .table-row-hover:hover {
-            background: rgba(255, 255, 255, 0.03);
+        ::-webkit-scrollbar-thumb {
+            background: #31353d;
+            border-radius: 10px;
         }
     </style>
 </head>
 
-<body class="font-body-md text-body-md selection:bg-primary/30">
+<body class="selection:bg-primary/30">
+
+    <!-- Sidebar -->
     <aside
         class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
-
         <div class="mb-10 px-4">
-            <h1 class="text-3xl font-bold text-primary tracking-tighter">
-                Aluno Modern
-            </h1>
+            <h1 class="text-3xl font-bold text-primary tracking-tighter">Aluno Modern</h1>
         </div>
-
-
         <nav class="flex flex-col flex-1">
-
             <div class="space-y-2">
                 <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
                     href="../painel.php">
                     <span class="material-symbols-outlined">dashboard</span>
                     <span>Painel</span>
                 </a>
-
                 <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
                     href="../alunos/read.php">
                     <span class="material-symbols-outlined">school</span>
                     <span>Alunos</span>
                 </a>
-
                 <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 transition-colors"
                     href="../notas/read.php">
                     <span class="material-symbols-outlined">grade</span>
                     <span>Notas</span>
                 </a>
-
                 <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-primary bg-primary/10 border-l-2 border-primary transition-colors"
                     href="../tarefas/read.php">
                     <span class="material-symbols-outlined">assignment</span>
                     <span>Tarefas</span>
                 </a>
             </div>
-            <!-- Sair sempre embaixo -->
             <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
                 href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
                 <span class="material-symbols-outlined">logout</span>
                 <span>Sair</span>
             </a>
         </nav>
-
     </aside>
-    </nav>
 
-    <div class="p-4 border-t border-aether-border">
-        <a href="../logout.php"
-            class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:text-red-400 transition">
-            <span class="material-symbols-outlined">logout</span>
-            <span>Sair</span>
-        </a>
-    </div>
-
-    </aside>
-    </div>
-    </nav>
-    <!-- Top Navigation Bar -->
+    <!-- Header -->
     <header
-        class="h-16 flex justify-between items-center px-container-padding-desktop bg-surface/30 backdrop-blur-lg border-b border-white/5 sticky top-0 z-40">
-        <div class="flex items-center gap-6">
-            <div class="relative">
-            </div>
+        class="h-20 px-8 flex items-center justify-between border-b border-white/10 bg-surface/50 backdrop-blur-md sticky top-0 z-40 ml-sidebar-width">
+        <div>
+            <h2 class="text-xl font-bold text-on-surface">Tarefas</h2>
+            <p class="text-xs text-on-surface-variant">Gerencie as tarefas cadastradas.</p>
         </div>
         <div class="flex items-center gap-3 pl-4 border-l border-white/10">
             <div class="text-right">
-                <p class="font-label-caps text-[10px] text-primary">Nível Máx.</p>
-                <p class="font-body-md text-sm font-bold">Adminitrador</p>
+                <p class="text-[10px] text-primary uppercase tracking-widest">Nível Máx.</p>
+                <p class="text-sm font-bold">Administrador</p>
             </div>
-        </div>
         </div>
     </header>
-    <!-- Main Content Canvas -->
-    <main class="ml-[280px] pt-32 pb-20 px-container-desktop min-h-screen">
-        <!-- Page Header -->
-        <div class="flex justify-between items-end mb-10">
-            <div>
-                <h2 class="font-headline-lg text-headline-lg text-on-surface">Tarefas</h2>
-                <p class="text-on-surface-variant mt-2 font-body-md">Gerencie as tarefas dos alunos.</p>
+
+    <!-- Main Content -->
+    <main class="ml-sidebar-width pt-8 min-h-screen flex flex-col">
+        <div class="p-8 flex-1">
+
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-3">
+                <div>
+                    <h2 class="text-4xl font-bold text-on-surface tracking-tight mb-3">Tarefas</h2>
+                    <div class="w-1/2 h-1 bg-primary mb-4"></div>
+                    <p class="text-on-surface-variant text-lg">Gerencie as tarefas cadastradas no sistema.</p>
+                </div>
+                <a class="bg-primary text-on-primary px-6 py-3 rounded-lg font-bold flex items-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all text-sm"
+                    href="create.php">
+                    <span class="material-symbols-outlined">add_circle</span>
+                    ADICIONAR TAREFA
+                </a>
             </div>
-            <a href="create.php"
-                class="bg-primary text-on-primary font-label-caps text-label-caps px-8 py-4 rounded transition-all btn-glow flex items-center gap-2 inline-flex">
-                <span class="material-symbols-outlined text-[18px]">add</span>
-                ADICIONAR TAREFA
-            </a>
-        </div>
-        <!-- Data Table Container -->
-        <div class="glass-panel rounded-xl overflow-hidden shadow-2xl">
-            <table class="w-full text-left border-collapse">
-                <thead>
-                    <tr class="border-b border-white/10 bg-white/5">
-                        <th class="px-6 py-5 font-label-caps text-label-caps text-primary uppercase tracking-widest">
-                            ID
-                        </th>
 
-                        <th class="px-6 py-5 font-label-caps text-label-caps text-primary uppercase tracking-widest">
-                            Disciplina
-                        </th>
-
-                        <th
-                            class="px-6 py-5 font-label-caps text-label-caps text-primary uppercase tracking-widest w-1/3">
-                            Descrição
-                        </th>
-
-                        <th class="px-6 py-5 font-label-caps text-label-caps text-primary uppercase tracking-widest">
-                            Prazo de Entrega
-                        </th>
-
-                        <th
-                            class="px-6 py-5 font-label-caps text-label-caps text-primary uppercase tracking-widest text-center">
-                            Ações
-                        </th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <?php foreach ($tarefas as $tarefa): ?>
-                        <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
-
-                            <td class="px-6 py-5">
-                                <?= $tarefa['id'] ?>
-                            </td>
-
-                            <td class="px-6 py-5">
-                                <?= htmlspecialchars($tarefa['disciplina']) ?>
-                            </td>
-
-                            <td class="px-6 py-5">
-                                <?= htmlspecialchars($tarefa['descricao']) ?>
-                            </td>
-
-                            <td class="px-6 py-5">
-                                <?= date('d/m/Y', strtotime($tarefa['prazo'])) ?>
-                            </td>
-
-                            <td class="px-6 py-5 text-center">
-                                <a href="update.php?id=<?= $tarefa['id'] ?>"
-                                    class="text-on-surface-variant hover:text-primary transition-colors" title="Editar">
-                                    <span class="material-symbols-outlined text-[20px]">edit</span>
-                                </a>
-
-                                <a href="delete.php?id=<?= $tarefa['id'] ?>"
-                                    onclick="return confirm('Tem certeza que deseja apagar esta tarefa?');"
-                                    class="text-on-surface-variant hover:text-error transition-colors" title="Excluir">
-                                    <span class="material-symbols-outlined text-[20px]">delete</span>
-                                </a>
-                            </td>
-
+            <div class="glass-panel rounded-xl overflow-hidden shadow-2xl">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-white/5 bg-white/5">
+                            <th
+                                class="py-5 px-8 text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">
+                                ID</th>
+                            <th
+                                class="py-5 px-8 text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">
+                                Disciplina</th>
+                            <th
+                                class="py-5 px-8 text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider w-1/3">
+                                Descrição</th>
+                            <th
+                                class="py-5 px-8 text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">
+                                Prazo de Entrega</th>
+                            <th
+                                class="py-5 px-8 text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider text-center">
+                                Ações</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-            <!-- Footer Info -->
-            <footer
-                class="fixed bottom-4 left-0 right-0 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 opacity-40 text-center">
-                <div class="flex items-center gap-4">
-                    <div class="h-[1px] w-8 bg-white/30 hidden sm:block"></div>
-                    <span class="font-label-caps text-[10px] tracking-[0.3em] text-on-surface uppercase">
-                        Aluno Modern
-                    </span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="material-symbols-outlined text-[14px]" data-icon="verified_user">verified_user</span>
-                </div>
-            </footer>
+                    </thead>
+                    <tbody class="divide-y divide-white/5">
+                        <?php foreach ($tarefas as $tarefa): ?>
+                            <tr class="hover:bg-white/[0.02] transition-colors">
+                                <td class="py-6 px-8"><?= $tarefa['id'] ?></td>
+                                <td class="py-6 px-8"><?= htmlspecialchars($tarefa['disciplina']) ?></td>
+                                <td class="py-6 px-8"><?= htmlspecialchars($tarefa['descricao']) ?></td>
+                                <td class="py-6 px-8"><?= date('d/m/Y', strtotime($tarefa['prazo'])) ?></td>
+                                <td class="py-6 px-8 text-center">
+                                    <div class="flex items-center justify-center gap-3">
+                                        <a href="update.php?id=<?= $tarefa['id'] ?>"
+                                            class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/10 hover:border-primary/50 hover:bg-primary/10 text-on-surface-variant hover:text-primary transition-all">
+                                            <span class="material-symbols-outlined">edit</span>
+                                        </a>
+                                        <a href="#" onclick="confirmDelete(<?= $tarefa['id'] ?>); return false;"
+                                            class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/10 hover:border-red-500/50 hover:bg-red-500/10 text-on-surface-variant hover:text-red-500 transition-all">
+                                            <span class="material-symbols-outlined">delete</span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <footer class="fixed bottom-4 left-0 right-0 flex justify-center items-center gap-8 opacity-40 text-center">
+            <div class="flex items-center gap-4">
+                <div class="h-[1px] w-8 bg-white/30 hidden sm:block"></div>
+                <span class="text-[10px] tracking-[0.3em] text-on-surface uppercase">Aluno Modern</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[14px]">verified_user</span>
+            </div>
+        </footer>
     </main>
-    </div>
-    </main>
+
     <!-- Background Atmospheric Effect -->
     <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
         <div class="absolute -top-[10%] -right-[10%] w-[60%] h-[60%] rounded-full bg-primary/5 blur-[120px]"></div>
-        <div class="absolute -bottom-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-tertiary/5 blur-[100px]">
-        </div>
+        <div class="absolute -bottom-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-tertiary/5 blur-[100px]"></div>
     </div>
-    <script>
-        // Micro-interactions for table rows
-        document.querySelectorAll('.table-row-hover').forEach(row => {
-            row.addEventListener('mouseenter', () => {
-                row.querySelector('td:first-child').classList.add('text-primary');
-            });
-            row.addEventListener('mouseleave', () => {
-                row.querySelector('td:first-child').classList.remove('text-primary');
-            });
-        });
 
-        // Search bar focus effect
-        const searchInput = document.querySelector('input[type="text"]');
-        searchInput.addEventListener('focus', () => {
-            searchInput.parentElement.classList.add('bg-surface-container-highest');
-        });
-        searchInput.addEventListener('blur', () => {
-            searchInput.parentElement.classList.remove('bg-surface-container-highest');
-        });
+    <script>
+        function confirmDelete(id) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Excluir tarefa?',
+                text: 'Esta ação não pode ser desfeita.',
+                showCancelButton: true,
+                confirmButtonText: 'Sim, excluir',
+                cancelButtonText: 'Cancelar',
+                confirmButtonColor: '#ef4444',
+                cancelButtonColor: '#414755',
+                background: '#0b0e14',
+                color: '#e0e2ed'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "delete.php?id=" + id;
+                }
+            });
+        }
     </script>
+
+    <?php if (isset($_GET['status']) && $_GET['status'] === 'sucesso'): ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Cadastrado!',
+                text: 'Tarefa cadastrada com sucesso.',
+                confirmButtonColor: '#adc6ff',
+                background: '#0b0e14',
+                color: '#e0e2ed'
+            });
+        </script>
+    <?php endif; ?>
+
+    <?php if (isset($_GET['status']) && $_GET['status'] === 'deletado'): ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Excluído!',
+                text: 'Tarefa removida com sucesso.',
+                confirmButtonColor: '#adc6ff',
+                background: '#0b0e14',
+                color: '#e0e2ed'
+            });
+        </script>
+    <?php endif; ?>
+
+    <?php if (isset($_GET['status']) && $_GET['status'] === 'editado'): ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Atualizado!',
+                text: 'Tarefa atualizada com sucesso.',
+                confirmButtonColor: '#adc6ff',
+                background: '#0b0e14',
+                color: '#e0e2ed'
+            });
+        </script>
+    <?php endif; ?>
+
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 <?php
 require_once '../conexao.php';
+$mensagem = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -19,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':prazo', $prazo);
 
     if ($stmt->execute()) {
-        header("Location: read.php");
+        header("Location: read.php?status=sucesso");
         exit();
     }
 }
@@ -32,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>AETHER EDU | Nova Missão Acadêmica</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500&amp;display=swap"
         rel="stylesheet" />
@@ -338,11 +340,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 el.style.opacity = '1';
             });
         });
-
-        // Date input current date setter or logic can be added here if needed
-        // const today = new Date().toISOString().split('T')[0];
-        // document.getElementById('prazo').setAttribute('min', today);
     </script>
+    <?php if (!empty($mensagem)): ?>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro!',
+                text: '<?= $mensagem ?>',
+                confirmButtonColor: '#adc6ff',
+                background: '#10131b',
+                color: '#e0e2ed'
+            });
+        </script>
+    <?php endif; ?>
 </body>
 
 </html>
