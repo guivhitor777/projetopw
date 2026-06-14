@@ -173,7 +173,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body class="bg-background text-on-surface font-body-md min-h-screen overflow-x-hidden selection:bg-primary/30">
-    <!-- Top Navigation -->
     <header
         class="h-16 flex justify-between items-center px-container-padding-desktop bg-surface/30 backdrop-blur-lg border-b border-white/5 sticky top-0 z-40">
         <div class="flex items-center gap-6">
@@ -188,7 +187,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
         </div>
     </header>
-    <!-- Side Navigation -->
     <aside
         class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
 
@@ -227,7 +225,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </a>
             </div>
 
-            <!-- Sair sempre embaixo -->
             <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
                 href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
                 <span class="material-symbols-outlined">logout</span>
@@ -237,18 +234,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </nav>
 
     </aside>
-    <!-- Main Content -->
     <main
         class="md:ml-sidebar-width p-gutter transition-all duration-500 min-h-[calc(100vh-64px)] flex flex-col items-center justify-center">
         <div class="w-full max-w-2xl mb-8">
             <h2 class="font-headline-lg text-headline-lg text-on-surface">Editar Tarefa</h2>
             <p class="text-on-surface-variant mt-1">Atualize as informações da tarefa abaixo.</p>
         </div>
-        <!-- Form Card -->
         <div
             class="w-full max-w-2xl glass-panel rounded-xl p-10 neon-border-primary animate-in fade-in slide-in-from-bottom-4 duration-500">
             <form action="update.php?id=<?= $id ?>" method="POST">
-                <!-- Disciplina -->
                 <div class="space-y-3">
                     <label class="font-label-caps text-[11px] tracking-[0.2em] text-primary/70 uppercase"
                         for="disciplina">Disciplina</label>
@@ -262,7 +256,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             value="<?= htmlspecialchars($tarefa['disciplina']) ?>">
                     </div>
                 </div>
-                <!-- Descrição -->
                 <div class="space-y-3">
                     <label class="font-label-caps text-[11px] tracking-[0.2em] text-primary/70 uppercase"
                         for="descricao">Descrição</label>
@@ -276,7 +269,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             rows="5"><?= htmlspecialchars($tarefa['descricao']) ?></textarea>
                     </div>
                 </div>
-                <!-- Prazo de Entrega -->
                 <div class="space-y-3">
                     <label class="font-label-caps text-[11px] tracking-[0.2em] text-primary/70 uppercase"
                         for="prazo">Prazo de Entrega</label>
@@ -288,7 +280,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             id="prazo" name="prazo" type="date" value="<?= $tarefa['prazo'] ?>" />
                     </div>
                 </div>
-                <!-- Actions -->
                 <div class="flex flex-col md:flex-row gap-4 pt-6">
                     <button
                         class="flex-1 bg-primary text-on-primary px-8 py-4 rounded-lg font-label-caps text-label-caps flex items-center justify-center gap-3 hover:opacity-90 transition-all active:scale-95 shadow-[0_0_20px_rgba(173,198,255,0.3)]"

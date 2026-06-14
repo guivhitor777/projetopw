@@ -93,7 +93,6 @@ $tarefas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body class="selection:bg-primary/30">
 
-    <!-- Sidebar -->
     <aside
         class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
         <div class="mb-10 px-4">
@@ -130,7 +129,6 @@ $tarefas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </nav>
     </aside>
 
-    <!-- Header -->
     <header
         class="h-20 px-8 flex items-center justify-between border-b border-white/10 bg-surface/50 backdrop-blur-md sticky top-0 z-40 ml-sidebar-width">
         <div>
@@ -145,7 +143,6 @@ $tarefas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="ml-sidebar-width pt-8 min-h-screen flex flex-col">
         <div class="p-8 flex-1">
 
@@ -221,7 +218,6 @@ $tarefas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </footer>
     </main>
 
-    <!-- Background Atmospheric Effect -->
     <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
         <div class="absolute -top-[10%] -right-[10%] w-[60%] h-[60%] rounded-full bg-primary/5 blur-[120px]"></div>
         <div class="absolute -bottom-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-tertiary/5 blur-[100px]"></div>

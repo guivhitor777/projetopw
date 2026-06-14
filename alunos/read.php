@@ -130,7 +130,6 @@ $stmt = $pdo->query($sql);
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="ml-sidebar-width pt-8 min-h-screen flex flex-col">
         <div class="p-8 flex-1">
 

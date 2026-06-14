@@ -82,7 +82,6 @@ $stmt = $pdo->query($sql);
 
 <body class="bg-background text-on-surface selection:bg-primary/30 min-h-screen">
 
-    <!-- Sidebar -->
     <aside
         class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
         <div class="mb-10 px-4">
@@ -119,7 +118,6 @@ $stmt = $pdo->query($sql);
         </nav>
     </aside>
 
-    <!-- Header -->
     <header
         class="h-20 px-8 flex items-center justify-between border-b border-white/10 bg-surface/50 backdrop-blur-md sticky top-0 z-40 ml-sidebar-width">
         <div>
@@ -134,7 +132,6 @@ $stmt = $pdo->query($sql);
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="ml-sidebar-width pt-8 min-h-screen flex flex-col">
         <div class="p-8 flex-1">
 

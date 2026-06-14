@@ -171,7 +171,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body class="bg-background text-on-surface font-body-md overflow-x-hidden">
-    <!-- SideNavBar (Authority: JSON & Strategy) -->
     <aside
         class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
 
@@ -210,7 +209,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </a>
             </div>
 
-            <!-- Sair sempre embaixo -->
             <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
                 href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
                 <span class="material-symbols-outlined">logout</span>
@@ -219,26 +217,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </nav>
 
     </aside>
-    <!-- TopNavBar (Authority: JSON) -->
-    <!-- Main Content Canvas -->
     <main class="md:ml-sidebar-width min-h-[calc(100vh-64px)] p-6 md:p-12 flex items-center justify-center relative">
-        <!-- Atmospheric Ambient Light -->
         <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 blur-[120px] rounded-full pointer-events-none">
         </div>
         <div
             class="absolute bottom-1/4 left-1/4 w-64 h-64 bg-tertiary-container/5 blur-[100px] rounded-full pointer-events-none">
         </div>
         <div class="w-full max-w-2xl animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <!-- Header Group -->
             <div class="text-center mb-10">
                 <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Nova Tarefa</h2>
                 <p class="text-on-surface-variant font-body-md opacity-80">Preencha os dados para registrar a
                     tarefa no sistema.</p>
             </div>
-            <!-- Form Module (Glass Card) -->
             <div class="glass-card rounded-xl p-8 shadow-2xl">
                 <form action="create.php" class="space-y-8" method="POST">
-                    <!-- Field: Disciplina -->
                     <div class="space-y-2">
                         <label class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2"
                             for="disciplina">
@@ -249,7 +241,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             class="w-full rounded-lg border border-white/10 px-4 py-3 text-body-md text-on-surface placeholder:text-on-surface-variant/30 focus:ring-0"
                             id="disciplina" name="disciplina" placeholder="Ex: Artes" required="" type="text" />
                     </div>
-                    <!-- Field: Descrição -->
                     <div class="space-y-2">
                         <label class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2"
                             for="descricao">
@@ -261,7 +252,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             id="descricao" name="descricao" placeholder="Descreva os objetivos e requisitos..."
                             required="" rows="5"></textarea>
                     </div>
-                    <!-- Field: Prazo -->
                     <div class="space-y-2">
                         <label class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2"
                             for="prazo">
@@ -274,7 +264,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 id="prazo" name="prazo" required="" type="date" />
                         </div>
                     </div>
-                    <!-- Action Set -->
                     <div class="flex flex-col sm:flex-row items-center gap-4 pt-4">
                         <button
                             class="w-full sm:flex-1 bg-primary text-on-primary font-label-caps text-label-caps py-4 rounded-lg hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-primary/20"
@@ -288,7 +277,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </form>
             </div>
-            <!-- Footer Meta -->
             <footer
                 class="fixed bottom-4 left-0 right-0 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 opacity-40 text-center">
                 <div class="flex items-center gap-4">
@@ -305,7 +293,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     </div>
     </main>
-    <!-- Mobile Bottom Navigation Shell (Filter Logic) -->
     <nav
         class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface-container-high/80 backdrop-blur-xl border-t border-white/10 flex items-center justify-around z-50">
         <a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
@@ -325,7 +312,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </a>
     </nav>
     <script>
-        // Micro-interaction for button hover effects
         document.querySelectorAll('button, a').forEach(el => {
             el.addEventListener('mousedown', () => {
                 el.classList.add('scale-95');

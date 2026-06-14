@@ -91,7 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body class="min-h-screen flex">
-    <!-- BEGIN: MainSidebar -->
     <aside
         class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
 
@@ -130,7 +129,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </a>
                 </div>
 
-                <!-- Sair sempre embaixo -->
                 <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
                     href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
                     <span class="material-symbols-outlined">logout</span>
@@ -139,10 +137,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </nav>
 
     </aside>
-    <!-- END: MainSidebar -->
-    <!-- BEGIN: MainContent -->
     <main class="ml-64 flex-1 flex flex-col overflow-hidden">
-        <!-- BEGIN: TopHeader -->
+
         <header
             class="h-16 flex justify-between items-center px-container-padding-desktop bg-surface/30 backdrop-blur-lg border-b border-white/5 sticky top-0 z-40">
             <div class="flex items-center gap-6">
@@ -157,15 +153,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             </div>
         </header>
-        <!-- END: TopHeader -->
-        <!-- BEGIN: FormContainer -->
         <div class="flex-1 overflow-y-auto p-12 flex flex-col items-center">
-            <!-- Page Title & Breadcrumbs -->
             <div class="w-full max-w-4xl mb-12">
                 <h2 class="text-4xl font-bold tracking-tight mb-2">Editar Aluno</h2>
                 <p class="text-gray-400">Atualize as informações do aluno abaixo.</p>
             </div>
-            <!-- Main Edit Card -->
             <div class="w-full max-w-4xl glass-card rounded-xl p-8 lg:p-12 shadow-2xl" data-purpose="edit-student-card">
                 <div class="flex items-center gap-3 mb-10 border-b border-aether-border pb-6">
                     <div class="p-2 bg-aether-primary/10 rounded-lg">
@@ -181,7 +173,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-                        <!-- Nome -->
                         <div data-purpose="form-group">
                             <label
                                 class="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-3 ml-1">
@@ -204,7 +195,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
                         </div>
 
-                        <!-- Email -->
                         <div data-purpose="form-group">
                             <label
                                 class="block text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-3 ml-1">
@@ -248,8 +238,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
             </form>
-            <!-- Actions -->
-            <!-- BEGIN: PageFooter -->
+            
             <footer
                 class="fixed bottom-4 left-0 right-0 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 opacity-40 text-center">
                 <div class="flex items-center gap-4">

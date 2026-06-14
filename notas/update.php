@@ -113,7 +113,6 @@ if (!$nota) {
 
 <body class="min-h-screen">
 
-    <!-- Sidebar -->
     <aside
         class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
         <div class="mb-10 px-4">
@@ -150,7 +149,6 @@ if (!$nota) {
         </nav>
     </aside>
 
-    <!-- Header -->
     <header
         class="h-20 px-8 flex items-center justify-between border-b border-white/10 bg-surface/50 backdrop-blur-md sticky top-0 z-40 ml-sidebar-width">
         <div>
@@ -165,7 +163,6 @@ if (!$nota) {
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="ml-sidebar-width min-h-screen flex flex-col p-gutter">
         <div class="flex-1 flex flex-col items-center justify-center">
             <div class="w-full max-w-xl">
@@ -191,7 +188,6 @@ if (!$nota) {
                             </div>
                         </div>
 
-                        <!-- Disciplina -->
                         <div class="space-y-2">
                             <label
                                 class="text-xs font-label-caps text-primary uppercase tracking-widest block">Disciplina</label>
@@ -204,7 +200,6 @@ if (!$nota) {
                             </div>
                         </div>
 
-                        <!-- Nota -->
                         <div class="space-y-2">
                             <label
                                 class="text-xs font-label-caps text-primary uppercase tracking-widest block">Nota</label>
@@ -216,7 +211,6 @@ if (!$nota) {
                             </div>
                         </div>
 
-                        <!-- Botões -->
                         <div class="pt-4 flex flex-col sm:flex-row gap-3">
                             <button type="submit"
                                 class="flex-1 bg-primary text-on-primary font-bold py-3 rounded-lg hover:bg-primary-container transition-all active:scale-[0.98] shadow-lg shadow-primary/10">

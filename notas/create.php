@@ -4,7 +4,6 @@ require_once '../conexao.php';
 
 $mensagem = "";
 
-// Carrega alunos SEMPRE, fora do if POST
 $alunos = $pdo->query("SELECT id, nome FROM alunos")->fetchAll(PDO::FETCH_ASSOC);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -148,7 +147,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body class="bg-background text-on-surface font-body-md overflow-x-hidden">
-    <!-- SideNavBar -->
     <aside
         class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
 
@@ -186,7 +184,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </a>
             </div>
 
-            <!-- Sair sempre embaixo -->
             <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
                 href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
                 <span class="material-symbols-outlined">logout</span>
@@ -195,9 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </nav>
 
     </aside>
-    <!-- Main Content -->
     <main class="ml-sidebar-width min-h-screen flex flex-col">
-        <!-- TopAppBar -->
         <header
             class="flex justify-between items-center h-16 px-gutter w-full sticky top-0 bg-surface/80 backdrop-blur-md border-b border-outline-variant/10 z-40">
             <div class="flex flex-col">
@@ -211,7 +206,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </header>
         <div class="flex-1 flex flex-col items-center justify-center p-gutter">
             <div class="w-full max-w-[600px] glass-card rounded-xl p-8 shadow-2xl relative overflow-hidden">
-                <!-- Subtle Top Accent Glow -->
                 <div
                     class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/40 to-transparent">
                 </div>
@@ -220,7 +214,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <?php endif; ?>
                 <form action="" method="POST" class="space-y-6">
 
-                    <!-- ID do Aluno -->
                     <div class="space-y-2">
                         <label class="text-xs font-label-caps text-on-surface-variant tracking-wider uppercase">
                             ID do Aluno
@@ -239,7 +232,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     </div>
 
-                    <!-- Disciplina -->
                     <div class="space-y-2">
                         <label class="text-xs font-label-caps text-on-surface-variant tracking-wider uppercase">
                             Disciplina
@@ -251,7 +243,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     </div>
 
-                    <!-- Nota -->
                     <div class="space-y-2">
                         <label class="text-xs font-label-caps text-on-surface-variant tracking-wider uppercase">
                             Nota
@@ -263,7 +254,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     </div>
 
-                    <!-- Botão -->
                     <button type="submit" class="w-full py-3 bg-primary text-on-primary rounded-lg font-bold">
                         Cadastrar Nota
                     </button>
@@ -271,7 +261,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </form>
             </div>
         </div>
-        <!-- Footer -->
+        
         <footer
             class="fixed bottom-4 left-0 right-0 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 opacity-40 text-center">
             <div class="flex items-center gap-4">

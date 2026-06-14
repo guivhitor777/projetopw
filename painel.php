@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html class="dark" lang="pt-br">
-
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -107,7 +105,6 @@
 </head>
 
 <body class="bg-background text-on-background min-h-screen">
-    <!-- SideNavBar -->
     <aside
         class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface/40 backdrop-blur-xl border-r border-white/10 flex flex-col py-gutter px-4 z-50">
 
@@ -116,7 +113,6 @@
                 Aluno Modern
             </h1>
         </div>
-
 
         <nav class="flex flex-col flex-1">
 
@@ -146,19 +142,14 @@
                 </a>
             </div>
 
-            <!-- Sair sempre embaixo -->
             <a class="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-colors"
                 href="../logout.php" onclick="return confirm('Tem certeza que deseja sair do sistema?');">
                 <span class="material-symbols-outlined">logout</span>
                 <span>Sair</span>
             </a>
-
         </nav>
-
     </aside>
-    <!-- Main Content Area -->
     <main class="ml-[280px] min-h-screen">
-        <!-- TopNavBar -->
         <header
             class="h-16 flex justify-between items-center px-container-padding-desktop bg-surface/30 backdrop-blur-lg border-b border-white/5 sticky top-0 z-40">
             <div class="flex items-center gap-6">
@@ -231,7 +222,6 @@
                 </div>
             </div>
         </div>
-        <!-- 3. Middle Row (Evolution & Status) -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
             <footer
                 class="fixed bottom-4 left-0 right-0 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 opacity-40 text-center">

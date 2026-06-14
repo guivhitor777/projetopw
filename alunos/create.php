@@ -154,7 +154,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body
     class="bg-tech min-h-screen flex items-center justify-center p-gutter selection:bg-primary-container selection:text-white">
-    <!-- Background Visual Elements -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
         <div class="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px]"></div>
         <div
@@ -162,14 +161,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
     <main class="w-full max-w-[480px] z-10 relative">
-        <!-- Logo/Header -->
         <div class="flex flex-col items-center mb-8">
             <div class="w-16 h-16 glass-panel rounded-xl flex items-center justify-center mb-6 border-primary/20">
                 <span class="material-symbols-outlined text-primary text-4xl" data-icon="rocket_launch">school</span>
             </div>
             <h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Criar Conta</h1>
         </div>
-        <!-- Registration Form -->
         <section class="glass-panel p-8 rounded-2xl">
             <form action="" class="space-y-5" method="POST">
                 <div class="space-y-2">
@@ -183,7 +180,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             placeholder="EX: Renan Meu Amor" type="text" />
                     </div>
                 </div>
-                <!-- Email -->
                 <div class="space-y-2">
                     <label
                         class="font-label-caps text-label-caps text-on-surface-variant block uppercase tracking-widest">E-mail
@@ -197,7 +193,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             placeholder="nome@gmail.com" type="email" />
                     </div>
                 </div>
-                <!-- Password -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="space-y-2">
                         <label
@@ -224,7 +219,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     </div>
                 </div>
-                <!-- Action Button -->
                 <button
                     class="w-full bg-primary-container text-on-primary-container font-label-caps text-label-caps py-4 rounded-lg font-bold tracking-[0.2em] hover:bg-primary transition-all active:scale-[0.98] shadow-lg shadow-primary/20"
                     type="submit">
@@ -232,7 +226,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </button>
             </form>
         </section>
-        <!-- Footer Info -->
         <footer
             class="fixed bottom-4 left-0 right-0 flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 opacity-40 text-center">
             <div class="flex items-center gap-4">
@@ -246,13 +239,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </footer>
     </main>
-    </main>
-    <!-- Decorative Corner Accents -->
     <div class="fixed top-8 left-8 w-16 h-16 border-t border-l border-white/10 pointer-events-none"></div>
     <div class="fixed top-8 right-8 w-16 h-16 border-t border-r border-white/10 pointer-events-none"></div>
     <div class="fixed bottom-8 left-8 w-16 h-16 border-b border-l border-white/10 pointer-events-none"></div>
     <div class="fixed bottom-8 right-8 w-16 h-16 border-b border-r border-white/10 pointer-events-none"></div>
-    <!-- Data-alt image context for the background generation -->
     <div class="hidden"
         data-alt="A highly detailed cinematic view of a futuristic dark blue and black laboratory workstation in 2050. The scene features multiple glowing holographic interfaces and glass touch surfaces emitting a soft electric blue light. The lighting is low-key with sharp rim highlights on metallic and obsidian-like textures, creating a professional and visionary atmosphere. The overall style is minimalist and high-tech, evoking an advanced academic command center or a professional command bridge.">
     </div>
