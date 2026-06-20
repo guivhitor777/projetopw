@@ -1,5 +1,6 @@
 <?php
 
+require_once '../auth.php';
 require_once '../conexao.php';
 
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
